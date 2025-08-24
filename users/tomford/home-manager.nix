@@ -51,7 +51,7 @@ in {
     pkgs.uv
 
     pkgs.gopls
-    pkgs.zigpkgs."0.14.1"
+    pkgs.zigpkgs."0.15.1"
 
     pkgs.claude-code
     pkgs.codex
@@ -101,7 +101,7 @@ in {
     extraConfig = {
       branch.autosetuprebase = "always";
       color.ui = true;
-      github.user = "tomford";
+      github.user = "fordtom";
       push.default = "tracking";
       push.autoSetupRemote = true;
       init.defaultBranch = "main";
@@ -111,7 +111,7 @@ in {
   programs.go = {
     enable = true;
     goPath = "code/go";
-    goPrivate = ["github.com/tomford"];
+    goPrivate = ["github.com/fordtom"];
   };
 
   programs.jujutsu = {
