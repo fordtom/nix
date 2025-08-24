@@ -31,7 +31,7 @@
     jp = "jj git push";
     js = "jj st";
 
-    drs = "sudo darwin-rebuild switch --flake ~/nix#macbook-pro-m3";
+    drs = "sudo darwin-rebuild switch --flake ~/nix#macbook";
   };
 in {
   home.stateVersion = "24.11";

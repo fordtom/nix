@@ -12,19 +12,20 @@
   isWSL = wsl;
   isLinux = !darwin && !isWSL;
 
-  machineConfig = ./${name}.nix;
+  machineConfig = ./machines/${name}.nix;
   userOSConfig =
-    ./${
+    ./users/${user}/${
       if darwin
       then "darwin"
       else "nixos"
     }.nix;
-  userHMConfig = ./home-manager.nix;
+  userHMConfig = ./users/${user}/home-manager.nix;
 
   systemFunc =
     if darwin
     then inputs.darwin.lib.darwinSystem
     else nixpkgs.lib.nixosSystem;
+
   home-manager =
     if darwin
     then inputs.home-manager.darwinModules

@@ -11,7 +11,11 @@
 
   nix = {
     enable = false;
-    settings.experimental-features = ["nix-command" "flakes"];
+
+    # We need to enable flakes
+    extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
   };
 
   # Apparently this isn't necessary? to check

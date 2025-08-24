@@ -35,11 +35,11 @@
       inputs.zig.overlays.default
     ];
 
-    mkSystem = import ./mkSystem.nix {
+    mkSystem = import ./mksystem.nix {
       inherit inputs nixpkgs overlays;
     };
   in {
-    darwinConfigurations.macbook-pro-m3 = mkSystem "macbook-pro-m3" {
+    darwinConfigurations.macbook = mkSystem "macbook" {
       system = "aarch64-darwin";
       user = "tomford";
       darwin = true;
