@@ -39,7 +39,6 @@ in {
     pkgs.fd
     pkgs.fzf
     pkgs.gh
-    pkgs.neovim
     pkgs.nodejs
     pkgs.ripgrep
     pkgs.stow
@@ -69,6 +68,11 @@ in {
 
   programs.direnv = {
     enable = true;
+    config = {
+      whitelist = {
+        exact = ["$HOME/.envrc"];
+      };
+    };
   };
 
   # programs.git to replace .gitconfig
