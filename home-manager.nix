@@ -12,6 +12,9 @@
   isLinux = pkgs.stdenv.isLinux;
 
   shellAliases = {
+    la = "ls -a";
+    ll = "ls -l";
+
     ga = "git add";
     gc = "git commit";
     gco = "git checkout";
@@ -27,6 +30,8 @@
     jn = "jj new";
     jp = "jj git push";
     js = "jj st";
+
+    drs = "sudo darwin-rebuild switch --flake ~/nix#macbook-pro-m3";
   };
 in {
   home.stateVersion = "24.11";
@@ -56,13 +61,24 @@ in {
     EDITOR = "nvim";
   };
 
+  home.sessionPath = [
+    "$HOME/.local/bin"
+    "$HOME/.cargo/bin"
+  ];
+
   # In the future, migrate dotfiles to use home-manager
 
   programs.bash = {
     enable = true;
-    shellOptions = [];
+    # shellOptions = [];
     historyControl = ["ignoredups" "ignorespace"];
     # initExtra = builtins.readFile ./bashrc; - THIS IS LOOKING FOR LOCAL DIR
+    shellAliases = shellAliases;
+  };
+
+  programs.zsh = {
+    enable = true;
+    # initExtra = builtins.readFile ./zshrc;
     shellAliases = shellAliases;
   };
 
