@@ -1,6 +1,8 @@
-{ inputs, pkgs, ... }:
-
 {
+  inputs,
+  pkgs,
+  ...
+}: {
   homebrew = {
     enable = true;
     casks = [
@@ -14,7 +16,7 @@
       autoUpdate = true;
       upgrade = true;
     };
-  }
+  };
 
   security.pam.services.sudo_local.touchIdAuth = true;
 
