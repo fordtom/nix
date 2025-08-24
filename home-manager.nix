@@ -63,7 +63,7 @@ in {
     enable = true;
     shellOptions = [];
     historyControl = ["ignoredups" "ignorespace"];
-    initExtra = builtins.readFile ./bashrc;
+    # initExtra = builtins.readFile ./bashrc; - THIS IS LOOKING FOR LOCAL DIR
     shellAliases = shellAliases;
   };
 
