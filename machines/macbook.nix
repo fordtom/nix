@@ -5,7 +5,7 @@
 }: {
   system.stateVersion = 6;
 
-  ids.gids.nixbld = 30000;
+  ids.gids.nixbld = 350;
 
   nixpkgs.config.allowUnfree = true;
 
