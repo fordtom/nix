@@ -23,7 +23,13 @@
     zig.url = "github:mitchellh/zig-overlay";
   };
 
-  outputs = { self, nixpkgs, home-manager, darwin, ... }@inputs: let
+  outputs = {
+    self,
+    nixpkgs,
+    home-manager,
+    darwin,
+    ...
+  } @ inputs: let
     overlays = [
       inputs.jujutsu.overlays.default
       inputs.zig.overlays.default
@@ -38,4 +44,5 @@
       user = "tomford";
       darwin = true;
     };
+  };
 }
