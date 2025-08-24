@@ -10,12 +10,8 @@
   nixpkgs.config.allowUnfree = true;
 
   nix = {
-    enable = false;
-
-    # We need to enable flakes
-    extraOptions = ''
-      experimental-features = nix-command flakes
-    '';
+    enable = true;
+    settings.experimental-features = ["nix-command" "flakes"];
   };
 
   # Apparently this isn't necessary? to check
