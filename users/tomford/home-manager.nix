@@ -121,4 +121,8 @@ in {
   programs.neovim = {
     enable = true;
   };
+
+  programs.atuin = {
+    enable = true;
+  };
 }
