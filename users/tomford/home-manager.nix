@@ -52,9 +52,6 @@ in {
 
     pkgs.gopls
     pkgs.zigpkgs."0.15.1"
-
-    pkgs.claude-code
-    pkgs.codex
   ];
 
   home.sessionVariables = {
@@ -65,8 +62,6 @@ in {
     "$HOME/.local/bin"
     "$HOME/.cargo/bin"
   ];
-
-  # In the future, migrate dotfiles to use home-manager
 
   programs.bash = {
     enable = true;
