@@ -14,16 +14,6 @@
     settings.experimental-features = ["nix-command" "flakes"];
   };
 
-  # Apparently this isn't necessary? to check
-  programs.zsh.enable = true;
-  programs.zsh.shellInit = ''
-    # Nix
-    if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
-      . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
-    fi
-    # End Nix
-  '';
-
   environment.shells = with pkgs; [bashInteractive zsh];
   environment.systemPackages = with pkgs; [
     cachix

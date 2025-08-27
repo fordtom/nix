@@ -44,5 +44,11 @@
       user = "tomford";
       darwin = true;
     };
+
+    # Not actually a nixOS_WSL machine so not settings wsl = true
+    nixosConfigurations.nixos = mkSystem "ubuntuwsl" {
+      system = "x86_64-linux";
+      user = "tfo01";
+    };
   };
 }
