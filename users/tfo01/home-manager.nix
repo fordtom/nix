@@ -1,11 +1,9 @@
 {
-  isWSL,
-  inputs,
-  ...
-}: {
   config,
   lib,
   pkgs,
+  isWSL ? false,
+  inputs,
   ...
 }: let
   isDarwin = pkgs.stdenv.isDarwin;
