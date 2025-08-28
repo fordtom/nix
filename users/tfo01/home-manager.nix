@@ -34,6 +34,8 @@
     # drs = "sudo darwin-rebuild switch --flake ~/nix#macbook";
     # hms
   };
+
+  windowsUser = config.home.username;
 in {
   home.stateVersion = "24.11";
 
@@ -69,7 +71,7 @@ in {
     enable = true;
     config = {
       whitelist = {
-        exact = ["$HOME/.envrc"];
+        exact = ["${config.home.homeDirectory}/.envrc"];
       };
     };
   };
@@ -79,7 +81,16 @@ in {
     aliases = {
       prettylog = "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative";
     };
-    # credential manager and the inclusion of the windows gitconfig file
+
+    includes = [
+      {
+        path = "/mnt/c/Users/${windowsUser}/.gitconfig";
+      }
+    ];
+
+    extraConfig = {
+      credential.helper = "/mnt/c/Program Files/Git/mingw64/bin/git-credential-manager.exe";
+    };
   };
 
   programs.neovim = {

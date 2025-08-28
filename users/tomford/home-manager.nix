@@ -81,7 +81,7 @@ in {
     enable = true;
     config = {
       whitelist = {
-        exact = ["$HOME/.envrc"];
+        exact = ["${config.home.homeDirectory}/.envrc"];
       };
     };
   };

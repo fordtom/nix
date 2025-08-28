@@ -38,6 +38,10 @@
     mkSystem = import ./mksystem.nix {
       inherit inputs nixpkgs overlays;
     };
+
+    mkHome = import ./mkhome.nix {
+      inherit inputs nixpkgs overlays;
+    };
   in {
     darwinConfigurations.macbook = mkSystem "macbook" {
       system = "aarch64-darwin";
@@ -45,10 +49,11 @@
       darwin = true;
     };
 
-    # Not actually a nixOS_WSL machine so not settings wsl = true
-    nixosConfigurations.nixos = mkSystem "ubuntuwsl" {
+    # Home Manager standalone for WSL Ubuntu
+    homeConfigurations."ubuntuwsl" = mkHome {
       system = "x86_64-linux";
       user = "tfo01";
+      isWSL = true;
     };
   };
 }
