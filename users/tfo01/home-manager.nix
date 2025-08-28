@@ -58,6 +58,8 @@ in {
     "$HOME/.cargo/bin"
   ];
 
+  programs.home-manager.enable = true;
+
   programs.bash = {
     enable = true;
     # shellOptions = [];
