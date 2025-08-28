@@ -31,8 +31,7 @@
     jp = "jj git push";
     js = "jj st";
 
-    # drs = "sudo darwin-rebuild switch --flake ~/nix#macbook";
-    # hms
+    hms = "home-manager switch --flake ~/nix#ubuntuwsl";
   };
 
   windowsUser = config.home.username;
