@@ -1,11 +1,9 @@
 {
-  isWSL,
-  inputs,
-  ...
-}: {
   config,
   lib,
   pkgs,
+  isWSL ? false,
+  inputs,
   ...
 }: let
   isDarwin = pkgs.stdenv.isDarwin;
@@ -31,8 +29,10 @@
     jp = "jj git push";
     js = "jj st";
 
-    drs = "sudo darwin-rebuild switch --flake ~/nix#macbook";
+    hms = "home-manager switch --flake ~/nix#ubuntuwsl";
   };
+
+  windowsUser = config.home.username;
 in {
   home.stateVersion = "24.11";
 
@@ -43,15 +43,8 @@ in {
     pkgs.bat
     pkgs.fd
     pkgs.fzf
-    pkgs.gh
-    pkgs.nodejs
     pkgs.ripgrep
     pkgs.stow
-    pkgs.typst
-    pkgs.uv
-
-    pkgs.gopls
-    pkgs.zigpkgs."0.15.1"
   ];
 
   home.sessionVariables = {
@@ -63,17 +56,13 @@ in {
     "$HOME/.cargo/bin"
   ];
 
+  programs.home-manager.enable = true;
+
   programs.bash = {
     enable = true;
     # shellOptions = [];
     historyControl = ["ignoredups" "ignorespace"];
     # initExtra = builtins.readFile ./bashrc; - THIS IS LOOKING FOR LOCAL DIR
-    shellAliases = shellAliases;
-  };
-
-  programs.zsh = {
-    enable = true;
-    # initExtra = builtins.readFile ./zshrc;
     shellAliases = shellAliases;
   };
 
@@ -88,29 +77,19 @@ in {
 
   programs.git = {
     enable = true;
-    userName = "Tom Ford";
-    userEmail = "tfordy63@gmail.com";
     aliases = {
       prettylog = "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative";
     };
+
+    includes = [
+      {
+        path = "/mnt/c/Users/${windowsUser}/.gitconfig";
+      }
+    ];
+
     extraConfig = {
-      branch.autosetuprebase = "always";
-      color.ui = true;
-      github.user = "fordtom";
-      push.default = "tracking";
-      push.autoSetupRemote = true;
-      init.defaultBranch = "main";
+      credential.helper = "/mnt/c/Program Files/Git/mingw64/bin/git-credential-manager.exe";
     };
-  };
-
-  programs.go = {
-    enable = true;
-    goPath = "code/go";
-    goPrivate = ["github.com/fordtom"];
-  };
-
-  programs.jujutsu = {
-    enable = true;
   };
 
   programs.neovim = {
