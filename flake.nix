@@ -35,11 +35,11 @@
       inputs.zig.overlays.default
     ];
 
-    mkSystem = import ./mksystem.nix {
+    mkSystem = import ./lib/mksystem.nix {
       inherit inputs nixpkgs overlays;
     };
 
-    mkHome = import ./mkhome.nix {
+    mkHome = import ./lib/mkhome.nix {
       inherit inputs nixpkgs overlays;
     };
   in {
