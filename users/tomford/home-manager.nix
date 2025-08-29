@@ -63,17 +63,8 @@ in {
     "$HOME/.cargo/bin"
   ];
 
-  programs.bash = {
+  programs.fish = {
     enable = true;
-    # shellOptions = [];
-    historyControl = ["ignoredups" "ignorespace"];
-    # initExtra = builtins.readFile ./bashrc; - THIS IS LOOKING FOR LOCAL DIR
-    shellAliases = shellAliases;
-  };
-
-  programs.zsh = {
-    enable = true;
-    # initExtra = builtins.readFile ./zshrc;
     shellAliases = shellAliases;
   };
 

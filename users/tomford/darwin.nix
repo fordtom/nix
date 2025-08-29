@@ -23,7 +23,7 @@
 
   users.users.tomford = {
     home = "/Users/tomford";
-    shell = pkgs.zsh;
+    shell = pkgs.fish;
   };
 
   system.primaryUser = "tomford";

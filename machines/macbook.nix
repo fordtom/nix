@@ -12,7 +12,10 @@
     settings.experimental-features = ["nix-command" "flakes"];
   };
 
-  environment.shells = with pkgs; [bashInteractive zsh];
+  programs.zsh.enable = true;
+  programs.fish.enable = true;
+
+  environment.shells = with pkgs; [bashInteractive zsh fish];
   environment.systemPackages = with pkgs; [
     cachix
   ];
