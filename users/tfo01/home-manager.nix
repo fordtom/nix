@@ -10,8 +10,13 @@
   isLinux = pkgs.stdenv.isLinux;
 
   shellAliases = {
-    la = "ls -a";
-    ll = "ls -l";
+    cd = "z";
+    cat = "bat";
+    find = "fd";
+    grep = "rg";
+    ls = "eza";
+    la = "eza --all";
+    ll = "eza --long --header --all --group-directories-first";
 
     ga = "git add";
     gc = "git commit";
@@ -45,6 +50,7 @@ in {
     pkgs.fzf
     pkgs.ripgrep
     pkgs.stow
+    pkgs.fish
   ];
 
   home.sessionVariables = {
@@ -60,9 +66,11 @@ in {
 
   programs.bash = {
     enable = true;
-    # shellOptions = [];
-    historyControl = ["ignoredups" "ignorespace"];
-    # initExtra = builtins.readFile ./bashrc; - THIS IS LOOKING FOR LOCAL DIR
+    shellAliases = shellAliases;
+  };
+
+  programs.fish = {
+    enable = true;
     shellAliases = shellAliases;
   };
 
@@ -120,5 +128,14 @@ in {
         format = "via $symbol";
       };
     };
+  };
+
+  programs.zoxide = {
+    enable = true;
+  };
+
+  programs.eza = {
+    enable = true;
+    icons = "always";
   };
 }
