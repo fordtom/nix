@@ -99,4 +99,20 @@ in {
   programs.atuin = {
     enable = true;
   };
+
+  programs.starship = {
+    enable = true;
+    settings = {
+      add_newline = false;
+      format = "$directory$nix_shell$character";
+      right_format = "$all";
+      character = {
+        success_symbol = "[>](green)";
+        error_symbol = "[>](red)";
+      };
+      nix_shell = {
+        format = "via ❄️ ";
+      };
+    };
+  };
 }
