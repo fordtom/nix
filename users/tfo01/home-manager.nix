@@ -104,14 +104,20 @@ in {
     enable = true;
     settings = {
       add_newline = false;
-      format = "$directory$nix_shell$character";
+      format = "$directory$character";
       right_format = "$all";
+
       character = {
-        success_symbol = "[>](green)";
-        error_symbol = "[>](red)";
+        success_symbol = ">";
+        error_symbol = ">";
       };
+
+      git_branch = {
+        format = "[$symbol$branch(:$remote_branch) ]($style)";
+      };
+
       nix_shell = {
-        format = "via ❄️ ";
+        format = "via $symbol";
       };
     };
   };
