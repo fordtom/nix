@@ -49,7 +49,6 @@ in {
     pkgs.fd
     pkgs.fzf
     pkgs.gh
-    pkgs.nodejs
     pkgs.ripgrep
     pkgs.stow
     pkgs.typst
