@@ -85,6 +85,10 @@ in {
     enable = true;
     userName = "Tom Ford";
     userEmail = "tfordy63@gmail.com";
+    signing = {
+      signByDefault = true;
+      key = "~/.ssh/id_ed25519.pub";
+    };
     aliases = {
       prettylog = "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative";
     };
@@ -95,6 +99,8 @@ in {
       push.default = "tracking";
       push.autoSetupRemote = true;
       init.defaultBranch = "main";
+      gpg.format = "ssh";
+      tag.gpgSign = true;
     };
   };
 
