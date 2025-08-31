@@ -141,6 +141,10 @@ in {
       nix_shell = {
         format = "via $symbol";
       };
+
+      package = {
+        disabled = true;
+      };
     };
   };
 
