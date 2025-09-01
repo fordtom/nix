@@ -14,9 +14,6 @@
     cat = "bat";
     find = "fd";
     grep = "rg";
-    ls = "eza";
-    la = "eza --all";
-    ll = "eza --long --header --all --group-directories-first";
 
     ga = "git add";
     gc = "git commit";
