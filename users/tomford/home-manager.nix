@@ -69,6 +69,11 @@ in {
   programs.fish = {
     enable = true;
     shellAliases = shellAliases;
+    interactiveShellInit = ''
+      # Nix
+      set -Ux fish_greeting ""
+      # End Nix
+    '';
   };
 
   programs.direnv = {

@@ -71,6 +71,14 @@ in {
   programs.fish = {
     enable = true;
     shellAliases = shellAliases;
+    interactiveShellInit = ''
+      # Nix
+      set -Ux fish_greeting ""
+      if test -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish'
+        source '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish'
+      end
+      # End Nix
+    '';
   };
 
   programs.direnv = {
