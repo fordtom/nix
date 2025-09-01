@@ -14,6 +14,8 @@
     cat = "bat";
     find = "fd";
     grep = "rg";
+    la = "ls -a";
+    ll = "ls -l";
 
     ga = "git add";
     gc = "git commit";
@@ -62,6 +64,11 @@ in {
   programs.home-manager.enable = true;
 
   programs.bash = {
+    enable = true;
+    shellAliases = shellAliases;
+  };
+
+  programs.fish = {
     enable = true;
     shellAliases = shellAliases;
   };
