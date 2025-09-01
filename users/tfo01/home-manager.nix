@@ -69,11 +69,6 @@ in {
     shellAliases = shellAliases;
   };
 
-  programs.fish = {
-    enable = true;
-    shellAliases = shellAliases;
-  };
-
   programs.direnv = {
     enable = true;
     config = {
@@ -108,34 +103,7 @@ in {
     enable = true;
   };
 
-  programs.starship = {
-    enable = true;
-    settings = {
-      add_newline = false;
-      format = "$directory$character";
-      right_format = "$all";
-
-      character = {
-        success_symbol = ">";
-        error_symbol = ">";
-      };
-
-      git_branch = {
-        format = "[$symbol$branch(:$remote_branch) ]($style)";
-      };
-
-      nix_shell = {
-        format = "via $symbol";
-      };
-    };
-  };
-
   programs.zoxide = {
     enable = true;
-  };
-
-  programs.eza = {
-    enable = true;
-    icons = "always";
   };
 }
