@@ -34,6 +34,7 @@
     js = "jj st";
 
     hms = "home-manager switch --flake ~/nix#ubuntuwsl";
+    vscode = "bash -c \"code .\"";
   };
 
   windowsUser = config.home.username;
