@@ -129,17 +129,9 @@ in {
   programs.starship = {
     enable = true;
     settings = {
-      add_newline = false;
-      format = "$directory$character";
-      right_format = "$all";
-
       character = {
         success_symbol = ">";
         error_symbol = ">";
-      };
-
-      git_branch = {
-        format = "[$symbol$branch(:$remote_branch) ]($style)";
       };
 
       nix_shell = {

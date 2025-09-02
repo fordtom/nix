@@ -116,6 +116,24 @@ in {
     enable = true;
   };
 
+  programs.starship = {
+    enable = true;
+    settings = {
+      character = {
+        success_symbol = ">";
+        error_symbol = ">";
+      };
+
+      nix_shell = {
+        format = "via $symbol";
+      };
+
+      package = {
+        disabled = true;
+      };
+    };
+  };
+
   programs.zoxide = {
     enable = true;
   };
