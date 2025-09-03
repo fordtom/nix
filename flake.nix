@@ -33,6 +33,13 @@
     overlays = [
       inputs.jujutsu.overlays.default
       inputs.zig.overlays.default
+
+      (final: prev: {
+        unstable = import inputs.nixpkgs-unstable {
+          inherit (final.stdenv.hostPlatform) system;
+          config.allowUnfree = true;
+        };
+      })
     ];
 
     mkSystem = import ./lib/mksystem.nix {

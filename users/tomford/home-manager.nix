@@ -52,8 +52,9 @@ in {
     pkgs.stow
     pkgs.typst
     pkgs.uv
-    pkgs.amp-cli
     pkgs.gopls
+
+    pkgs.unstable.amp-cli
   ];
 
   home.sessionVariables = {
