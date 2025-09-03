@@ -51,6 +51,7 @@ in {
     pkgs.ripgrep
     pkgs.stow
     pkgs.fish
+    pkgs.uv
   ];
 
   home.sessionVariables = {

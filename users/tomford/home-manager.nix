@@ -52,9 +52,8 @@ in {
     pkgs.stow
     pkgs.typst
     pkgs.uv
-
+    pkgs.amp-cli
     pkgs.gopls
-    pkgs.zigpkgs."0.15.1"
   ];
 
   home.sessionVariables = {
