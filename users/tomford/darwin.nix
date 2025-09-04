@@ -10,6 +10,7 @@
       "middleclick"
       "spotify"
       "yubico-yubikey-manager"
+      "raycast"
     ];
 
     onActivation = {
