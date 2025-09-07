@@ -11,6 +11,7 @@
       "spotify"
       "yubico-yubikey-manager"
       "raycast"
+      "linear-linear"
     ];
 
     onActivation = {
