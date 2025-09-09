@@ -6,12 +6,13 @@
   homebrew = {
     enable = true;
     casks = [
+      "claude"
       "discord"
+      "linear-linear"
       "middleclick"
+      "raycast"
       "spotify"
       "yubico-yubikey-manager"
-      "raycast"
-      "linear-linear"
     ];
 
     onActivation = {
