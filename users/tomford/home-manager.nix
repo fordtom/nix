@@ -54,7 +54,7 @@ in {
     pkgs.uv
     pkgs.gopls
 
-    pkgs.unstable.amp-cli
+    pkgs.unstable.claude-code
   ];
 
   home.sessionVariables = {
