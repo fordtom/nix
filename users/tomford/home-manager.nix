@@ -54,6 +54,10 @@ in {
     pkgs.uv
     pkgs.gopls
 
+    # Needed for MCP
+    pkgs.nodejs
+
+    # The latest stable version of claude-code
     pkgs.unstable.claude-code
   ];
 
