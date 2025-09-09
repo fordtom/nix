@@ -141,6 +141,11 @@ in {
       package = {
         disabled = true;
       };
+
+      git_branch = {
+        truncation_length = 20;
+        truncation_symbol = "…";
+      };
     };
   };
 
