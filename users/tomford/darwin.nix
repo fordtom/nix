@@ -14,6 +14,7 @@
       "mullvad-vpn"
       "raycast"
       "spotify"
+      "superwhisper"
       "yubico-yubikey-manager"
     ];
 
