@@ -48,6 +48,7 @@ in {
     pkgs.fd
     pkgs.fzf
     pkgs.gh
+    pkgs.just
     pkgs.ripgrep
     pkgs.stow
     pkgs.typst

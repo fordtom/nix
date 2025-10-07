@@ -48,6 +48,7 @@ in {
     pkgs.bat
     pkgs.fd
     pkgs.fzf
+    pkgs.just
     pkgs.ripgrep
     pkgs.stow
     pkgs.fish
