@@ -20,6 +20,7 @@
     ga = "git add";
     gc = "git commit";
     gco = "git checkout";
+    gcu = "git cleanup";
     gcp = "git cherry-pick";
     gdiff = "git diff";
     gl = "git prettylog";
