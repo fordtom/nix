@@ -101,7 +101,7 @@ in {
     };
     aliases = {
       prettylog = "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative";
-      cleanup = "!git for-each-ref --format '%(refname:short) %(upstream)' refs/heads | awk '$2 == \"\" {print $1}' | xargs -r git branch -D";
+      cleanup = "!git for-each-ref --format '%(refname:short) %(upstream:short) %(upstream:track)' refs/heads | awk '$2 == \"\" || $3 ~ /\\[gone\\]/ {print $1}' | while read -r br; do git branch -D \"$br\"; done";
     };
     extraConfig = {
       branch.autosetuprebase = "always";
