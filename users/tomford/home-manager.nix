@@ -123,6 +123,30 @@ in {
 
   programs.jujutsu = {
     enable = true;
+    settings = {
+      user = {
+        name = "Tom Ford";
+        email = "tfordy63@gmail.com";
+      };
+      signing = {
+        behavior = "own";
+        backend = "ssh";
+        key = "~/.ssh/id_ed25519.pub";
+      };
+      aliases = {
+        bump = ["bookmark" "move" "--from" "closest_bookmark(@)" "--to" "@"];
+        drop = ["abandon" "--restore-descendants"];
+        rt = ["rebase" "-d" "trunk()"];
+        b = ["branch"];
+        n = ["new"];
+      };
+      revset-aliases = {
+        "closest_bookmark(to)" = "heads(::to & bookmarks())";
+      };
+      ui = {
+        default-command = "log";
+      };
+    };
   };
 
   programs.neovim = {

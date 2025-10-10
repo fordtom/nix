@@ -12,7 +12,6 @@
       "linear-linear"
       "middleclick"
       "mullvad-vpn"
-      "raycast"
       "spotify"
       "yubico-yubikey-manager"
     ];
