@@ -9,6 +9,7 @@
       "claude"
       "discord"
       "ghostty"
+      "google-chrome"
       "linear-linear"
       "middleclick"
       "mullvad-vpn"
