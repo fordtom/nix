@@ -55,6 +55,7 @@ in {
     pkgs.typst
     pkgs.uv
     pkgs.gopls
+    pkgs.zigpkgs."0.15.1"
 
     # Needed for MCP
     pkgs.nodejs
