@@ -138,8 +138,6 @@ in {
         bump = ["bookmark" "move" "--from" "closest_bookmark(@)" "--to" "@"];
         drop = ["abandon" "--restore-descendants"];
         rt = ["rebase" "-d" "trunk()"];
-        b = ["branch"];
-        n = ["new"];
       };
       revset-aliases = {
         "closest_bookmark(to)" = "heads(::to & bookmarks())";
