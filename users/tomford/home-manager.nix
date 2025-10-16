@@ -35,6 +35,7 @@
     jn = "jj new";
     jp = "jj git push";
     js = "jj st";
+    je = "jj edit";
 
     drs = "sudo darwin-rebuild switch --flake ~/nix#macbook";
   };
@@ -44,12 +45,14 @@ in {
   xdg.enable = true;
 
   home.packages = [
+    pkgs._1password-cli
     pkgs.alejandra
     pkgs.bat
     pkgs.fd
     pkgs.fzf
     pkgs.gh
     pkgs.just
+    pkgs.nodejs
     pkgs.ripgrep
     pkgs.stow
     pkgs.typst
@@ -57,11 +60,7 @@ in {
     pkgs.gopls
     pkgs.zigpkgs."0.15.1"
 
-    # Needed for MCP
-    pkgs.nodejs
-
-    # The latest stable version of claude-code
-    pkgs.unstable.claude-code
+    pkgs.unstable.cursor-cli
   ];
 
   home.sessionVariables = {
