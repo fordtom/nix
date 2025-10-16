@@ -65,6 +65,7 @@ in {
 
   home.sessionVariables = {
     EDITOR = "nvim";
+    PAGER = "less -FirSwX";
   };
 
   home.sessionPath = [
@@ -143,7 +144,6 @@ in {
       };
       ui = {
         default-command = "log";
-        pager = "less -FRX";
       };
     };
   };
