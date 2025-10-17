@@ -66,6 +66,10 @@ in {
   home.sessionVariables = {
     EDITOR = "nvim";
     PAGER = "less -FirSwX";
+
+    OPENAI_API_KEY = "op://Code/OpenAIPersonal/credential";
+    ANTHROPIC_API_KEY = "op://Code/AnthropicPersonal/credential";
+    CARGO_REGISTRY_TOKEN = "op://Code/CargoRegistryToken/credential";
   };
 
   home.sessionPath = [
