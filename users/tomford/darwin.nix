@@ -15,6 +15,7 @@
       "linear-linear"
       "middleclick"
       "mullvad-vpn"
+      "signal"
       "spotify"
       "yubico-yubikey-manager"
     ];
