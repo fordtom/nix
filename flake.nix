@@ -56,11 +56,10 @@
       darwin = true;
     };
 
-    # Home Manager standalone for WSL Ubuntu
-    homeConfigurations."ubuntuwsl" = mkHome {
-      system = "x86_64-linux";
-      user = "tfo01";
-      isWSL = true;
+    homeConfigurations."pifive" = mkHome {
+      system = "aarch64-linux";
+      user = "tomford";
+      isWSL = false;
     };
   };
 }

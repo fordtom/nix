@@ -22,7 +22,10 @@ in
     };
 
     modules = [
-      userHMConfig
+      (import userHMConfig {
+        isWSL = isWSL;
+        inputs = inputs;
+      })
       {
         home.username = user;
         home.homeDirectory = "/home/${user}";

@@ -37,7 +37,8 @@
     js = "jj st";
     je = "jj edit";
 
-    drs = "sudo darwin-rebuild switch --flake ~/nix#macbook";
+    drs = "sudo darwin-rebuild switch --flake";
+    hms = "home-manager switch --flake";
   };
 in {
   home.stateVersion = "24.11";
