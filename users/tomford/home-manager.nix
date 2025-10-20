@@ -78,6 +78,8 @@ in {
     "$HOME/.cargo/bin"
   ];
 
+  programs.home-manager.enable = true;
+
   programs.fish = {
     enable = true;
     shellAliases = shellAliases;
