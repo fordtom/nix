@@ -46,7 +46,6 @@ in {
   xdg.enable = true;
 
   home.packages = [
-    pkgs._1password-cli
     pkgs.alejandra
     pkgs.bat
     pkgs.fd
@@ -68,11 +67,6 @@ in {
   home.sessionVariables = {
     EDITOR = "nvim";
     PAGER = "less -FirSwX";
-
-    AMP_API_KEY = "op://Code/AmpPersonal/credential";
-    OPENAI_API_KEY = "op://Code/OpenAIPersonal/credential";
-    ANTHROPIC_API_KEY = "op://Code/AnthropicPersonal/credential";
-    CARGO_REGISTRY_TOKEN = "op://Code/CargoRegistryToken/credential";
   };
 
   home.sessionPath = [
