@@ -60,7 +60,6 @@ in {
     pkgs.gopls
     pkgs.zigpkgs."0.15.1"
 
-    pkgs.unstable.amp-cli
     pkgs.unstable.cursor-cli
   ];
 
