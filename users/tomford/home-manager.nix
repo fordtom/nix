@@ -47,6 +47,7 @@ in {
 
   home.packages = [
     pkgs.alejandra
+    pkgs.ast-grep
     pkgs.bat
     pkgs.fd
     pkgs.fzf
@@ -97,7 +98,7 @@ in {
   programs.git = {
     enable = true;
     userName = "Tom Ford";
-    userEmail = "tfordy63@gmail.com";
+    userEmail = "t@tomrford.com";
     signing = {
       signByDefault = true;
       key = "~/.ssh/id_ed25519.pub";
@@ -129,7 +130,7 @@ in {
     settings = {
       user = {
         name = "Tom Ford";
-        email = "tfordy63@gmail.com";
+        email = "t@tomrford.com";
       };
       signing = {
         behavior = "own";
