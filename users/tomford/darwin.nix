@@ -6,6 +6,7 @@
   homebrew = {
     enable = true;
     casks = [
+      "betterdisplay"
       "claude"
       "container"
       "discord"

@@ -62,7 +62,6 @@ in {
     pkgs.zigpkgs."0.15.1"
 
     pkgs.unstable.bun
-    pkgs.unstable.cursor-cli
   ];
 
   home.sessionVariables = {
