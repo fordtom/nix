@@ -6,16 +6,19 @@
   homebrew = {
     enable = true;
     casks = [
+      "aldente"
       "betterdisplay"
       "claude"
       "container"
       "discord"
       "ghostty"
-      "google-chrome"
       "linear-linear"
       "middleclick"
       "mullvad-vpn"
+      "notion"
+      "raycast"
       "signal"
+      "slack"
       "spotify"
       "yubico-yubikey-manager"
     ];

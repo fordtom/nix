@@ -59,7 +59,6 @@
     homeConfigurations."pifive" = mkHome {
       system = "aarch64-linux";
       user = "tomford";
-      isWSL = false;
     };
   };
 }

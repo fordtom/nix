@@ -37,6 +37,8 @@
     js = "jj st";
     je = "jj edit";
 
+    v = "nvim";
+
     drs = "sudo darwin-rebuild switch --flake";
     hms = "home-manager switch --flake";
   };
@@ -45,24 +47,28 @@ in {
 
   xdg.enable = true;
 
-  home.packages = [
-    pkgs.alejandra
-    pkgs.ast-grep
-    pkgs.bat
-    pkgs.fd
-    pkgs.fzf
-    pkgs.gh
-    pkgs.just
-    pkgs.nodejs
-    pkgs.ripgrep
-    pkgs.stow
-    pkgs.typst
-    pkgs.uv
-    pkgs.gopls
-    pkgs.zigpkgs."0.15.1"
+  home.packages =
+    [
+      pkgs.alejandra
+      pkgs.ast-grep
+      pkgs.bat
+      pkgs.fd
+      pkgs.fzf
+      pkgs.gh
+      pkgs.just
+      pkgs.nodejs
+      pkgs.ripgrep
+      pkgs.stow
+      pkgs.typst
+      pkgs.uv
+      pkgs.gopls
+      pkgs.zigpkgs."0.15.1"
 
-    pkgs.unstable.bun
-  ];
+      pkgs.unstable.bun
+    ]
+    ++ (lib.optionals isLinux [
+      pkgs.postgresql
+    ]);
 
   home.sessionVariables = {
     EDITOR = "nvim";
