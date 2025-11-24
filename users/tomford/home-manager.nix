@@ -63,8 +63,6 @@ in {
       pkgs.uv
       pkgs.gopls
       pkgs.zigpkgs."0.15.1"
-
-      pkgs.unstable.bun
     ]
     ++ (lib.optionals isLinux [
       pkgs.postgresql
@@ -190,5 +188,16 @@ in {
 
   programs.zoxide = {
     enable = true;
+  };
+
+  programs.bun = {
+    enable = true;
+    package = pkgs.unstable.bun;
+    settings = {
+      install = {
+        exact = true;
+        minimumReleaseAge = 259200;
+      };
+    };
   };
 }
