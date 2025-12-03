@@ -101,17 +101,17 @@ in {
 
   programs.git = {
     enable = true;
-    userName = "Tom Ford";
-    userEmail = "t@tomrford.com";
     signing = {
       signByDefault = true;
       key = "~/.ssh/id_ed25519.pub";
     };
-    aliases = {
-      prettylog = "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative";
-      cleanup = "!git for-each-ref --format '%(refname:short) %(upstream:short) %(upstream:track)' refs/heads | awk '$2 == \"\" || $3 ~ /\\[gone\\]/ {print $1}' | while read -r br; do git branch -D \"$br\"; done";
-    };
-    extraConfig = {
+    settings = {
+      aliases = {
+        prettylog = "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative";
+        cleanup = "!git for-each-ref --format '%(refname:short) %(upstream:short) %(upstream:track)' refs/heads | awk '$2 == \"\" || $3 ~ /\\[gone\\]/ {print $1}' | while read -r br; do git branch -D \"$br\"; done";
+      };
+      user.name = "Tom Ford";
+      user.email = "t@tomrford.com";
       branch.autosetuprebase = "always";
       color.ui = true;
       github.user = "fordtom";
@@ -125,8 +125,10 @@ in {
 
   programs.go = {
     enable = true;
-    goPath = "code/go";
-    goPrivate = ["github.com/fordtom"];
+    env = {
+      GOPATH = "code/go";
+      GOPRIVATE = ["github.com/fordtom"];
+    };
   };
 
   programs.jujutsu = {
@@ -192,7 +194,6 @@ in {
 
   programs.bun = {
     enable = true;
-    package = pkgs.unstable.bun;
     settings = {
       install = {
         exact = true;
