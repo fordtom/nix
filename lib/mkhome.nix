@@ -5,7 +5,6 @@
 }: {
   system,
   user,
-  isWSL ? false,
 }: let
   pkgs = import nixpkgs {
     inherit system overlays;
@@ -17,13 +16,11 @@ in
     inherit pkgs;
 
     extraSpecialArgs = {
-      isWSL = isWSL;
       inputs = inputs;
     };
 
     modules = [
       (import userHMConfig {
-        isWSL = isWSL;
         inputs = inputs;
       })
       {

@@ -1,8 +1,4 @@
-{
-  isWSL,
-  inputs,
-  ...
-}: {
+{inputs, ...}: {
   config,
   lib,
   pkgs,
@@ -29,13 +25,6 @@
     gp = "git push";
     gs = "git status";
     gt = "git tag";
-
-    jd = "jj desc";
-    jf = "jj git fetch";
-    jn = "jj new";
-    jp = "jj git push";
-    js = "jj st";
-    je = "jj edit";
 
     v = "nvim";
 
@@ -126,34 +115,8 @@ in {
   programs.go = {
     enable = true;
     env = {
-      GOPATH = "code/go";
+      GOPATH = "${config.home.homeDirectory}/code/go";
       GOPRIVATE = ["github.com/fordtom"];
-    };
-  };
-
-  programs.jujutsu = {
-    enable = true;
-    settings = {
-      user = {
-        name = "Tom Ford";
-        email = "t@tomrford.com";
-      };
-      signing = {
-        behavior = "own";
-        backend = "ssh";
-        key = "~/.ssh/id_ed25519.pub";
-      };
-      aliases = {
-        bump = ["bookmark" "move" "--from" "closest_bookmark(@)" "--to" "@"];
-        drop = ["abandon" "--restore-descendants"];
-        rt = ["rebase" "-d" "trunk()"];
-      };
-      revset-aliases = {
-        "closest_bookmark(to)" = "heads(::to & bookmarks())";
-      };
-      ui = {
-        default-command = "log";
-      };
     };
   };
 
@@ -197,7 +160,7 @@ in {
     settings = {
       install = {
         exact = true;
-        minimumReleaseAge = 259200;
+        # minimumReleaseAge = 259200;
       };
     };
   };

@@ -7,10 +7,8 @@
   system,
   user,
   darwin ? false,
-  wsl ? false,
 }: let
-  isWSL = wsl;
-  isLinux = !darwin && !isWSL;
+  isLinux = !darwin;
 
   machineConfig = ../machines/${name}.nix;
   userOSConfig =
@@ -39,12 +37,6 @@ in
 
       {nixpkgs.config.allowUnfree = true;}
 
-      (
-        if isWSL
-        then inputs.nixos-wsl.nixosModules.wsl
-        else {}
-      )
-
       machineConfig
       userOSConfig
       home-manager.home-manager
@@ -52,7 +44,6 @@ in
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
         home-manager.users.${user} = import userHMConfig {
-          isWSL = isWSL;
           inputs = inputs;
         };
       }
@@ -62,7 +53,6 @@ in
           currentSystem = system;
           currentSystemName = name;
           currentSystemUser = user;
-          isWSL = isWSL;
           inputs = inputs;
         };
       }
