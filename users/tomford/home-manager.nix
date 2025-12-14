@@ -44,17 +44,18 @@ in {
       pkgs.fd
       pkgs.fzf
       pkgs.gh
+      pkgs.gopls
       pkgs.just
       pkgs.nodejs
       pkgs.ripgrep
       pkgs.stow
       pkgs.typst
       pkgs.uv
-      pkgs.gopls
       pkgs.zigpkgs."0.15.1"
     ]
     ++ (lib.optionals isLinux [
       pkgs.postgresql
+      pkgs.tailscale
     ]);
 
   home.sessionVariables = {
@@ -160,7 +161,7 @@ in {
     settings = {
       install = {
         exact = true;
-        # minimumReleaseAge = 259200;
+        minimumReleaseAge = 259200;
       };
     };
   };
