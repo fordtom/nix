@@ -54,7 +54,7 @@ in {
       pkgs.zigpkgs."0.15.1"
     ]
     ++ (lib.optionals isLinux [
-      pkgs.postgresql
+      pkgs.postgresql_18
       pkgs.tailscale
     ]);
 
