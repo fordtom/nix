@@ -5,6 +5,15 @@
 }: {
   homebrew = {
     enable = true;
+
+    taps = [
+      "withgraphite/tap"
+    ];
+
+    brews = [
+      "withgraphite/tap/graphite"
+    ];
+
     casks = [
       "aldente"
       "betterdisplay"

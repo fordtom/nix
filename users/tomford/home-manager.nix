@@ -24,7 +24,6 @@
     gl = "git prettylog";
     gp = "git push";
     gs = "git status";
-    gt = "git tag";
 
     v = "nvim";
 
@@ -64,10 +63,14 @@ in {
     PAGER = "less -FirSwX";
   };
 
-  home.sessionPath = [
-    "$HOME/.local/bin"
-    "$HOME/.cargo/bin"
-  ];
+  home.sessionPath =
+    [
+      "$HOME/.local/bin"
+      "$HOME/.cargo/bin"
+    ]
+    ++ (lib.optionals isDarwin [
+      "/opt/homebrew/bin"
+    ]);
 
   programs.home-manager.enable = true;
 
