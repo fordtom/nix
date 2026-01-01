@@ -16,6 +16,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    jujutsu.url = "github:jj-vcs/jj";
     zig.url = "github:mitchellh/zig-overlay";
   };
 
@@ -27,6 +28,7 @@
     ...
   } @ inputs: let
     overlays = [
+      inputs.jujutsu.overlays.default
       inputs.zig.overlays.default
 
       (final: prev: {
