@@ -201,6 +201,11 @@ in {
       install = {
         exact = true;
         minimumReleaseAge = 259200;
+        minimumReleaseAgeExcludes = [
+          "@anthropic-ai/claude-code"
+          "@openai/codex"
+          "@sourcegraph/amp"
+        ];
       };
     };
   };
