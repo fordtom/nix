@@ -29,6 +29,7 @@
       "signal"
       "slack"
       "spotify"
+      "tailscale-app"
       "yubico-yubikey-manager"
     ];
 

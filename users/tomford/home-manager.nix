@@ -7,36 +7,83 @@
   isDarwin = pkgs.stdenv.isDarwin;
   isLinux = pkgs.stdenv.isLinux;
 
-  shellAliases = {
-    cd = "z";
-    cat = "bat";
-    find = "fd";
-    grep = "rg";
-    la = "ls -a";
-    ll = "ls -l";
+  shellAliases =
+    {
+      cd = "z";
+      cat = "bat";
+      find = "fd";
+      grep = "rg";
+      la = "ls -a";
+      ll = "ls -l";
 
-    ga = "git add";
-    gc = "git commit";
-    gco = "git checkout";
-    gcu = "git cleanup";
-    gcp = "git cherry-pick";
-    gdiff = "git diff";
-    gl = "git prettylog";
-    gp = "git push";
-    gs = "git status";
+      ga = "git add";
+      gc = "git commit";
+      gco = "git checkout";
+      gcu = "git cleanup";
+      gcp = "git cherry-pick";
+      gdiff = "git diff";
+      gl = "git prettylog";
+      gp = "git push";
+      gs = "git status";
 
-    jd = "jj desc";
-    jf = "jj git fetch";
-    jn = "jj new";
-    jp = "jj git push";
-    js = "jj st";
-    je = "jj edit";
+      jd = "jj desc";
+      jf = "jj git fetch";
+      jn = "jj new";
+      jp = "jj git push";
+      js = "jj st";
+      je = "jj edit";
 
-    v = "nvim";
+      v = "nvim";
 
-    drs = "sudo darwin-rebuild switch --flake";
-    hms = "home-manager switch --flake";
-  };
+      drs = "sudo darwin-rebuild switch --flake";
+      hms = "home-manager switch --flake";
+    }
+    // lib.optionalAttrs isDarwin {
+      tailscale = "/Applications/Tailscale.app/Contents/MacOS/Tailscale";
+    };
+
+  jj-gt-submit = pkgs.writeShellScriptBin "jj-gt-submit" ''
+    set -euo pipefail
+
+    # Push current JJ change, capture output
+    if ! out="$(jj git push -c @ 2>&1)"; then
+      printf '%s\n' "$out" >&2
+      exit 1
+    fi
+
+    printf '%s\n' "$out"
+
+    # First line should look like:
+    #   "Creating bookmark push-<id> for revision <id>"
+    first_line="$(printf '%s\n' "$out" | head -n1)"
+
+    if ! printf '%s\n' "$first_line" | grep -q '^Creating '; then
+      echo "Could not recognise jj git push output:" >&2
+      printf '%s\n' "$first_line" >&2
+      exit 1
+    fi
+
+    # Extract the bookmark/branch name (3rd field)
+    branch="$(printf '%s\n' "$first_line" | awk '{print $3}')"
+
+    if [ -z "$branch" ]; then
+      echo "Failed to parse branch name from jj git push output" >&2
+      exit 1
+    fi
+
+    echo "Using branch: $branch"
+
+    # Wire the branch into Graphite (no prompts)
+    gt track "$branch" --no-interactive 2>/dev/null || true
+
+    # Submit this branch/stack, non-interactive, and publish immediately
+    gt submit \
+      --branch "$branch" \
+      --stack \
+      --no-edit \
+      --no-interactive \
+      --publish
+  '';
 in {
   home.stateVersion = "24.11";
 
@@ -59,6 +106,9 @@ in {
       pkgs.uv
       pkgs.zigpkgs."0.15.1"
     ]
+    ++ (lib.optionals isDarwin [
+      jj-gt-submit
+    ])
     ++ (lib.optionals isLinux [
       pkgs.cloudflared
       pkgs.postgresql_18
