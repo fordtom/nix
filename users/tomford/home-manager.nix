@@ -7,6 +7,19 @@
   isDarwin = pkgs.stdenv.isDarwin;
   isLinux = pkgs.stdenv.isLinux;
 
+  bunGlobalPackages = [
+    "@anthropic-ai/claude-code"
+    "@ast-grep/cli"
+    "@openai/codex"
+    "@sourcegraph/amp"
+    "@withgraphite/graphite-cli@stable"
+    "jscpd"
+  ];
+
+  cliInstall = pkgs.writeShellScriptBin "cli-install" ''
+    bun add -g ${lib.concatStringsSep " " bunGlobalPackages}
+  '';
+
   shellAliases =
     {
       cd = "z";
@@ -42,7 +55,7 @@
       tailscale = "/Applications/Tailscale.app/Contents/MacOS/Tailscale";
     };
 
-  jj-gt-submit = pkgs.writeShellScriptBin "jj-gt-submit" ''
+  jgts = pkgs.writeShellScriptBin "jgts" ''
     set -euo pipefail
 
     # Push current JJ change, capture output
@@ -105,10 +118,9 @@ in {
       pkgs.typst
       pkgs.uv
       pkgs.zigpkgs."0.15.1"
+      cliInstall
+      jgts
     ]
-    ++ (lib.optionals isDarwin [
-      jj-gt-submit
-    ])
     ++ (lib.optionals isLinux [
       pkgs.cloudflared
       pkgs.postgresql_18
