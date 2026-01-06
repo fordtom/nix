@@ -6,6 +6,10 @@
   homebrew = {
     enable = true;
 
+    taps = [
+      "steipete/tap"
+    ];
+
     casks = [
       "aldente"
       "betterdisplay"
@@ -21,6 +25,7 @@
       "signal"
       "slack"
       "spotify"
+      "steipete/tap/codexbar"
       "tailscale-app"
       "yubico-yubikey-manager"
     ];
