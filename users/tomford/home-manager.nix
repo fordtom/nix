@@ -78,7 +78,6 @@ in {
     EDITOR = "nvim";
     PAGER = "less -FirSwX";
     BUN_INSTALL = "$HOME/.bun";
-    PINGU_URL = "http://100.65.113.73:8000";
   };
 
   home.sessionPath =
