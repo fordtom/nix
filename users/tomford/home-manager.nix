@@ -56,7 +56,7 @@
     };
 
   msgtom = pkgs.writeShellScriptBin "msgtom" ''
-    curl -d "''${1:-no message}" http://localhost/tom-agent
+    curl -d "''${1:-no message}" http://localhost/ntfy
   '';
 
   jgts = pkgs.writeShellScriptBin "jgts" ''
