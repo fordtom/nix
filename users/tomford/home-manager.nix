@@ -6,19 +6,7 @@
 }: let
   isDarwin = pkgs.stdenv.isDarwin;
   isLinux = pkgs.stdenv.isLinux;
-
-  bunGlobalPackages = [
-    "@anthropic-ai/claude-code"
-    "@ast-grep/cli"
-    "@openai/codex"
-    "@sourcegraph/amp"
-    "@withgraphite/graphite-cli@stable"
-    "jscpd"
-  ];
-
-  cliInstall = pkgs.writeShellScriptBin "cli-install" ''
-    bun add -g ${lib.concatStringsSep " " bunGlobalPackages}
-  '';
+  scripts = import ./scripts.nix {inherit pkgs lib;};
 
   shellAliases =
     {
@@ -54,49 +42,6 @@
     // lib.optionalAttrs isDarwin {
       tailscale = "/Applications/Tailscale.app/Contents/MacOS/Tailscale";
     };
-
-  jgts = pkgs.writeShellScriptBin "jgts" ''
-    set -euo pipefail
-
-    # Push current JJ change, capture output
-    if ! out="$(jj git push -c @ 2>&1)"; then
-      printf '%s\n' "$out" >&2
-      exit 1
-    fi
-
-    printf '%s\n' "$out"
-
-    # First line should look like:
-    #   "Creating bookmark push-<id> for revision <id>"
-    first_line="$(printf '%s\n' "$out" | head -n1)"
-
-    if ! printf '%s\n' "$first_line" | grep -q '^Creating '; then
-      echo "Could not recognise jj git push output:" >&2
-      printf '%s\n' "$first_line" >&2
-      exit 1
-    fi
-
-    # Extract the bookmark/branch name (3rd field)
-    branch="$(printf '%s\n' "$first_line" | awk '{print $3}')"
-
-    if [ -z "$branch" ]; then
-      echo "Failed to parse branch name from jj git push output" >&2
-      exit 1
-    fi
-
-    echo "Using branch: $branch"
-
-    # Wire the branch into Graphite (no prompts)
-    gt track "$branch" --no-interactive 2>/dev/null || true
-
-    # Submit this branch/stack, non-interactive, and publish immediately
-    gt submit \
-      --branch "$branch" \
-      --stack \
-      --no-edit \
-      --no-interactive \
-      --publish
-  '';
 in {
   home.stateVersion = "24.11";
 
@@ -118,8 +63,9 @@ in {
       pkgs.typst
       pkgs.uv
       pkgs.zigpkgs."0.15.1"
-      cliInstall
-      jgts
+      scripts.cliInstall
+      scripts.jgts
+      scripts.pinguAsk
     ]
     ++ (lib.optionals isLinux [
       pkgs.cloudflared
@@ -132,7 +78,7 @@ in {
     EDITOR = "nvim";
     PAGER = "less -FirSwX";
     BUN_INSTALL = "$HOME/.bun";
-    PINGU_URL = "http://100.65.113.73:8000/";
+    PINGU_URL = "http://100.65.113.73:8000";
   };
 
   home.sessionPath =
