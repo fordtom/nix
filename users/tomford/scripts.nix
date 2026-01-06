@@ -62,30 +62,43 @@
   pinguAsk = pkgs.writeShellScriptBin "ask" ''
     set -euo pipefail
 
-    if [ $# -ne 1 ]; then
-      echo "Usage: ask <text>" >&2
+    if [[ $# -lt 1 ]]; then
+      echo "Usage: pingu <question>" >&2
       exit 1
     fi
 
-    if [ -z "$PINGU_URL" ]; then
-      echo "Error: PINGU_URL not set" >&2
-      exit 1
-    fi
+    TEXT="$1"
+    CWD="$(pwd)"
 
-    response=$(curl -s -w "\n%{http_code}" -X POST \
+    response=$(curl -s -w "\n%{http_code}" \
+      -X POST \
       -H "Content-Type: application/json" \
-      -d "$(jq -n --arg t "$1" --arg c "$PWD" '{text:$t,cwd:$c}')" \
-      "$PINGU_URL/ask")
-
-    body=$(printf '%s\n' "$response" | sed '$d')
-    status=$(printf '%s\n' "$response" | tail -n1)
-
-    if [ "$status" -ge 200 ] && [ "$status" -lt 300 ]; then
-      printf '%s\n' "$body"
-    else
-      echo "Error: HTTP $status" >&2
-      printf '%s\n' "$body" >&2
+      -d "$(jq -n --arg text "$TEXT" --arg cwd "$CWD" '{text: $text, cwd: $cwd}')" \
+      "$PINGU_URL/ask") || {
+      echo "Failed to reach Pingu server at $PINGU_URL" >&2
       exit 1
-    fi
+    }
+
+    body=$(echo "$response" | sed '$d')
+    status=$(echo "$response" | tail -n1)
+
+    case "$status" in
+      200)
+        echo "$body"
+        exit 0
+        ;;
+      504)
+        echo "Timed out waiting for answer" >&2
+        exit 1
+        ;;
+      503)
+        echo "Server unavailable" >&2
+        exit 1
+        ;;
+      *)
+        echo "Error ($status): $body" >&2
+        exit 1
+        ;;
+    esac
   '';
 }
