@@ -55,6 +55,10 @@
       tailscale = "/Applications/Tailscale.app/Contents/MacOS/Tailscale";
     };
 
+  msgtom = pkgs.writeShellScriptBin "msgtom" ''
+    curl -d "''${1:-no message}" http://localhost/tom-agent
+  '';
+
   jgts = pkgs.writeShellScriptBin "jgts" ''
     set -euo pipefail
 
@@ -123,8 +127,10 @@ in {
     ]
     ++ (lib.optionals isLinux [
       pkgs.cloudflared
+      pkgs.ntfy-sh
       pkgs.postgresql_18
       pkgs.tailscale
+      msgtom
     ]);
 
   home.sessionVariables = {
