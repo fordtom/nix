@@ -63,6 +63,7 @@ in {
       pkgs.typst
       pkgs.uv
       pkgs.zigpkgs."0.15.1"
+      scripts.bunInstall
       scripts.cliInstall
       scripts.jgts
       scripts.pinguAsk
