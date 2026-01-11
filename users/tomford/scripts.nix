@@ -2,19 +2,23 @@
   pkgs,
   lib,
 }: {
-  cliInstall = let
+  bunInstall = let
     bunGlobalPackages = [
-      "@anthropic-ai/claude-code"
       "@ast-grep/cli"
       "@openai/codex"
-      "@sourcegraph/amp"
       "@withgraphite/graphite-cli@stable"
       "jscpd"
     ];
   in
-    pkgs.writeShellScriptBin "cli-install" ''
+    pkgs.writeShellScriptBin "bun-install" ''
       bun add -g ${lib.concatStringsSep " " bunGlobalPackages}
     '';
+
+  cliInstall = pkgs.writeShellScriptBin "cli-install" ''
+    curl -fsSL https://ampcode.com/install.sh | bash
+    curl -fsSL https://claude.ai/install.sh | bash
+    curl -fsSL https://opencode.ai/install | bash
+  '';
 
   jgts = pkgs.writeShellScriptBin "jgts" ''
     set -euo pipefail

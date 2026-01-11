@@ -82,9 +82,11 @@ in {
 
   home.sessionPath =
     [
+      "$HOME/.amp/bin"
       "$HOME/.bun/bin"
       "$HOME/.cargo/bin"
       "$HOME/.local/bin"
+      "$HOME/.opencode/bin"
     ]
     ++ (lib.optionals isDarwin [
       "/opt/homebrew/bin"

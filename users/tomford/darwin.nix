@@ -6,26 +6,18 @@
   homebrew = {
     enable = true;
 
-    taps = [
-      "steipete/tap"
-    ];
-
     casks = [
       "aldente"
       "betterdisplay"
       "claude"
       "container"
-      "discord"
       "ghostty"
       "linear-linear"
       "middleclick"
       "mullvad-vpn"
-      "notion"
       "raycast"
       "signal"
-      "slack"
       "spotify"
-      "steipete/tap/codexbar"
       "tailscale-app"
       "yubico-yubikey-manager"
     ];
