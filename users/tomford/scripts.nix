@@ -8,6 +8,7 @@
       "@openai/codex"
       "@withgraphite/graphite-cli@stable"
       "jscpd"
+      "agent-browser"
     ];
   in
     pkgs.writeShellScriptBin "bun-install" ''
@@ -17,50 +18,6 @@
   cliInstall = pkgs.writeShellScriptBin "cli-install" ''
     curl -fsSL https://ampcode.com/install.sh | bash
     curl -fsSL https://claude.ai/install.sh | bash
-    curl -fsSL https://opencode.ai/install | bash
-  '';
-
-  jgts = pkgs.writeShellScriptBin "jgts" ''
-    set -euo pipefail
-
-    # Push current JJ change, capture output
-    if ! out="$(jj git push -c @ 2>&1)"; then
-      printf '%s\n' "$out" >&2
-      exit 1
-    fi
-
-    printf '%s\n' "$out"
-
-    # First line should look like:
-    #   "Creating bookmark push-<id> for revision <id>"
-    first_line="$(printf '%s\n' "$out" | head -n1)"
-
-    if ! printf '%s\n' "$first_line" | grep -q '^Creating '; then
-      echo "Could not recognise jj git push output:" >&2
-      printf '%s\n' "$first_line" >&2
-      exit 1
-    fi
-
-    # Extract the bookmark/branch name (3rd field)
-    branch="$(printf '%s\n' "$first_line" | awk '{print $3}')"
-
-    if [ -z "$branch" ]; then
-      echo "Failed to parse branch name from jj git push output" >&2
-      exit 1
-    fi
-
-    echo "Using branch: $branch"
-
-    # Wire the branch into Graphite (no prompts)
-    gt track "$branch" --no-interactive 2>/dev/null || true
-
-    # Submit this branch/stack, non-interactive, and publish immediately
-    gt submit \
-      --branch "$branch" \
-      --stack \
-      --no-edit \
-      --no-interactive \
-      --publish
   '';
 
   pinguAsk = pkgs.writeShellScriptBin "ask" ''

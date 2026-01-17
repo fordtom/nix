@@ -6,13 +6,16 @@
   homebrew = {
     enable = true;
 
+    brews = [
+      "mole"
+    ];
+
     casks = [
       "aldente"
       "betterdisplay"
       "claude"
       "container"
       "ghostty"
-      "linear-linear"
       "middleclick"
       "mullvad-vpn"
       "raycast"

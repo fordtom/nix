@@ -57,7 +57,6 @@ in {
       pkgs.gh
       pkgs.gopls
       pkgs.just
-      pkgs.nodejs
       pkgs.ripgrep
       pkgs.stow
       pkgs.typst
@@ -65,13 +64,10 @@ in {
       pkgs.zigpkgs."0.15.1"
       scripts.bunInstall
       scripts.cliInstall
-      scripts.jgts
       scripts.pinguAsk
     ]
     ++ (lib.optionals isLinux [
-      pkgs.cloudflared
       pkgs.ntfy-sh
-      pkgs.postgresql_18
       pkgs.tailscale
     ]);
 
@@ -87,7 +83,6 @@ in {
       "$HOME/.bun/bin"
       "$HOME/.cargo/bin"
       "$HOME/.local/bin"
-      "$HOME/.opencode/bin"
     ]
     ++ (lib.optionals isDarwin [
       "/opt/homebrew/bin"
