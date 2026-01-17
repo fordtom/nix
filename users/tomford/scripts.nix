@@ -6,7 +6,6 @@
     bunGlobalPackages = [
       "@ast-grep/cli"
       "@openai/codex"
-      "@withgraphite/graphite-cli@stable"
       "jscpd"
       "agent-browser"
     ];

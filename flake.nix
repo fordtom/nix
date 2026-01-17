@@ -53,6 +53,12 @@
       darwin = true;
     };
 
+    darwinConfigurations.macmini = mkSystem "macmini" {
+      system = "aarch64-darwin";
+      user = "tomford";
+      darwin = true;
+    };
+
     homeConfigurations."pifive" = mkHome {
       system = "aarch64-linux";
       user = "tomford";
