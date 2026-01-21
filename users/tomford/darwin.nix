@@ -27,7 +27,7 @@
       "signal"
       "spotify"
       "tailscale-app"
-      "yubico-yubikey-manager"
+      "yubico-authenticator"
     ];
 
     onActivation = {
