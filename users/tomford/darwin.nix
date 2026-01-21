@@ -11,6 +11,7 @@
     ];
 
     brews = [
+      "container"
       "mole"
       "withgraphite/tap/graphite"
     ];
@@ -19,7 +20,6 @@
       "aldente"
       "betterdisplay"
       "claude"
-      "container"
       "ghostty"
       "middleclick"
       "mullvad-vpn"
