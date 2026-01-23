@@ -8,6 +8,7 @@
       "@openai/codex"
       "jscpd"
       "agent-browser"
+      "knip"
     ];
   in
     pkgs.writeShellScriptBin "bun-install" ''
