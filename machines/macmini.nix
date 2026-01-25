@@ -16,7 +16,4 @@
   programs.fish.enable = true;
 
   environment.shells = with pkgs; [bashInteractive zsh fish];
-  environment.systemPackages = with pkgs; [
-    cloudflared
-  ];
 }
