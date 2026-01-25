@@ -63,9 +63,8 @@ in {
       pkgs.nodejs
       pkgs.ripgrep
       pkgs.stow
-      pkgs.typst
       pkgs.uv
-      pkgs.zigpkgs."0.15.1"
+
       scripts.bunInstall
       scripts.cliInstall
       scripts.pinguAsk
