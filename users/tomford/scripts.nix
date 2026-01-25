@@ -9,6 +9,7 @@
       "jscpd"
       "agent-browser"
       "knip"
+      "btca"
     ];
   in
     pkgs.writeShellScriptBin "bun-install" ''
