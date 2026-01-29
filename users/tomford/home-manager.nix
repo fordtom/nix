@@ -133,7 +133,7 @@ in {
       user.email = "t@tomrford.com";
       branch.autosetuprebase = "always";
       color.ui = true;
-      github.user = "fordtom";
+      github.user = "tomrford";
       push.default = "tracking";
       push.autoSetupRemote = true;
       init.defaultBranch = "main";
@@ -146,7 +146,7 @@ in {
     enable = true;
     env = {
       GOPATH = "${config.home.homeDirectory}/code/go";
-      GOPRIVATE = ["github.com/fordtom"];
+      GOPRIVATE = ["github.com/tomrford"];
     };
   };
 
