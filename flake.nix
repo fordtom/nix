@@ -15,9 +15,6 @@
       url = "github:nix-darwin/nix-darwin/nix-darwin-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    jujutsu.url = "github:jj-vcs/jj";
-    zig.url = "github:mitchellh/zig-overlay";
   };
 
   outputs = {
@@ -28,9 +25,6 @@
     ...
   } @ inputs: let
     overlays = [
-      inputs.jujutsu.overlays.default
-      inputs.zig.overlays.default
-
       (final: prev: {
         unstable = import inputs.nixpkgs-unstable {
           inherit (final.stdenv.hostPlatform) system;
