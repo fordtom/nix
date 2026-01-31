@@ -52,7 +52,6 @@ in {
 
   home.packages =
     [
-      pkgs._1password-cli
       pkgs.alejandra
       pkgs.ast-grep
       pkgs.bat
@@ -79,11 +78,6 @@ in {
     EDITOR = "nvim";
     PAGER = "less -FirSwX";
     BUN_INSTALL = "$HOME/.bun";
-    PINGU_URL = "https://pifive.tail91b66e.ts.net:8000";
-
-    OPENAI_API_KEY = "op://Personal/OPENAI_API_KEY/credential";
-    ANTHROPIC_API_KEY = "op://Personal/ANTHROPIC_API_KEY/credential";
-    CARGO_REGISTRY_TOKEN = "op://Personal/CARGO_REGISTRY_TOKEN/credential";
   };
 
   home.sessionPath =

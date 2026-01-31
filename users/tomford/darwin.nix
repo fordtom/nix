@@ -17,7 +17,6 @@
     ];
 
     casks = [
-      "1password"
       "aldente"
       "betterdisplay"
       "claude"
