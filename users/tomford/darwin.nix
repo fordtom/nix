@@ -17,6 +17,7 @@
       "claude"
       "ghostty"
       "middleclick"
+      "orbstack"
       "mullvad-vpn"
       "raycast"
       "signal"

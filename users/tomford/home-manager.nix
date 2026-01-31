@@ -55,6 +55,7 @@ in {
       pkgs.just
       pkgs.nodejs
       pkgs.ripgrep
+      pkgs.signal-cli
       pkgs.stow
       pkgs.uv
 
