@@ -67,10 +67,8 @@ in {
 
       scripts.bunInstall
       scripts.cliInstall
-      scripts.pinguAsk
     ]
     ++ (lib.optionals isLinux [
-      pkgs.ntfy-sh
       pkgs.tailscale
     ]);
 
@@ -213,9 +211,7 @@ in {
         exact = true;
         minimumReleaseAge = 259200;
         minimumReleaseAgeExcludes = [
-          "@anthropic-ai/claude-code"
           "@openai/codex"
-          "@sourcegraph/amp"
         ];
       };
     };
