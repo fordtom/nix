@@ -6,14 +6,9 @@
   homebrew = {
     enable = true;
 
-    taps = [
-      "withgraphite/tap"
-    ];
-
     brews = [
       "container"
       "mole"
-      "withgraphite/tap/graphite"
     ];
 
     casks = [
