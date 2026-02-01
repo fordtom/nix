@@ -15,6 +15,11 @@
       url = "github:nix-darwin/nix-darwin/nix-darwin-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    qmd = {
+      url = "github:tobi/qmd";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -30,6 +35,7 @@
           inherit (final.stdenv.hostPlatform) system;
           config.allowUnfree = true;
         };
+        qmd = inputs.qmd.packages.${final.stdenv.hostPlatform.system}.default;
       })
     ];
 

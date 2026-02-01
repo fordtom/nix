@@ -16,4 +16,8 @@
   programs.fish.enable = true;
 
   environment.shells = with pkgs; [bashInteractive zsh fish];
+
+  environment.systemPackages = [
+    pkgs.qmd
+  ];
 }
