@@ -6,8 +6,13 @@
   homebrew = {
     enable = true;
 
+    taps = [
+      "steipete/tap"
+    ];
+
     brews = [
       "mole"
+      "steipete/tap/remindctl"
     ];
 
     casks = [
@@ -21,6 +26,7 @@
       "raycast"
       "signal"
       "spotify"
+      "steipete/tap/codexbar"
       "tailscale-app"
       "yubico-authenticator"
     ];
