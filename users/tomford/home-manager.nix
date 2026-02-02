@@ -107,6 +107,7 @@ in {
 
   programs.git = {
     enable = true;
+    lfs.enable = true;
     signing = {
       signByDefault = true;
       key = "~/.ssh/id_ed25519.pub";
