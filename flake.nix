@@ -21,7 +21,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    monitor = {
+    monitor-cli = {
       url = "github:tomrford/monitor-cli";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -41,6 +41,7 @@
           config.allowUnfree = true;
         };
         qmd = inputs.qmd.packages.${final.stdenv.hostPlatform.system}.default;
+        monitor-cli = inputs.monitor-cli.packages.${final.stdenv.hostPlatform.system}.default;
       })
     ];
 
