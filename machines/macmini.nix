@@ -18,6 +18,7 @@
   environment.shells = with pkgs; [bashInteractive zsh fish];
 
   environment.systemPackages = [
+    pkgs.monitor
     pkgs.qmd
   ];
 }
