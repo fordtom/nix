@@ -16,10 +16,12 @@
     ];
 
     casks = [
+      "1password"
       "aldente"
       "betterdisplay"
       "claude"
       "ghostty"
+      "helium-browser"
       "middleclick"
       "orbstack"
       "mullvad-vpn"

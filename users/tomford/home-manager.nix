@@ -45,6 +45,7 @@ in {
 
   home.packages =
     [
+      pkgs._1password-cli
       pkgs.alejandra
       pkgs.ast-grep
       pkgs.bat
@@ -70,6 +71,9 @@ in {
     EDITOR = "nvim";
     PAGER = "less -FirSwX";
     BUN_INSTALL = "$HOME/.bun";
+
+    AMP_API_KEY = "op://Personal/AMP_API_KEY/credential";
+    CARGO_REGISTRY_TOKEN = "op://Personal/CARGO_REGISTRY_TOKEN/credential";
   };
 
   home.sessionPath =
