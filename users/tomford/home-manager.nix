@@ -58,6 +58,7 @@ in {
       pkgs.ripgrep
       pkgs.signal-cli
       pkgs.stow
+      pkgs.tig
       pkgs.uv
 
       scripts.bunInstall
