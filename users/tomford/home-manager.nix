@@ -187,6 +187,7 @@ in {
         minimumReleaseAge = 259200;
         minimumReleaseAgeExcludes = [
           "@openai/codex"
+          "openclaw"
         ];
       };
     };
