@@ -15,16 +15,6 @@
       url = "github:nix-darwin/nix-darwin/nix-darwin-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    qmd = {
-      url = "github:tobi/qmd";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    monitor-cli = {
-      url = "github:tomrford/monitor-cli";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs = {

@@ -47,7 +47,6 @@ in {
   home.packages =
     [
       pkgs._1password-cli
-      pkgs.alejandra
       pkgs.ast-grep
       pkgs.bat
       pkgs.fd
@@ -57,7 +56,6 @@ in {
       pkgs.just
       pkgs.nodejs
       pkgs.ripgrep
-      pkgs.signal-cli
       pkgs.stow
       pkgs.tig
       pkgs.uv
@@ -84,7 +82,6 @@ in {
       "$HOME/.bun/bin"
       "$HOME/.cargo/bin"
       "$HOME/.local/bin"
-      "$HOME/.opencode/bin"
     ]
     ++ (lib.optionals isDarwin [
       "/opt/homebrew/bin"
@@ -187,7 +184,6 @@ in {
         minimumReleaseAge = 259200;
         minimumReleaseAgeExcludes = [
           "@openai/codex"
-          "openclaw"
         ];
       };
     };
