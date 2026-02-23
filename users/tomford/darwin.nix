@@ -19,7 +19,6 @@
       "1password"
       "aldente"
       "betterdisplay"
-      "claude"
       "ghostty"
       "helium-browser"
       "middleclick"
@@ -28,7 +27,6 @@
       "raycast"
       "signal"
       "spotify"
-      "steipete/tap/codexbar"
       "tailscale-app"
       "yubico-authenticator"
     ];

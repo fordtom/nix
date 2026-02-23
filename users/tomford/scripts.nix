@@ -17,6 +17,6 @@
 
   cliInstall = pkgs.writeShellScriptBin "cli-install" ''
     curl -fsSL https://ampcode.com/install.sh | bash
-    curl -fsSL https://opencode.ai/install | bash
+    curl https://cursor.com/install -fsS | bash
   '';
 }

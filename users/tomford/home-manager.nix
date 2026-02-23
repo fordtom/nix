@@ -34,6 +34,7 @@
 
       claude = "command claude --allow-dangerously-skip-permissions";
       codex = "command codex --yolo";
+      a = "agent -f";
     }
     // lib.optionalAttrs isDarwin {
       tailscale = "/Applications/Tailscale.app/Contents/MacOS/Tailscale";
