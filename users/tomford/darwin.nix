@@ -6,13 +6,8 @@
   homebrew = {
     enable = true;
 
-    taps = [
-      "steipete/tap"
-    ];
-
     brews = [
       "mole"
-      "steipete/tap/remindctl"
     ];
 
     casks = [
@@ -34,6 +29,7 @@
     onActivation = {
       autoUpdate = true;
       upgrade = true;
+      cleanup = "zap";
     };
   };
 
