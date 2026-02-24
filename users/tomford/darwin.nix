@@ -17,6 +17,7 @@
       "ghostty"
       "helium-browser"
       "middleclick"
+      "notion"
       "orbstack"
       "mullvad-vpn"
       "raycast"
