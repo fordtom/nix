@@ -47,6 +47,7 @@ in {
   home.packages =
     [
       pkgs._1password-cli
+      pkgs.alejandra
       pkgs.ast-grep
       pkgs.bat
       pkgs.fd
