@@ -6,7 +6,6 @@
 }: let
   isDarwin = pkgs.stdenv.isDarwin;
   isLinux = pkgs.stdenv.isLinux;
-  scripts = import ./scripts.nix {inherit pkgs lib;};
 
   shellAliases =
     {
@@ -34,7 +33,6 @@
 
       claude = "command claude --allow-dangerously-skip-permissions";
       codex = "command codex --yolo";
-      a = "agent -f";
     }
     // lib.optionalAttrs isDarwin {
       tailscale = "/Applications/Tailscale.app/Contents/MacOS/Tailscale";
@@ -60,9 +58,6 @@ in {
       pkgs.stow
       pkgs.tig
       pkgs.uv
-
-      scripts.bunInstall
-      scripts.cliInstall
     ]
     ++ (lib.optionals isLinux [
       pkgs.tailscale
