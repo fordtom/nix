@@ -30,9 +30,6 @@
 
       drs = "sudo darwin-rebuild switch --flake";
       hms = "home-manager switch --flake";
-
-      claude = "command claude --allow-dangerously-skip-permissions";
-      codex = "command codex --yolo";
     }
     // lib.optionalAttrs isDarwin {
       tailscale = "/Applications/Tailscale.app/Contents/MacOS/Tailscale";
