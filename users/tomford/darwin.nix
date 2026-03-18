@@ -15,6 +15,7 @@
       "aldente"
       "betterdisplay"
       "chatgpt"
+      "claude"
       "codex-app"
       "ghostty"
       "helium-browser"
