@@ -65,8 +65,9 @@ in {
     PAGER = "less -FirSwX";
     BUN_INSTALL = "$HOME/.bun";
 
-    OPENROUTER_API_KEY = "op://Personal/OPENROUTER_API_KEY/credential";
     CARGO_REGISTRY_TOKEN = "op://Personal/CARGO_REGISTRY_TOKEN/credential";
+    CURSOR_API_KEY = "op://Personal/CURSOR_API_KEY/credential";
+    OPENROUTER_API_KEY = "op://Personal/OPENROUTER_API_KEY/credential";
   };
 
   home.sessionPath =
