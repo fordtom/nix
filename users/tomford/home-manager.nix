@@ -65,15 +65,13 @@ in {
     PAGER = "less -FirSwX";
     BUN_INSTALL = "$HOME/.bun";
 
-    AMP_API_KEY = "op://Personal/AMP_API_KEY/credential";
+    OPENROUTER_API_KEY = "op://Personal/OPENROUTER_API_KEY/credential";
     CARGO_REGISTRY_TOKEN = "op://Personal/CARGO_REGISTRY_TOKEN/credential";
   };
 
   home.sessionPath =
     [
-      "$HOME/.amp/bin"
       "$HOME/.bun/bin"
-      "$HOME/.cargo/bin"
       "$HOME/.local/bin"
     ]
     ++ (lib.optionals isDarwin [
