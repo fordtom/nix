@@ -54,7 +54,6 @@ in {
       pkgs.ripgrep
       pkgs.stow
       pkgs.tig
-      pkgs.uv
     ]
     ++ (lib.optionals isLinux [
       pkgs.tailscale
@@ -66,7 +65,6 @@ in {
     BUN_INSTALL = "$HOME/.bun";
 
     CARGO_REGISTRY_TOKEN = "op://Personal/CARGO_REGISTRY_TOKEN/credential";
-    CURSOR_API_KEY = "op://Personal/CURSOR_API_KEY/credential";
     OPENROUTER_API_KEY = "op://Personal/OPENROUTER_API_KEY/credential";
   };
 
@@ -173,7 +171,7 @@ in {
     settings = {
       install = {
         exact = true;
-        minimumReleaseAge = 259200;
+        minimumReleaseAge = 604800;
         minimumReleaseAgeExcludes = [
           "@openai/codex"
         ];
@@ -184,5 +182,12 @@ in {
   programs.tmux = {
     enable = true;
     mouse = true;
+  };
+
+  programs.uv = {
+    enable = true;
+    settings = {
+      exclude_newer ="7 days";
+    };
   };
 }

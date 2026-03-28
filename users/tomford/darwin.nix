@@ -20,12 +20,11 @@
       "ghostty"
       "helium-browser"
       "middleclick"
-      "notion"
       "mullvad-vpn"
       "raycast"
       "spotify"
       "tailscale-app"
-      "yubico-authenticator"
+      "visual-studio-code"
     ];
 
     onActivation = {
