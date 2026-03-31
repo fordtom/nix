@@ -14,6 +14,7 @@
       "1password"
       "aldente"
       "betterdisplay"
+      "claude"
       "codex-app"
       "ghostty"
       "helium-browser"
