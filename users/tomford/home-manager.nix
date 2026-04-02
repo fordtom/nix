@@ -186,7 +186,7 @@ in {
   programs.uv = {
     enable = true;
     settings = {
-      exclude_newer ="7 days";
+      exclude-newer ="7 days";
     };
   };
 }
