@@ -20,13 +20,11 @@
       "helium-browser"
       "kitlangton-hex"
       "middleclick"
-      "mullvad-vpn"
       "raycast"
       "signal"
       "spotify"
       "tailscale-app"
       "visual-studio-code"
-      "zen"
     ];
 
     onActivation = {
