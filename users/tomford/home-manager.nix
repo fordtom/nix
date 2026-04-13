@@ -53,7 +53,6 @@ in {
       pkgs.fzf
       pkgs.gh
       pkgs.gopls
-      pkgs.lazygit
       pkgs.nodejs_24
       pkgs.ripgrep
       pkgs.stow
@@ -191,6 +190,13 @@ in {
     enable = true;
     settings = {
       exclude-newer ="7 days";
+    };
+  };
+
+  programs.lazygit = {
+    enable = true;
+    settings = {
+      promptToReturnFromSubprocess = false;
     };
   };
 }
