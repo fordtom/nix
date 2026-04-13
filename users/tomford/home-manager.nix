@@ -27,9 +27,13 @@
       gs = "git status";
 
       v = "nvim";
+      lg = "lazygit";
 
       drs = "sudo darwin-rebuild switch --flake";
       hms = "home-manager switch --flake";
+
+      claude = "command claude --allow-dangerously-skip-permissions";
+      codex = "command codex --yolo";
     }
     // lib.optionalAttrs isDarwin {
       tailscale = "/Applications/Tailscale.app/Contents/MacOS/Tailscale";
@@ -49,10 +53,10 @@ in {
       pkgs.fzf
       pkgs.gh
       pkgs.gopls
-      pkgs.nodejs
+      pkgs.lazygit
+      pkgs.nodejs_24
       pkgs.ripgrep
       pkgs.stow
-      pkgs.tig
     ]
     ++ (lib.optionals isLinux [
       pkgs.tailscale
