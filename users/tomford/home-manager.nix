@@ -6,6 +6,7 @@
 }: let
   isDarwin = pkgs.stdenv.isDarwin;
   isLinux = pkgs.stdenv.isLinux;
+  grepoPkg = inputs.grepo.packages.${pkgs.stdenv.hostPlatform.system}.default;
 
   shellAliases =
     {
@@ -52,6 +53,7 @@ in {
       pkgs.fd
       pkgs.fzf
       pkgs.gh
+      grepoPkg
       pkgs.gopls
       pkgs.nodejs_24
       pkgs.ripgrep
