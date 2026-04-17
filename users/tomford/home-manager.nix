@@ -93,6 +93,11 @@ in {
     '';
   };
 
+  programs.nushell = {
+    enable = true;
+    shellAliases = shellAliases;
+  };
+
   programs.direnv = {
     enable = true;
     config = {
