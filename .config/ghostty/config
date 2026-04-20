@@ -1,0 +1,21 @@
+#font
+font-family = "Berkeley Mono"
+window-title-font-family = "Berkeley Mono"
+font-size = 16
+
+#theming
+theme = Cursor Dark
+custom-shader = cursor_warp.glsl
+
+#settings
+macos-option-as-alt = true
+macos-titlebar-style = tabs
+macos-auto-secure-input = true
+macos-secure-input-indication = true
+clipboard-paste-protection = false
+
+#updates
+auto-update = download
+auto-update-channel = stable
+
+shell-integration-features = ssh-terminfo,ssh-env

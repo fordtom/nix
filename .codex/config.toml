@@ -1,0 +1,218 @@
+model = "gpt-5.4"
+model_reasoning_effort = "high"
+approval_policy = "never"
+sandbox_mode = "workspace-write"
+
+tool_output_token_limit = 25000
+
+project_root_markers = [".git", ".jj"]
+
+suppress_unstable_features_warning = true
+personality = "pragmatic"
+service_tier = "fast"
+approvals_reviewer = "guardian_subagent"
+
+[tui]
+notifications = true
+status_line = ["model-with-reasoning", "context-usage", "current-dir", "git-branch", "five-hour-limit", "weekly-limit"]
+theme = "ansi"
+
+[features]
+unified_exec = true
+apply_patch_freeform = true
+shell_snapshot = true
+steer = true
+multi_agent = true
+collaboration_modes = true
+apps = true
+personality = true
+responses_websockets_v2 = true
+codex_hooks = true
+memories = true
+sqlite = true
+guardian_approval = true
+tui_app_server = true
+prevent_idle_sleep = true
+image_detail_original = true
+workspace_dependencies = false
+
+[projects."/Users/tomford/code/projects"]
+trust_level = "trusted"
+
+[projects."/Users/tomford/code/projects/require"]
+trust_level = "trusted"
+
+[projects."/Users/tomford/code/projects/requirement-statuses"]
+trust_level = "trusted"
+
+[projects."/Users/tomford/code/projects/frontend-checkpoints"]
+trust_level = "trusted"
+
+[projects."/Users/tomford/code/projects/requirebackend"]
+trust_level = "trusted"
+
+[projects."/Users/tomford/code/projects/v3scope"]
+trust_level = "trusted"
+
+[projects."/Users/tomford/.dotfiles"]
+trust_level = "trusted"
+
+[projects."/Users/tomford/code/projects/agent-sim"]
+trust_level = "trusted"
+
+[projects."/home/tfo01/.dotfiles"]
+trust_level = "trusted"
+
+[projects."/Users/tomford/nix"]
+trust_level = "trusted"
+
+[projects."/Users/tomford"]
+trust_level = "trusted"
+
+[projects."/Users/tomford/code/projects/mint"]
+trust_level = "trusted"
+
+[projects."/Users/tomford/code/projects/tracy"]
+trust_level = "trusted"
+
+[projects."/Users/tomford/code/projects/agent-can"]
+trust_level = "trusted"
+
+[projects."/Users/tomford/code/projects/clawtunecookie.com"]
+trust_level = "trusted"
+
+[projects."/Users/tomford/code/projects/polarionmcp"]
+trust_level = "trusted"
+
+[projects."/Users/tomford/code/projects/h3xy"]
+trust_level = "trusted"
+
+[projects."/Users/tomford/code/projects/v2scope"]
+trust_level = "trusted"
+
+[projects."/Users/tomford/code/projects/grepo"]
+trust_level = "trusted"
+
+[projects."/Users/tomford/code/projects/hexy"]
+trust_level = "trusted"
+
+[projects."/Users/tomford/code/projects/nu-plugins-automotive"]
+trust_level = "trusted"
+
+[notice]
+hide_rate_limit_model_nudge = true
+hide_full_access_warning = true
+
+[sandbox_workspace_write]
+network_access = true
+
+[apps.connector_76869538009648d5b282a4bb21c3d157]
+enabled = false
+disabled_reason = "user"
+
+[apps.connector_947e0d954944416db111db556030eea6]
+enabled = false
+disabled_reason = "user"
+
+[apps.connector_5f3c8c41a1e54ad7a76272c89e2554fa]
+enabled = false
+disabled_reason = "user"
+
+[apps.connector_9d7cfa34e6654a5f98d3387af34b2e1c]
+enabled = false
+disabled_reason = "user"
+
+[apps.connector_37316be7febe4224b3d31465bae4dbd7]
+enabled = false
+disabled_reason = "user"
+
+[apps.connector_690a90ec05c881918afb6a55dc9bbaa1]
+enabled = false
+disabled_reason = "user"
+
+[apps.connector_2128aebfecb84f64a069897515042a44]
+enabled = false
+
+[apps.asdk_app_69c18c28f1188191bf5b8445c4ab0a2e]
+enabled = false
+
+[apps.connector_c0f748249d6a42aea4b00fd375570ded]
+enabled = false
+
+
+[agents.default]
+description = "Default agent."
+nickname_candidates = [
+  "Bulbasaur", "Ivysaur", "Venusaur", "Charmander", "Charmeleon", "Charizard", "Squirtle", "Wartortle", "Blastoise", "Caterpie",
+  "Metapod", "Butterfree", "Weedle", "Kakuna", "Beedrill", "Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate",
+  "Spearow", "Fearow", "Ekans", "Arbok", "Pikachu", "Raichu", "Sandshrew", "Sandslash", "Nidoran", "Nidorina",
+  "Nidoqueen", "Nidorino", "Nidoking", "Clefairy", "Clefable", "Vulpix", "Ninetales", "Jigglypuff", "Wigglytuff", "Zubat",
+  "Golbat", "Oddish", "Gloom", "Vileplume", "Paras", "Parasect", "Venonat", "Venomoth", "Diglett", "Dugtrio",
+  "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl",
+  "Poliwrath", "Abra", "Kadabra", "Alakazam", "Machop", "Machoke", "Machamp", "Bellsprout", "Weepinbell", "Victreebel",
+  "Tentacool", "Tentacruel", "Geodude", "Graveler", "Golem", "Ponyta", "Rapidash", "Slowpoke", "Slowbro", "Magnemite",
+  "Magneton", "Farfetchd", "Doduo", "Dodrio", "Seel", "Dewgong", "Grimer", "Muk", "Shellder", "Cloyster",
+  "Gastly", "Haunter", "Gengar", "Onix", "Drowzee", "Hypno", "Krabby", "Kingler", "Voltorb", "Electrode",
+  "Exeggcute", "Exeggutor", "Cubone", "Marowak", "Hitmonlee", "Hitmonchan", "Lickitung", "Koffing", "Weezing", "Rhyhorn",
+  "Rhydon", "Chansey", "Tangela", "Kangaskhan", "Horsea", "Seadra", "Goldeen", "Seaking", "Staryu", "Starmie",
+  "Mr Mime", "Scyther", "Jynx", "Electabuzz", "Magmar", "Pinsir", "Tauros", "Magikarp", "Gyarados", "Lapras",
+  "Ditto", "Eevee", "Vaporeon", "Jolteon", "Flareon", "Porygon", "Omanyte", "Omastar", "Kabuto", "Kabutops",
+  "Aerodactyl", "Snorlax", "Articuno", "Zapdos", "Moltres", "Dratini", "Dragonair", "Dragonite", "Mewtwo", "Mew",
+]
+
+[agents.worker]
+description = '''
+Use for execution and production work.
+Typical tasks:
+- Implement part of a feature
+- Fix tests or bugs
+- Split large refactors into independent chunks
+Rules:
+- Explicitly assign **ownership** of the task (files / responsibility). When the subtask involves code changes, you should clearly specify which files or modules the worker is responsible for. This helps avoid merge conflicts and ensures accountability. For example, you can say "Worker 1 is responsible for updating the authentication module, while Worker 2 will handle the database layer." By defining clear ownership, you can delegate more effectively and reduce coordination overhead.
+- Always tell workers they are **not alone in the codebase**, and they should not revert the edits made by others, and they should adjust their implementation to accommodate the changes made by others. This is important because there may be multiple workers making changes in parallel, and they need to be aware of each other's work to avoid conflicts and ensure a cohesive final product.
+'''
+nickname_candidates = [
+  "Bulbasaur", "Ivysaur", "Venusaur", "Charmander", "Charmeleon", "Charizard", "Squirtle", "Wartortle", "Blastoise", "Caterpie",
+  "Metapod", "Butterfree", "Weedle", "Kakuna", "Beedrill", "Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate",
+  "Spearow", "Fearow", "Ekans", "Arbok", "Pikachu", "Raichu", "Sandshrew", "Sandslash", "Nidoran", "Nidorina",
+  "Nidoqueen", "Nidorino", "Nidoking", "Clefairy", "Clefable", "Vulpix", "Ninetales", "Jigglypuff", "Wigglytuff", "Zubat",
+  "Golbat", "Oddish", "Gloom", "Vileplume", "Paras", "Parasect", "Venonat", "Venomoth", "Diglett", "Dugtrio",
+  "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl",
+  "Poliwrath", "Abra", "Kadabra", "Alakazam", "Machop", "Machoke", "Machamp", "Bellsprout", "Weepinbell", "Victreebel",
+  "Tentacool", "Tentacruel", "Geodude", "Graveler", "Golem", "Ponyta", "Rapidash", "Slowpoke", "Slowbro", "Magnemite",
+  "Magneton", "Farfetchd", "Doduo", "Dodrio", "Seel", "Dewgong", "Grimer", "Muk", "Shellder", "Cloyster",
+  "Gastly", "Haunter", "Gengar", "Onix", "Drowzee", "Hypno", "Krabby", "Kingler", "Voltorb", "Electrode",
+  "Exeggcute", "Exeggutor", "Cubone", "Marowak", "Hitmonlee", "Hitmonchan", "Lickitung", "Koffing", "Weezing", "Rhyhorn",
+  "Rhydon", "Chansey", "Tangela", "Kangaskhan", "Horsea", "Seadra", "Goldeen", "Seaking", "Staryu", "Starmie",
+  "Mr Mime", "Scyther", "Jynx", "Electabuzz", "Magmar", "Pinsir", "Tauros", "Magikarp", "Gyarados", "Lapras",
+  "Ditto", "Eevee", "Vaporeon", "Jolteon", "Flareon", "Porygon", "Omanyte", "Omastar", "Kabuto", "Kabutops",
+  "Aerodactyl", "Snorlax", "Articuno", "Zapdos", "Moltres", "Dratini", "Dragonair", "Dragonite", "Mewtwo", "Mew",
+]
+
+[agents.explorer]
+description = '''
+Use `explorer` for specific codebase questions.
+Explorers are fast and authoritative.
+They must be used to ask specific, well-scoped questions on the codebase.
+Rules:
+- In order to avoid redundant work, you should avoid exploring the same problem that explorers have already covered. Typically, you should trust the explorer results without additional verification. You are still allowed to inspect the code yourself to gain the needed context!
+- You are encouraged to spawn up multiple explorers in parallel when you have multiple distinct questions to ask about the codebase that can be answered independently. This allows you to get more information faster without waiting for one question to finish before asking the next. While waiting for the explorer results, you can continue working on other local tasks that do not depend on those results. This parallelism is a key advantage of delegation, so use it whenever you have multiple questions to ask.
+- Reuse existing explorers for related questions.
+'''
+nickname_candidates = [
+  "Bulbasaur", "Ivysaur", "Venusaur", "Charmander", "Charmeleon", "Charizard", "Squirtle", "Wartortle", "Blastoise", "Caterpie",
+  "Metapod", "Butterfree", "Weedle", "Kakuna", "Beedrill", "Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate",
+  "Spearow", "Fearow", "Ekans", "Arbok", "Pikachu", "Raichu", "Sandshrew", "Sandslash", "Nidoran", "Nidorina",
+  "Nidoqueen", "Nidorino", "Nidoking", "Clefairy", "Clefable", "Vulpix", "Ninetales", "Jigglypuff", "Wigglytuff", "Zubat",
+  "Golbat", "Oddish", "Gloom", "Vileplume", "Paras", "Parasect", "Venonat", "Venomoth", "Diglett", "Dugtrio",
+  "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl",
+  "Poliwrath", "Abra", "Kadabra", "Alakazam", "Machop", "Machoke", "Machamp", "Bellsprout", "Weepinbell", "Victreebel",
+  "Tentacool", "Tentacruel", "Geodude", "Graveler", "Golem", "Ponyta", "Rapidash", "Slowpoke", "Slowbro", "Magnemite",
+  "Magneton", "Farfetchd", "Doduo", "Dodrio", "Seel", "Dewgong", "Grimer", "Muk", "Shellder", "Cloyster",
+  "Gastly", "Haunter", "Gengar", "Onix", "Drowzee", "Hypno", "Krabby", "Kingler", "Voltorb", "Electrode",
+  "Exeggcute", "Exeggutor", "Cubone", "Marowak", "Hitmonlee", "Hitmonchan", "Lickitung", "Koffing", "Weezing", "Rhyhorn",
+  "Rhydon", "Chansey", "Tangela", "Kangaskhan", "Horsea", "Seadra", "Goldeen", "Seaking", "Staryu", "Starmie",
+  "Mr Mime", "Scyther", "Jynx", "Electabuzz", "Magmar", "Pinsir", "Tauros", "Magikarp", "Gyarados", "Lapras",
+  "Ditto", "Eevee", "Vaporeon", "Jolteon", "Flareon", "Porygon", "Omanyte", "Omastar", "Kabuto", "Kabutops",
+  "Aerodactyl", "Snorlax", "Articuno", "Zapdos", "Moltres", "Dratini", "Dragonair", "Dragonite", "Mewtwo", "Mew",
+]

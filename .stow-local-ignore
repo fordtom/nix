@@ -1,0 +1,10 @@
+.git
+.gitignore
+.DS_Store
+\.nix$
+^/flake\.lock$
+^/flake\.nix$
+^/machines
+^/users
+^/lib
+^/README\.md

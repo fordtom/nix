@@ -1,0 +1,4 @@
+interface:
+  display_name: "Docs Guidelines"
+  short_description: "Current-state repo docs and todo hygiene"
+  default_prompt: "Use $docs-guidelines while updating README.md, docs/, AGENTS.md, comments, and todo files so they reflect only current state and only still-open work."
