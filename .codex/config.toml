@@ -106,40 +106,6 @@ hide_full_access_warning = true
 [sandbox_workspace_write]
 network_access = true
 
-[apps.connector_76869538009648d5b282a4bb21c3d157]
-enabled = false
-disabled_reason = "user"
-
-[apps.connector_947e0d954944416db111db556030eea6]
-enabled = false
-disabled_reason = "user"
-
-[apps.connector_5f3c8c41a1e54ad7a76272c89e2554fa]
-enabled = false
-disabled_reason = "user"
-
-[apps.connector_9d7cfa34e6654a5f98d3387af34b2e1c]
-enabled = false
-disabled_reason = "user"
-
-[apps.connector_37316be7febe4224b3d31465bae4dbd7]
-enabled = false
-disabled_reason = "user"
-
-[apps.connector_690a90ec05c881918afb6a55dc9bbaa1]
-enabled = false
-disabled_reason = "user"
-
-[apps.connector_2128aebfecb84f64a069897515042a44]
-enabled = false
-
-[apps.asdk_app_69c18c28f1188191bf5b8445c4ab0a2e]
-enabled = false
-
-[apps.connector_c0f748249d6a42aea4b00fd375570ded]
-enabled = false
-
-
 [agents.default]
 description = "Default agent."
 nickname_candidates = [
