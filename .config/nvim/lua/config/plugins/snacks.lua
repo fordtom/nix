@@ -8,9 +8,7 @@ return {
    lazy = false,
    opts = {
       bigfile = { enabled = true },
-      dashboard = { enabled = true },
       explorer = { enabled = true },
-      terminal = { enabled = false },
       indent = { enabled = true },
       input = { enabled = true },
       notifier = {
@@ -22,7 +20,7 @@ return {
          files = {
             ignored = true,
             hidden = true,
-            exclude = { ".cache", ".git", "*/Python/Lib" },
+            exclude = { ".cache", ".git", "*/Python/Lib", ".jj" },
          },
          git = {
             files = {

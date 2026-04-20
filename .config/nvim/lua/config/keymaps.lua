@@ -5,14 +5,13 @@ vim.keymap.set("n", "<leader><space>", function() Snacks.picker.pickers() end, {
 -- UI toggles
 vim.keymap.set("n", "<C-e>", function() Snacks.picker.explorer()           end, { desc = "Explore files" })
 
--- Find files
-vim.keymap.set("n", "<leader>f", function() Snacks.picker.files()           end, { desc = "Find Files" })
+-- Files
+vim.keymap.set("n", "<leader>sf", function() Snacks.picker.files()           end, { desc = "Files" })
+vim.keymap.set("n", "<leader>sg", function() Snacks.picker.git_files() end, { desc = "Tracked" })
 
--- Search in files
-vim.keymap.set("n", "<leader>g", function() Snacks.picker.grep() end, { desc = "Grep" })
-vim.keymap.set("n", "<leader>bg", function() Snacks.picker.grep_buffers() end, { desc = "Grep buffers" })
-vim.keymap.set("n", "<leader>lg", function() Snacks.picker.lines() end, { desc = "Buffer Lines" })
-vim.keymap.set({"n", "x"}, "<leader>wg", function() Snacks.picker.grep_word() end, { desc = "Visual selection or word" })
+-- Grep
+vim.keymap.set("n", "<leader>if", function() Snacks.picker.grep() end, { desc = "Grep" })
+vim.keymap.set("n", "<leader>ig", function() Snacks.picker.git_grep() end, { desc = "Grep" })
 
 -- LSP functionality
 vim.keymap.set("n", "gd", function() Snacks.picker.lsp_definitions()      end, { desc = "Goto Definition" })
