@@ -28,7 +28,6 @@
       gs = "git status";
 
       v = "nvim";
-      lg = "lazygit";
 
       drs = "sudo darwin-rebuild switch --flake";
       hms = "home-manager switch --flake";
@@ -48,7 +47,6 @@ in {
     [
       pkgs._1password-cli
       pkgs.alejandra
-      pkgs.ast-grep
       pkgs.bat
       pkgs.fd
       pkgs.fzf
@@ -96,6 +94,10 @@ in {
   programs.nushell = {
     enable = true;
     shellAliases = shellAliases;
+    plugins = with pkgs.nushellPlugins; [ polars formats gstat query ];
+    settings = {
+      show_banner = false;
+    };
   };
 
   programs.direnv = {
@@ -121,7 +123,7 @@ in {
       };
       user.name = "Tom Ford";
       user.email = "t@tomrford.com";
-      branch.autosetuprebase = "always";
+      branch.autoSetupRebase = "always";
       color.ui = true;
       github.user = "tomrford";
       push.default = "tracking";
