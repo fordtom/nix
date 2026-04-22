@@ -1,10 +1,10 @@
 local colors = {
-  blue   = '#7DAEA3',
-  cyan   = '#89B482',
-  black  = '#080808',
-  white  = '#D0D0D0',
-  red    = '#EA6962',
-  violet = '#D3869B',
+  blue   = '#81A1C1',
+  cyan   = '#88C0D0',
+  black  = '#141414',
+  white  = '#D8DEE9',
+  red    = '#BF616A',
+  violet = '#B48EAD',
   greybg   = '#505050',
   inactive = '#808080',
 }
