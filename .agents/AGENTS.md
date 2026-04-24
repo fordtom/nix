@@ -58,7 +58,7 @@ Tom owns this. Work style: telegraph; noun-phrases ok. prefer prose over bullets
 
 - Delete dead files; do not leave stub modules.
 - prune todo-lists rather than overwriting as done.
-- Comments/docs must only reflect present state rather than historical delta. git is for history, not code.
+- Comments/docs must only reflect present state rather than historical delta. git is for history, docs are not.
 - Keep test suite high signal and curated; a new test is not necessary with each change.
 - Treat non-mainline code (branches or unstaged changes) as entirely throwaway and malleable.
 - Do not preserve backwards compatibility unless explicitly requested.
