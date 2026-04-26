@@ -1,5 +1,5 @@
 model = "gpt-5.5"
-model_reasoning_effort = "low"
+model_reasoning_effort = "medium"
 approval_policy = "never"
 sandbox_mode = "workspace-write"
 
@@ -110,6 +110,9 @@ trust_level = "trusted"
 [projects."/Users/tomford/config"]
 trust_level = "trusted"
 
+[projects."/Users/tomford/code/projects/agentic-can-framework-py"]
+trust_level = "trusted"
+
 [notice]
 hide_rate_limit_model_nudge = true
 hide_full_access_warning = true
@@ -196,9 +199,10 @@ nickname_candidates = [
 ]
 
 [marketplaces.openai-bundled]
-last_updated = "2026-04-23T23:47:37Z"
+last_updated = "2026-04-24T19:02:30Z"
 source_type = "local"
 source = "/Users/tomford/.codex/.tmp/bundled-marketplaces/openai-bundled"
 
 [plugins."browser-use@openai-bundled"]
 enabled = true
+

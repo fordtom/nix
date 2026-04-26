@@ -14,7 +14,6 @@
       "1password"
       "aldente"
       "betterdisplay"
-      "claude"
       "chatgpt"
       "codex-app"
       "ghostty"

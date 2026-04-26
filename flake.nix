@@ -35,8 +35,6 @@
           inherit (final.stdenv.hostPlatform) system;
           config.allowUnfree = true;
         };
-        qmd = inputs.qmd.packages.${final.stdenv.hostPlatform.system}.default;
-        monitor-cli = inputs.monitor-cli.packages.${final.stdenv.hostPlatform.system}.default;
       })
     ];
 
