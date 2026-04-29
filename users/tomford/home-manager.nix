@@ -223,6 +223,7 @@ in {
         minimumReleaseAge = 604800;
         minimumReleaseAgeExcludes = [
           "@openai/codex"
+          "@mariozechner/pi-coding-agent"
         ];
       };
     };

@@ -1,5 +1,5 @@
 model = "gpt-5.5"
-model_reasoning_effort = "medium"
+model_reasoning_effort = "low"
 approval_policy = "never"
 sandbox_mode = "workspace-write"
 
@@ -17,7 +17,7 @@ status_line = ["model-with-reasoning", "context-usage", "current-dir", "git-bran
 theme = "ansi"
 
 [tui.model_availability_nux]
-"gpt-5.5" = 1
+"gpt-5.5" = 2
 
 [features]
 unified_exec = true
@@ -113,6 +113,15 @@ trust_level = "trusted"
 [projects."/Users/tomford/code/projects/agentic-can-framework-py"]
 trust_level = "trusted"
 
+[projects."/Users/tomford/code/projects/can-log-viewer"]
+trust_level = "trusted"
+
+[projects."/Users/tomford/Documents/Codex/2026-04-29/can-you-check-this-script-curl"]
+trust_level = "trusted"
+
+[projects."/Users/tomford/code/projects/cantraceviewer"]
+trust_level = "trusted"
+
 [notice]
 hide_rate_limit_model_nudge = true
 hide_full_access_warning = true
@@ -199,7 +208,7 @@ nickname_candidates = [
 ]
 
 [marketplaces.openai-bundled]
-last_updated = "2026-04-24T19:02:30Z"
+last_updated = "2026-05-05T18:17:38Z"
 source_type = "local"
 source = "/Users/tomford/.codex/.tmp/bundled-marketplaces/openai-bundled"
 

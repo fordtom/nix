@@ -170,7 +170,7 @@
   "accessibility.signalOptions.volume": 0,
   "C_Cpp.clang_format_fallbackStyle": "Google",
   "jupyter.askForKernelRestart": false,
-  "diffEditor.renderSideBySide": false,
+  "diffEditor.renderSideBySide": true,
   "js/ts.tsdk.promptToUseWorkspaceVersion": true,
   "remote.SSH.remotePlatform": {
     "macmini": "macOS"
@@ -198,5 +198,6 @@
   "claudeCode.allowDangerouslySkipPermissions": true,
   "security.promptForLocalFileProtocolHandling": false,
   "chatgpt.followUpQueueMode": "steer",
-  "claudeCode.preferredLocation": "panel"
+  "claudeCode.preferredLocation": "panel",
+  "svelte.enable-ts-plugin": true
 }

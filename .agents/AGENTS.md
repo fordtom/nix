@@ -22,8 +22,9 @@ Tom owns this. Work style: telegraph; noun-phrases ok. prefer prose over bullets
 - Before handoff: run full gate (lint/typecheck/tests/docs).
 - Keep it observable (logs, panes, tails, MCP/browser tools).
 
-## Git
+## Git/VCS
 
+- Repos use a mixture of jujutsu or git. check before interaction.
 - Safe by default: `git status/diff/log`. Push only when user asks.
 - `git checkout` ok for PR review / explicit request.
 - Destructive ops forbidden unless explicit (`reset --hard`, `clean`, `restore`, `rm`, ...).
@@ -47,9 +48,9 @@ Tom owns this. Work style: telegraph; noun-phrases ok. prefer prose over bullets
 - `nix` is used for toolchains in some projects. use `nix develop -c` to run commands. Do not modify nix files without approval.
 - `gh` cli for PRs/CI/Releases. Given issue/PR URL: use gh not web search.
 - `uv` for all Python usage - `uv run`, `uv venv`, `uv format`.
-- `nu` nushell is the preferred tool for small/medium-scale adhoc data manipulation.
+- `nu` nushell for small/medium-scale adhoc data manipulation.
 - `bun` for global npm packages.
-- `agent-browser` for browser automation/testing.
+- `agent-browser` for browser automation/testing when codex app inbuilt browser is not present.
 - `tmux` only for persistenct/interactive sessions (debugger/server).
 - `op` holds all personal credentials; e.g. for publishing use `op run` (could hang for human authentication)
 - `grepo` for managing external context within a repo; use `grepo skill` for usage.
