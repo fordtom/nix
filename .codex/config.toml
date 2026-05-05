@@ -208,7 +208,7 @@ nickname_candidates = [
 ]
 
 [marketplaces.openai-bundled]
-last_updated = "2026-05-05T18:17:38Z"
+last_updated = "2026-05-05T20:34:36Z"
 source_type = "local"
 source = "/Users/tomford/.codex/.tmp/bundled-marketplaces/openai-bundled"
 
