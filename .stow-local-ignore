@@ -1,6 +1,7 @@
 .git
 .gitignore
 .DS_Store
+^/\.jj
 \.nix$
 ^/flake\.lock$
 ^/flake\.nix$
