@@ -24,7 +24,7 @@ Tom owns this. Work style: telegraph; noun-phrases ok. prefer prose over bullets
 
 ## Git/VCS
 
-- Repos use a mixture of jujutsu or git. check before interaction.
+- Repos use a mixture of jujutsu or git. check before interaction, prefer jj when it exists.
 - Safe by default: `git status/diff/log`. Push only when user asks.
 - `git checkout` ok for PR review / explicit request.
 - Destructive ops forbidden unless explicit (`reset --hard`, `clean`, `restore`, `rm`, ...).

@@ -14,9 +14,6 @@
   "npmCommand": [
     "bun"
   ],
-  "packages": [
-    "npm:pi-subagents",
-    "npm:pi-cursor-theme"
-  ],
+  "packages": [],
   "theme": "cursor-dark"
 }
