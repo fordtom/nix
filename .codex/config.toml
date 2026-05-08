@@ -133,7 +133,7 @@ fast_default_opt_out = true
 network_access = true
 
 [marketplaces.openai-bundled]
-last_updated = "2026-05-05T21:23:13Z"
+last_updated = "2026-05-07T21:54:13Z"
 source_type = "local"
 source = "/Users/tomford/.codex/.tmp/bundled-marketplaces/openai-bundled"
 

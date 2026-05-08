@@ -38,9 +38,6 @@
       v = "nvim";
 
       drs = "sudo darwin-rebuild switch --flake";
-      hms = "home-manager switch --flake";
-
-      claude = "command claude --allow-dangerously-skip-permissions";
       codex = "command codex --yolo";
     }
     // lib.optionalAttrs isDarwin {
@@ -219,11 +216,11 @@ in {
     enable = true;
     settings = {
       install = {
+        blockExoticSubdeps = true;
         exact = true;
         minimumReleaseAge = 604800;
         minimumReleaseAgeExcludes = [
           "@openai/codex"
-          "@mariozechner/pi-coding-agent"
         ];
       };
     };
