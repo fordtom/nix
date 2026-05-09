@@ -13,7 +13,14 @@ approvals_reviewer = "guardian_subagent"
 
 [tui]
 notifications = true
-status_line = ["model-with-reasoning", "context-usage", "current-dir", "git-branch", "five-hour-limit", "weekly-limit"]
+status_line = [
+    "model-with-reasoning",
+    "context-usage",
+    "current-dir",
+    "git-branch",
+    "five-hour-limit",
+    "weekly-limit",
+]
 theme = "ansi"
 
 [tui.model_availability_nux]
@@ -29,7 +36,7 @@ collaboration_modes = true
 apps = true
 personality = true
 responses_websockets_v2 = true
-codex_hooks = true
+hooks = true
 memories = true
 sqlite = true
 guardian_approval = true
@@ -124,6 +131,12 @@ trust_level = "trusted"
 [projects."/Users/tomford/code/projects/cantraceviewer"]
 trust_level = "trusted"
 
+[projects."/Users/tomford/code/projects/agent-can-py"]
+trust_level = "trusted"
+
+[projects."/Users/tomford/code/projects/cantraceviewer-rs"]
+trust_level = "trusted"
+
 [notice]
 hide_rate_limit_model_nudge = true
 hide_full_access_warning = true
@@ -133,10 +146,12 @@ fast_default_opt_out = true
 network_access = true
 
 [marketplaces.openai-bundled]
-last_updated = "2026-05-07T21:54:13Z"
+last_updated = "2026-05-09T16:54:58Z"
 source_type = "local"
 source = "/Users/tomford/.codex/.tmp/bundled-marketplaces/openai-bundled"
 
 [plugins."browser-use@openai-bundled"]
 enabled = true
 
+[plugins."linear@openai-curated"]
+enabled = true
