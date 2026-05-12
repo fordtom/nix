@@ -72,6 +72,7 @@ in {
     BUN_INSTALL = "$HOME/.bun";
 
     CARGO_REGISTRY_TOKEN = "op://Personal/CARGO_REGISTRY_TOKEN/credential";
+    OPENAI_API_KEY = "op://Personal/OPENAI_API_KEY/credential";
     OPENROUTER_API_KEY = "op://Personal/OPENROUTER_API_KEY/credential";
   };
 
@@ -162,6 +163,7 @@ in {
       aliases = {
         bump = ["bookmark" "move" "--from" "closest_bookmark(@)" "--to" "@"];
         drop = ["abandon" "--restore-descendants"];
+        init = ["git" "init"];
         rt = ["rebase" "-d" "trunk()"];
       };
       revset-aliases = {

@@ -123,12 +123,7 @@ For a simple single-version repo, the normal order is:
 
 Publish from the same verified commit you tagged.
 
-Use `op run --` when credentials live in 1Password. Keep the repo-native wrapper inside that command.
-
-Examples:
-
-- `op run -- nix develop -c cargo publish`
-- `op run -- cargo publish`
+Trusted publishing typically publishes to crates.io from the tag-triggered release workflow. If the repo does not use trusted publishing, local publish requires `op run` and human approval.
 
 For multi-crate releases:
 
@@ -159,7 +154,7 @@ Stop and ask before mutating when any of these are true:
 - unclear tag policy
 - existing tag or already-published target version
 - workspace has independent versioning but the repo's tagging/publish policy is not obvious
-- registry target or credentials path is unclear
+- registry target or publish path is unclear
 
 ## Biases
 
