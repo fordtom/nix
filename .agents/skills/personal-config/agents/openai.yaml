@@ -1,0 +1,4 @@
+interface:
+  display_name: "Personal Config"
+  short_description: "Context for Tom's global config repo"
+  default_prompt: "Use $personal-config when editing my personal global config."

@@ -59,6 +59,7 @@ in {
       grepoPkg
       pkgs.gopls
       pkgs.nodejs_24
+      pkgs.pnpm
       pkgs.ripgrep
       pkgs.stow
     ]
@@ -69,6 +70,7 @@ in {
   home.sessionVariables = {
     EDITOR = "nvim";
     PAGER = "less -FirSwX";
+    PNPM_HOME = "$HOME/.local/share/pnpm";
     BUN_INSTALL = "$HOME/.bun";
 
     CARGO_REGISTRY_TOKEN = "op://Personal/CARGO_REGISTRY_TOKEN/credential";
@@ -78,6 +80,7 @@ in {
 
   home.sessionPath =
     [
+      "$HOME/.local/share/pnpm"
       "$HOME/.bun/bin"
       "$HOME/.local/bin"
     ]
@@ -100,7 +103,7 @@ in {
   programs.nushell = {
     enable = true;
     shellAliases = shellAliases;
-    plugins = with pkgs.nushellPlugins; [ polars formats gstat query ];
+    plugins = with pkgs.nushellPlugins; [polars formats gstat query];
     settings = {
       show_banner = false;
     };
@@ -236,7 +239,7 @@ in {
   programs.uv = {
     enable = true;
     settings = {
-      exclude-newer ="7 days";
+      exclude-newer = "7 days";
     };
   };
 
