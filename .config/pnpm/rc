@@ -1,3 +1,0 @@
-block-exotic-subdeps=true
-minimum-release-age=10080
-minimum-release-age-exclude[]=@openai/codex
