@@ -22,9 +22,8 @@ Tom owns this. Work style: telegraph; noun-phrases ok. prefer prose over bullets
 - Before handoff: run full gate (lint/typecheck/tests/docs).
 - Keep it observable (logs, panes, tails, MCP/browser tools).
 
-## Git/VCS
+## Git
 
-- Repos use a mixture of jujutsu or git. check before interaction, prefer jj when it exists.
 - Safe by default: `git status/diff/log`. Push only when user asks.
 - `git checkout` ok for PR review / explicit request.
 - Destructive ops forbidden unless explicit (`reset --hard`, `clean`, `restore`, `rm`, ...).
@@ -50,7 +49,6 @@ Tom owns this. Work style: telegraph; noun-phrases ok. prefer prose over bullets
 - `uv` for all Python usage - `uv run`, `uv venv`, `uv format`.
 - `nu` nushell for small/medium-scale adhoc data manipulation.
 - `bun` for global npm packages.
-- `agent-browser` for browser automation/testing when codex app inbuilt browser is not present.
 - `tmux` only for persistenct/interactive sessions (debugger/server).
 - `op` holds all personal credentials; e.g. for publishing use `op run` (could hang for human authentication)
 - `grepo` for managing external context within a repo; use `grepo skill` for usage.
@@ -61,6 +59,7 @@ Tom owns this. Work style: telegraph; noun-phrases ok. prefer prose over bullets
 - prune todo-lists rather than overwriting as done.
 - Comments/docs must only reflect present state rather than historical delta. git is for history, docs are not.
 - Keep test suite high signal and curated; a new test is not necessary with each change.
+- Do not add tests which simply restate the implementation. These provide zero confidence.
 - Treat non-mainline code (branches or unstaged changes) as entirely throwaway and malleable.
 - Do not preserve backwards compatibility unless explicitly requested.
 
