@@ -1,0 +1,212 @@
+{
+  "editor.accessibilitySupport": "off",
+  "workbench.startupEditor": "none",
+  "editor.minimap.enabled": false,
+  "editor.fontFamily": "Berkeley Mono",
+  "editor.tabSize": 4,
+  "git.enableSmartCommit": true,
+  "git.confirmSync": false,
+  "git.postCommitCommand": "push",
+  "editor.lineNumbers": "relative",
+  "editor.autoClosingQuotes": "never",
+  "editor.autoClosingComments": "never",
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": [
+        "u"
+      ],
+      "after": []
+    },
+    {
+      "before": [
+        "n"
+      ],
+      "after": [
+        "n",
+        "z",
+        "z"
+      ]
+    },
+    {
+      "before": [
+        "N"
+      ],
+      "after": [
+        "N",
+        "z",
+        "z"
+      ]
+    },
+    {
+      "before": [
+        "<C-u>"
+      ],
+      "after": [
+        "<C-u>",
+        "z",
+        "z"
+      ]
+    },
+    {
+      "before": [
+        "<C-d>"
+      ],
+      "after": [
+        "<C-d>",
+        "z",
+        "z"
+      ]
+    },
+    {
+      "before": [
+        "<C-i>"
+      ],
+      "after": [
+        "<C-i>",
+        "z",
+        "z"
+      ]
+    },
+    {
+      "before": [
+        "<C-o>"
+      ],
+      "after": [
+        "<C-o>",
+        "z",
+        "z"
+      ]
+    }
+  ],
+  "vim.visualModeKeyBindings": [
+    {
+      "before": [
+        "J"
+      ],
+      "commands": [
+        {
+          "command": "editor.action.moveLinesDownAction",
+          "args": {}
+        },
+        {
+          "command": "editor.action.reindentselectedlines",
+          "args": {}
+        }
+      ]
+    },
+    {
+      "before": [
+        "K"
+      ],
+      "commands": [
+        {
+          "command": "editor.action.moveLinesUpAction",
+          "args": {}
+        },
+        {
+          "command": "editor.action.reindentselectedlines",
+          "args": {}
+        }
+      ]
+    }
+  ],
+  "explorer.confirmDragAndDrop": false,
+  "explorer.confirmDelete": false,
+  "extensions.ignoreRecommendations": true,
+  "python.createEnvironment.trigger": "off",
+  "git.pruneOnFetch": true,
+  "git.fetchOnPull": true,
+  "editor.fontLigatures": true,
+  "terminal.integrated.fontSize": 16,
+  "vim.autoindent": false,
+  "cursor.cpp.enablePartialAccepts": true,
+  "files.exclude": {
+    "**/.git": true,
+    "**/.jj": true,
+    "**/.svn": true,
+    "**/.DS_Store": true
+  },
+  "editor.guides.indentation": false,
+  "[c]": {
+    "editor.wordBasedSuggestions": "off",
+    "editor.semanticHighlighting.enabled": true,
+    "editor.stickyScroll.defaultModel": "foldingProviderModel",
+    "editor.suggest.insertMode": "replace",
+  },
+  "git.ignoreRebaseWarning": true,
+  "cmake.showConfigureWithDebuggerNotification": false,
+  "git.openRepositoryInParentFolders": "never",
+  "cursor.cpp.disabledLanguages": [
+    "plaintext",
+    "typst",
+    "shellscript"
+  ],
+  "vim.leader": " ",
+  "vim.matchpairs": "(:),{:},[:],<:>",
+  "vim.showMarksInGutter": true,
+  "vim.surround": false,
+  "C_Cpp.inlayHints.parameterNames.enabled": true,
+  "C_Cpp.inlayHints.parameterNames.suppressWhenArgumentContainsName": false,
+  "cursorpyright.shouldImportPylanceSettings": "never",
+  "editor.formatOnSave": true,
+  "errorLens.enabledDiagnosticLevels": [
+    "info"
+  ],
+  "editor.bracketPairColorization.enabled": false,
+  "diffEditor.ignoreTrimWhitespace": false,
+  "tinymist.lint.enabled": true,
+  "tinymist.lint.when": "onType",
+  "tinymist.systemFonts": false,
+  "direnv.restart.automatic": true,
+  "nix.formatterPath": "alejandra",
+  "zig.path": "zig",
+  "window.confirmSaveUntitledWorkspace": false,
+  "rust-analyzer.check.command": "clippy",
+  "rust-analyzer.server.path": "rust-analyzer",
+  "terminal.integrated.defaultProfile.osx": "fish",
+  "terminal.integrated.defaultProfile.linux": "fish",
+  "cursor.composer.usageSummaryDisplay": "always",
+  "editor.wordBasedSuggestions": "off",
+  "zig.zls.warnStyle": true,
+  "zig.zls.enabled": "on",
+  "editor.fontSize": 16,
+  "files.associations": {
+    "*.mdx": "markdown",
+    "*.svx": "markdown"
+  },
+  "js/ts.updateImportsOnFileMove.enabled": "always",
+  "accessibility.signalOptions.volume": 0,
+  "cursor.composer.shouldChimeAfterChatFinishes": true,
+  "C_Cpp.clang_format_fallbackStyle": "Google",
+  "jupyter.askForKernelRestart": false,
+  "diffEditor.renderSideBySide": true,
+  "js/ts.tsdk.promptToUseWorkspaceVersion": true,
+  "remote.SSH.remotePlatform": {
+    "macmini": "macOS"
+  },
+  "[plaintext]": {
+    "editor.wordWrap": "on",
+    "editor.unicodeHighlight.invisibleCharacters": false
+  },
+  "window.autoDetectColorScheme": true,
+  "chat.disableAIFeatures": true,
+  "workbench.activityBar.compact": true,
+  "workbench.activityBar.location": "top",
+  "telemetry.telemetryLevel": "off",
+  "json.schemaDownload.trustedDomains": {
+    "https://schemastore.azurewebsites.net/": true,
+    "https://raw.githubusercontent.com/microsoft/vscode/": true,
+    "https://raw.githubusercontent.com/devcontainers/spec/": true,
+    "https://www.schemastore.org/": true,
+    "https://json.schemastore.org/": true,
+    "https://json-schema.org/": true,
+    "https://developer.microsoft.com/json-schemas/": true,
+    "https://biomejs.dev": true
+  },
+  "terminal.integrated.initialHint": false,
+  "claudeCode.allowDangerouslySkipPermissions": true,
+  "security.promptForLocalFileProtocolHandling": false,
+  "chatgpt.followUpQueueMode": "steer",
+  "claudeCode.preferredLocation": "panel",
+  "svelte.enable-ts-plugin": true
+}

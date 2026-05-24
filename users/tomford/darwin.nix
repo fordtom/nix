@@ -16,6 +16,7 @@
       "betterdisplay"
       "chatgpt"
       "codex-app"
+      "cursor"
       "ghostty"
       "helium-browser"
       "kitlangton-hex"
