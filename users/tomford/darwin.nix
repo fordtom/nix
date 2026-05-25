@@ -6,7 +6,12 @@
   homebrew = {
     enable = true;
 
+    taps = [
+      "ampcode/tap"
+    ];
+
     brews = [
+      "ampcode/tap/ampcode"
       "mole"
     ];
 

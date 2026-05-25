@@ -1,0 +1,5 @@
+{
+  "amp.dangerouslyAllowAll": true,
+  "amp.git.commit.coauthor.enabled": false,
+  "amp.skills.disableClaudeCodeSkills": true
+}

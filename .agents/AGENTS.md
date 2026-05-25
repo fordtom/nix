@@ -17,7 +17,7 @@ Tom owns this. Work style: telegraph; noun-phrases ok. prefer prose over bullets
 ## Flow & Runtime
 
 - Use repo’s package manager/runtime; no swaps w/o approval.
-- Use Codex background for long jobs; tmux only for interactive/persistent (debugger/server).
+- Use tmux for interactive/persistent (debugger/server).
 - Subagents => use regularly for verifiable/parallelable chunks of work or one-off forks in the task.
 - Before handoff: run full gate (lint/typecheck/tests/docs).
 - Keep it observable (logs, panes, tails, MCP/browser tools).
