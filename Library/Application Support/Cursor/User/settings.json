@@ -204,10 +204,8 @@
     "https://biomejs.dev": true
   },
   "terminal.integrated.initialHint": false,
-  "claudeCode.allowDangerouslySkipPermissions": true,
   "security.promptForLocalFileProtocolHandling": false,
   "chatgpt.followUpQueueMode": "steer",
-  "claudeCode.preferredLocation": "panel",
   "svelte.enable-ts-plugin": true,
   "cursor.composer.queueMessageDefaultBehavior": "stop-and-send",
   "cursor.composer.editorConversationDensity": "compact-all-grouped"

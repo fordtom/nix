@@ -6,12 +6,7 @@
   homebrew = {
     enable = true;
 
-    taps = [
-      "ampcode/tap"
-    ];
-
     brews = [
-      "ampcode/tap/ampcode"
       "mole"
     ];
 
@@ -27,6 +22,7 @@
       "kitlangton-hex"
       "middleclick"
       "raycast"
+      "signal"
       "spotify"
       "tailscale-app"
       "visual-studio-code"
