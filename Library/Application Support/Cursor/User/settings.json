@@ -176,7 +176,7 @@
   },
   "js/ts.updateImportsOnFileMove.enabled": "always",
   "accessibility.signalOptions.volume": 0,
-  "cursor.composer.shouldChimeAfterChatFinishes": true,
+  "cursor.composer.shouldChimeAfterChatFinishes": false,
   "C_Cpp.clang_format_fallbackStyle": "Google",
   "jupyter.askForKernelRestart": false,
   "diffEditor.renderSideBySide": true,
@@ -208,5 +208,7 @@
   "security.promptForLocalFileProtocolHandling": false,
   "chatgpt.followUpQueueMode": "steer",
   "claudeCode.preferredLocation": "panel",
-  "svelte.enable-ts-plugin": true
+  "svelte.enable-ts-plugin": true,
+  "cursor.composer.queueMessageDefaultBehavior": "stop-and-send",
+  "cursor.composer.editorConversationDensity": "compact-all-grouped"
 }

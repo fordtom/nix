@@ -1,5 +1,5 @@
 {
-  "lastChangelogVersion": "0.75.3",
+  "lastChangelogVersion": "0.75.5",
   "defaultProvider": "openai-codex",
   "defaultModel": "gpt-5.5",
   "defaultThinkingLevel": "low",
@@ -10,12 +10,15 @@
     "openai-codex/gpt-5.3-codex-spark"
   ],
   "transport": "auto",
-  "hideThinkingBlock": false,
+  "hideThinkingBlock": true,
   "npmCommand": [
     "bun"
   ],
   "packages": [
     "npm:@parallel-web/pi-extension"
   ],
-  "theme": "cursor-dark"
+  "theme": "cursor-dark",
+  "collapseChangelog": true,
+  "enableInstallTelemetry": false,
+  "treeFilterMode": "default"
 }
