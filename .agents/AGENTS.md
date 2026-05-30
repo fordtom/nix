@@ -47,6 +47,7 @@ Tom owns this. Work style: telegraph; noun-phrases ok. prefer prose over bullets
 - `nix` is used for toolchains in some projects. use `nix develop -c` to run commands. Do not modify nix files without approval.
 - `gh` cli for PRs/CI/Releases. Given issue/PR URL: use gh not web search.
 - `uv` for all Python usage - `uv run`, `uv venv`, `uv format`.
+- `nu` nushell for small/medium-scale adhoc data manipulation.
 - `bun` for global npm packages.
 - `tmux` only for persistent/interactive sessions (debugger/server).
 - `op` holds all personal credentials; e.g. for publishing use `op run` (could hang for human authentication)
