@@ -89,15 +89,6 @@ in {
     '';
   };
 
-  programs.nushell = {
-    enable = true;
-    shellAliases = shellAliases;
-    plugins = with pkgs.nushellPlugins; [polars formats gstat query];
-    settings = {
-      show_banner = false;
-    };
-  };
-
   programs.direnv = {
     enable = true;
     config = {
