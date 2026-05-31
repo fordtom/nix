@@ -51,6 +51,7 @@ in {
       grepoPkg
       pkgs.gopls
       pkgs.nodejs_24
+      pkgs.neovim
       pkgs.ripgrep
       pkgs.stow
     ]
@@ -129,10 +130,6 @@ in {
       GOPATH = "${config.home.homeDirectory}/code/go";
       GOPRIVATE = ["github.com/tomrford"];
     };
-  };
-
-  programs.neovim = {
-    enable = true;
   };
 
   programs.atuin = {
