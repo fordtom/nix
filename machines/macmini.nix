@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  inputs,
   ...
 }: {
   system.stateVersion = 6;
@@ -16,4 +17,8 @@
   programs.fish.enable = true;
 
   environment.shells = with pkgs; [bashInteractive zsh fish];
+
+  environment.systemPackages = {
+    inputs.hermes-agent.packages.${pkgs.stdenv.hostPlatform.system}.full
+  };
 }
