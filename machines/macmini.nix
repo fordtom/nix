@@ -18,7 +18,8 @@
 
   environment.shells = with pkgs; [bashInteractive zsh fish];
 
-  environment.systemPackages = [
+  environment.systemPackages = with pkgs; [
+    cloudflared
     inputs.hermes-agent.packages.${pkgs.stdenv.hostPlatform.system}.full
   ];
 }
