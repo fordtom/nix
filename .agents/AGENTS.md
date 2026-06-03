@@ -51,7 +51,7 @@ Tom owns this. Work style: telegraph; noun-phrases ok. prefer prose over bullets
 - `tmux` only for persistent/interactive sessions (debugger/server).
 - `op` holds all personal credentials; e.g. for publishing use `op run` (could hang for human authentication)
 - `grepo` for managing external context within a repo; use `grepo skill` for usage.
-- use Codex chrome connector (with `agent-browser` as a fallback option) for web testing and validation.
+- `agent-browser` for web testing and validation.
 
 ## Repo Health
 
@@ -60,6 +60,11 @@ Tom owns this. Work style: telegraph; noun-phrases ok. prefer prose over bullets
 - Comments/docs must only reflect present state rather than historical delta. git is for history, docs are not.
 - Keep test suite high signal and curated; a new test is not necessary with each change.
 - Do not add tests which simply restate the implementation. These provide zero confidence.
-- Treat non-mainline code (branches or unstaged changes) as entirely malleable.
 - Do not preserve backwards compatibility unless explicitly requested.
+
+## Philosophy
+
+- "All code is technical debt" - every line has to earn its place, and we should strive to minimise bloat and inefficiency at every turn.
+- Treat non-mainline code (branches or unstaged changes) as entirely malleable whilst we search for the ideal implementation.
+
 
