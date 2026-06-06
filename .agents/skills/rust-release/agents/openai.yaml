@@ -1,4 +1,0 @@
-interface:
-  display_name: "Rust Release"
-  short_description: "Run safe Rust crate release workflow"
-  default_prompt: "Use $rust-release to prepare and publish a Rust crate release from this repo."

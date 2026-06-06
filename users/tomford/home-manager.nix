@@ -28,9 +28,7 @@
       gs = "git status";
 
       v = "nvim";
-
       drs = "sudo darwin-rebuild switch --flake";
-      codex = "command codex --yolo";
     }
     // lib.optionalAttrs isDarwin {
       tailscale = "/Applications/Tailscale.app/Contents/MacOS/Tailscale";

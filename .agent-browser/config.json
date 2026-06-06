@@ -1,4 +1,3 @@
 {
-  "$schema": "https://agent-browser.dev/schema.json",
   "idleTimeout": "15m"
 }
