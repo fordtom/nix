@@ -6,56 +6,38 @@ return {
       component_separators = "",
       section_separators = "",
       globalstatus = true,
-      theme = function()
-        local function hl(group, key, fallback)
-          local value = vim.api.nvim_get_hl(0, { name = group, link = false })[key]
-          return value and string.format("#%06x", value) or fallback
-        end
-
-        local colors = {
-          black = hl("PmenuSel", "fg", "#2A2A2A"),
-          blue = hl("PmenuSel", "bg", "#85C1FC"),
-          cyan = hl("MoreMsg", "fg", "#88C0D0"),
-          greybg = hl("Comment", "fg", "#505050"),
-          inactive = hl("Comment", "fg", "#505050"),
-          red = hl("DiagnosticError", "fg", "#BF616A"),
-          violet = hl("Type", "fg", "#AA9BF5"),
-          white = hl("Normal", "fg", "#D8DEE9"),
-        }
-
-        return {
-          normal = {
-            a = { fg = colors.black, bg = colors.violet },
-            b = { fg = colors.white, bg = colors.greybg },
-            c = { fg = colors.white, bg = "None" },
-          },
-          insert = {
-            a = { fg = colors.black, bg = colors.blue },
-            c = { fg = colors.white, bg = "None" },
-          },
-          visual = {
-            a = { fg = colors.black, bg = colors.cyan },
-            c = { fg = colors.white, bg = "None" },
-          },
-          replace = {
-            a = { fg = colors.black, bg = colors.red },
-            c = { fg = colors.white, bg = "None" },
-          },
-          command = {
-            a = { fg = colors.black, bg = colors.violet },
-            c = { fg = colors.white, bg = "None" },
-          },
-          terminal = {
-            a = { fg = colors.black, bg = colors.blue },
-            c = { fg = colors.white, bg = "None" },
-          },
-          inactive = {
-            a = { fg = colors.white, bg = "None" },
-            b = { fg = colors.white, bg = "None" },
-            c = { fg = colors.inactive, bg = "None" },
-          },
-        }
-      end,
+      theme = {
+        normal = {
+          a = { fg = "black", bg = "magenta" },
+          b = { fg = "white", bg = "darkgray" },
+          c = { fg = "white", bg = "None" },
+        },
+        insert = {
+          a = { fg = "black", bg = "blue" },
+          c = { fg = "white", bg = "None" },
+        },
+        visual = {
+          a = { fg = "black", bg = "cyan" },
+          c = { fg = "white", bg = "None" },
+        },
+        replace = {
+          a = { fg = "black", bg = "red" },
+          c = { fg = "white", bg = "None" },
+        },
+        command = {
+          a = { fg = "black", bg = "magenta" },
+          c = { fg = "white", bg = "None" },
+        },
+        terminal = {
+          a = { fg = "black", bg = "blue" },
+          c = { fg = "white", bg = "None" },
+        },
+        inactive = {
+          a = { fg = "white", bg = "None" },
+          b = { fg = "white", bg = "None" },
+          c = { fg = "darkgray", bg = "None" },
+        },
+      },
     },
     sections = {
       lualine_a = {

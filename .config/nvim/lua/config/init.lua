@@ -21,4 +21,5 @@ require("config.plugins")
 
 -- Load options and keymaps
 require("config.options")
+require("config.terminal_colors")
 require("config.keymaps")

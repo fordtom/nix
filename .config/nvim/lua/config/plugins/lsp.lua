@@ -1,23 +1,18 @@
 return {
   "neovim/nvim-lspconfig",
-  dependencies = {
-    "williamboman/mason.nvim",
-    "williamboman/mason-lspconfig.nvim",
-  },
   config = function()
-    vim.lsp.config("pyright", {
+    local function enable_if_executable(server, executable)
+      if vim.fn.executable(executable) == 1 then
+        vim.lsp.enable(server)
+      end
+    end
+
+    vim.lsp.config("ty", {
       settings = {
-        python = {
-          analysis = {
-            autoSearchPaths = true,
-            useLibraryCodeForTypes = true,
-          },
+        ty = {
+          diagnosticMode = "workspace",
         },
       },
-      on_attach = function(client, _)
-        client.server_capabilities.documentFormattingProvider = false
-        client.server_capabilities.documentRangeFormattingProvider = false
-      end,
     })
 
     vim.lsp.config("clangd", {
@@ -26,10 +21,8 @@ return {
       root_markers = { "compile_commands.json", ".git" },
     })
 
-    require("mason").setup()
-    require("mason-lspconfig").setup({
-      ensure_installed = { "pyright", "clangd", "zls" },
-      automatic_enable = true,
-    })
+    enable_if_executable("clangd", "clangd")
+    enable_if_executable("zls", "zls")
+    enable_if_executable("ty", "ty")
   end,
 }

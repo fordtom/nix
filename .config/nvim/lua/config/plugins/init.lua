@@ -1,5 +1,4 @@
 require("lazy").setup({
-  { import = "config.plugins.cursordark" },
   { import = "config.plugins.snacks" },
   { import = "config.plugins.lualine" },
   { import = "config.plugins.treesitter" },
