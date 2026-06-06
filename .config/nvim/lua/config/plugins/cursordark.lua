@@ -7,5 +7,5 @@ return {
       style = "dark",
       transparent = true,
     })
-  end
+  end,
 }

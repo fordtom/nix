@@ -1,10 +1,6 @@
 {inputs, ...}: {
   config,
-  lib,
-  pkgs,
-  ...
-}: let
-  isDarwin = pkgs.stdenv.isDarwin;
+  lib, pkgs, ... }: let isDarwin = pkgs.stdenv.isDarwin;
   isLinux = pkgs.stdenv.isLinux;
   grepoPkg = inputs.grepo.packages.${pkgs.stdenv.hostPlatform.system}.default;
 

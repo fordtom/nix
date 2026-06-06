@@ -1,5 +1,5 @@
 -- Line numbers
-vim.opt.nu = true
+vim.opt.number = true
 vim.opt.relativenumber = true
 
 -- Indentation
@@ -25,9 +25,9 @@ vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
 
 vim.api.nvim_create_autocmd({ "BufLeave", "InsertLeave", "FocusLost" }, {
-   callback = function()
-      if vim.bo.modified and vim.bo.modifiable and vim.bo.buftype == "" then
-         vim.cmd("silent! write")
-      end
-   end,
+  callback = function()
+    if vim.bo.modified and vim.bo.modifiable and vim.bo.buftype == "" then
+      vim.cmd("silent! write")
+    end
+  end,
 })
