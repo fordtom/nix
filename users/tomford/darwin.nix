@@ -32,6 +32,9 @@
       autoUpdate = true;
       upgrade = true;
       cleanup = "zap";
+      extraFlags = [
+        "--force-cleanup" # Needed because leaving brew autoupdate on was a mistake
+      ];
     };
   };
 
