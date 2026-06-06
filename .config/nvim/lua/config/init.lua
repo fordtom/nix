@@ -21,5 +21,6 @@ require("config.plugins")
 
 -- Load options and keymaps
 require("config.options")
+require("config.treesitter")
 require("config.terminal_colors")
 require("config.keymaps")

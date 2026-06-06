@@ -43,13 +43,26 @@ return {
       lualine_a = {
         {
           function()
-            local root = vim.fn.getcwd()
-            return vim.fn.fnamemodify(root, ":t")
+            return vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
           end,
+          padding = { left = 1, right = 0 },
           separator = { left = "" },
         },
+        {
+          "branch",
+          fmt = function(branch)
+            if branch == "" then
+              return ""
+            end
+
+            return "on  " .. branch
+          end,
+          icon = "",
+          padding = { left = 0, right = 1 },
+          separator = { right = "" },
+        },
       },
-      lualine_b = { { "branch", separator = { right = "" } } },
+      lualine_b = {},
       lualine_c = {},
       lualine_x = {},
       lualine_y = {},

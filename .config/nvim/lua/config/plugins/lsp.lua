@@ -22,6 +22,8 @@ return {
     })
 
     enable_if_executable("clangd", "clangd")
+    enable_if_executable("gopls", "gopls")
+    enable_if_executable("rust_analyzer", "rust-analyzer")
     enable_if_executable("zls", "zls")
     enable_if_executable("ty", "ty")
   end,
