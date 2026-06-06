@@ -5,7 +5,6 @@ font-size = 16
 
 #theming
 theme = Cursor Dark
-custom-shader = cursor_warp.glsl
 
 #settings
 macos-option-as-alt = true
