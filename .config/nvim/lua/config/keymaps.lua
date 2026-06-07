@@ -6,7 +6,6 @@ vim.keymap.set("n", "<C-e>", function() Snacks.picker.explorer() end, { desc = "
 
 vim.keymap.set("n", "<leader>sf", function() Snacks.picker.files() end, { desc = "Files" })
 vim.keymap.set("n", "<leader>sg", function() Snacks.picker.git_files() end, { desc = "Tracked" })
-
 vim.keymap.set("n", "<leader>if", function() Snacks.picker.grep() end, { desc = "Grep" })
 vim.keymap.set("n", "<leader>ig", function() Snacks.picker.git_grep() end, { desc = "Git grep" })
 
@@ -14,7 +13,7 @@ vim.keymap.set("n", "gd", function() Snacks.picker.lsp_definitions() end, { desc
 vim.keymap.set("n", "gD", function() Snacks.picker.lsp_declarations() end, { desc = "Goto declaration" })
 vim.keymap.set("n", "gr", function() Snacks.picker.lsp_references() end, { desc = "References", nowait = true })
 vim.keymap.set("n", "gi", function() Snacks.picker.lsp_implementations() end, { desc = "Goto implementation" })
-vim.keymap.set("n", "gy", function() Snacks.picker.lsp_type_definitions() end, { desc = "Goto type definition" })
+vim.keymap.set("n", "gt", function() Snacks.picker.lsp_type_definitions() end, { desc = "Goto type definition" })
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
@@ -39,13 +38,20 @@ vim.keymap.set("n", "<A-k>", "<C-w>k", { silent = true })
 vim.keymap.set("n", "<A-l>", "<C-w>l", { silent = true })
 vim.keymap.set("n", "<A-w>", ":close<CR>", { silent = true })
 vim.keymap.set("n", "<A-s>", ":vsplit<CR>", { silent = true })
-vim.keymap.set("n", "<A-d>", function()
-  Snacks.bufdelete()
-end, { desc = "Delete buffer" })
-
+vim.keymap.set("n", "<A-d>", function() Snacks.bufdelete() end, { desc = "Delete buffer" })
 for i = 1, 9 do
   vim.keymap.set("n", "<A-" .. i .. ">", "<cmd>LualineBuffersJump! " .. i .. "<CR>", { silent = true })
 end
 
-vim.keymap.set("n", "<leader>r", ":%s/\\<<C-r><C-w>\\>", { silent = true })
-vim.keymap.set("n", "<leader>R", ":bufdo %s/\\<<C-r><C-w>\\>", { silent = true })
+local function replace_selection()
+  local text = table.concat(vim.fn.getregion(vim.fn.getpos("v"), vim.fn.getpos(".")), "\n")
+  if text == "" then
+    return
+  end
+
+  local pattern = vim.fn.escape(text, [[\/]])
+  vim.api.nvim_feedkeys(vim.keycode("<Esc>") .. [[:%s/\V]] .. pattern, "n", false)
+end
+
+vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, { desc = "Rename symbol" })
+vim.keymap.set("x", "<leader>r", replace_selection, { desc = "Replace selection" })
