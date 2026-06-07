@@ -26,6 +26,11 @@ vim.keymap.set("n", "N", "Nzzzv")
 vim.keymap.set("n", "gb", "<C-o>zz", { silent = true })
 vim.keymap.set("n", "gf", "<C-i>zz", { silent = true })
 
+vim.keymap.set("n", "<leader>w", function()
+  vim.opt_local.wrap = not vim.wo.wrap
+  vim.opt_local.linebreak = vim.wo.wrap
+end, { desc = "Toggle wrap" })
+
 vim.keymap.set("x", "<leader>p", '"_dP')
 vim.keymap.set("n", "<leader>y", '"+y')
 vim.keymap.set("n", "<leader>Y", '"+Y')
