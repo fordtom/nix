@@ -1,15 +1,9 @@
 return {
   "folke/snacks.nvim",
-  dependencies = {
-    "echasnovski/mini.icons",
-    "nvim-tree/nvim-web-devicons",
-  },
   priority = 1000,
   lazy = false,
   opts = {
-    bigfile = { enabled = true },
     explorer = { enabled = true },
-    indent = { enabled = true },
     input = { enabled = true },
     notifier = {
       enabled = true,
@@ -28,10 +22,6 @@ return {
         },
       },
     },
-    quickfile = { enabled = true },
-    scope = { enabled = true },
-    statuscolumn = { enabled = true },
-    words = { enabled = true },
     styles = {
       notification = {
         wo = { wrap = true },

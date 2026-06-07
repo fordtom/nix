@@ -1,4 +1,5 @@
 require("lazy").setup({
+  { import = "config.plugins.icons" },
   { import = "config.plugins.snacks" },
   { import = "config.plugins.lualine" },
   { import = "config.plugins.lsp" },
