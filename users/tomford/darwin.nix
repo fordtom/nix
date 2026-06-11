@@ -30,9 +30,11 @@
     onActivation = {
       autoUpdate = true;
       upgrade = true;
-      cleanup = "zap";
+      cleanup = "none";
       extraFlags = [
-        "--force-cleanup" # Needed because leaving brew autoupdate on was a mistake
+        # TODO: Check if nix-darwin stable handles Homebrew cleanup without deprecated flags.
+        "--force-cleanup"
+        "--zap"
       ];
     };
   };
