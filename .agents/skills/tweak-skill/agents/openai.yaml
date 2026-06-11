@@ -1,0 +1,4 @@
+interface:
+  display_name: "Tweak Skill"
+  short_description: "Tune skills from usage feedback"
+  default_prompt: "Use $tweak-skill to compare the skill text, the agent's actual work, and the user's feedback. Draft concise targeted skill edits in chat first, and only write them after the user approves."

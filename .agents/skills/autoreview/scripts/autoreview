@@ -1,0 +1,376 @@
+#!/usr/bin/env python3
+from __future__ import annotations
+
+import argparse
+import json
+import os
+import subprocess
+import sys
+import tempfile
+import textwrap
+import time
+from pathlib import Path
+from typing import Any
+
+
+SCHEMA: dict[str, Any] = {
+    "type": "object",
+    "additionalProperties": False,
+    "required": ["findings", "overall_correctness", "overall_explanation", "overall_confidence"],
+    "properties": {
+        "findings": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "additionalProperties": False,
+                "required": ["title", "body", "priority", "confidence", "category", "code_location"],
+                "properties": {
+                    "title": {"type": "string", "minLength": 1, "maxLength": 140},
+                    "body": {"type": "string", "minLength": 1, "maxLength": 2000},
+                    "priority": {"type": "string", "enum": ["P0", "P1", "P2", "P3"]},
+                    "confidence": {"type": "number", "minimum": 0, "maximum": 1},
+                    "category": {
+                        "type": "string",
+                        "enum": ["bug", "security", "regression", "test_gap", "maintainability"],
+                    },
+                    "code_location": {
+                        "type": "object",
+                        "additionalProperties": False,
+                        "required": ["file_path", "line"],
+                        "properties": {
+                            "file_path": {"type": "string", "minLength": 1},
+                            "line": {"type": "integer", "minimum": 1},
+                        },
+                    },
+                },
+            },
+        },
+        "overall_correctness": {"type": "string", "enum": ["patch is correct", "patch is incorrect"]},
+        "overall_explanation": {"type": "string", "minLength": 1, "maxLength": 3000},
+        "overall_confidence": {"type": "number", "minimum": 0, "maximum": 1},
+    },
+}
+
+
+def run(args: list[str], cwd: Path, *, input_text: str | None = None, check: bool = True) -> subprocess.CompletedProcess[str]:
+    result = subprocess.run(args, cwd=cwd, input=input_text, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    if check and result.returncode != 0:
+        raise SystemExit(f"command failed ({result.returncode}): {' '.join(args)}\n{result.stderr or result.stdout}")
+    return result
+
+
+def repo_root() -> Path:
+    result = run(["git", "rev-parse", "--show-toplevel"], Path.cwd(), check=False)
+    if result.returncode != 0:
+        raise SystemExit("autoreview must run inside a git repository")
+    return Path(result.stdout.strip()).resolve()
+
+
+def git(repo: Path, *args: str, check: bool = True) -> str:
+    return run(["git", *args], repo, check=check).stdout
+
+
+def current_branch(repo: Path) -> str:
+    return git(repo, "branch", "--show-current", check=False).strip() or "detached"
+
+
+def is_dirty(repo: Path) -> bool:
+    return bool(git(repo, "status", "--porcelain").strip())
+
+
+def detect_pr_base(repo: Path) -> str | None:
+    result = run(["gh", "pr", "view", "--json", "baseRefName", "--jq", ".baseRefName"], repo, check=False)
+    base = result.stdout.strip()
+    if result.returncode == 0 and base:
+        return f"origin/{base}"
+    return None
+
+
+def choose_target(repo: Path, mode: str, base_ref: str | None) -> tuple[str, str | None]:
+    mode = "local" if mode == "uncommitted" else mode
+    branch = current_branch(repo)
+    if mode == "local" or (mode == "auto" and is_dirty(repo)):
+        return "local", None
+    if mode == "commit":
+        return "commit", None
+    if mode == "branch" or (mode == "auto" and branch != "main"):
+        return "branch", base_ref or detect_pr_base(repo) or "origin/main"
+    raise SystemExit("no review target: clean main checkout and no forced mode")
+
+
+def bounded(text: str, limit: int = 180_000) -> str:
+    if len(text) <= limit:
+        return text
+    return text[:limit] + f"\n\n[truncated at {limit} characters]\n"
+
+
+def read_text(path: Path, limit: int = 40_000) -> str:
+    try:
+        data = path.read_bytes()
+    except OSError as exc:
+        return f"[unreadable: {exc}]"
+    if b"\0" in data:
+        return "[binary file omitted]"
+    return bounded(data.decode("utf-8", errors="replace"), limit)
+
+
+def local_bundle(repo: Path) -> tuple[str, set[str]]:
+    parts = [
+        "# Git Status",
+        git(repo, "status", "--short"),
+        "# Staged Diff",
+        git(repo, "diff", "--cached", "--stat"),
+        bounded(git(repo, "diff", "--cached", "--patch", "--find-renames")),
+        "# Unstaged Diff",
+        git(repo, "diff", "--stat"),
+        bounded(git(repo, "diff", "--patch", "--find-renames")),
+    ]
+    changed = set(git(repo, "diff", "--name-only", "--cached").splitlines())
+    changed.update(git(repo, "diff", "--name-only").splitlines())
+    untracked = [line for line in git(repo, "ls-files", "--others", "--exclude-standard").splitlines() if line]
+    if untracked:
+        parts.append("# Untracked Files")
+        changed.update(untracked)
+        for rel in untracked:
+            parts.append(f"## {rel}\n{read_text(repo / rel)}")
+    return "\n\n".join(parts), {path for path in changed if path}
+
+
+def branch_bundle(repo: Path, base_ref: str) -> tuple[str, set[str]]:
+    git(repo, "fetch", "origin", "--quiet", check=False)
+    spec = f"{base_ref}...HEAD"
+    return "\n\n".join(
+        [
+            "# Branch Diff",
+            f"base: {base_ref}",
+            git(repo, "diff", "--stat", spec),
+            bounded(git(repo, "diff", "--patch", "--find-renames", spec)),
+        ]
+    ), set(git(repo, "diff", "--name-only", spec).splitlines())
+
+
+def commit_bundle(repo: Path, commit_ref: str) -> tuple[str, set[str]]:
+    return "\n\n".join(
+        [
+            "# Commit Diff",
+            f"commit: {commit_ref}",
+            git(repo, "show", "--stat", "--format=fuller", commit_ref),
+            bounded(git(repo, "show", "--patch", "--find-renames", "--format=fuller", commit_ref)),
+        ]
+    ), set(git(repo, "diff-tree", "--no-commit-id", "--name-only", "-r", commit_ref).splitlines())
+
+
+def read_extra_files(paths: list[str] | None, repo: Path) -> str:
+    if not paths:
+        return ""
+    parts = []
+    for raw in paths:
+        path = Path(raw)
+        if not path.is_absolute():
+            path = repo / path
+        parts.append(f"## {raw}\n{read_text(path)}")
+    return "\n\n".join(parts)
+
+
+def build_prompt(repo: Path, target: str, target_ref: str | None, bundle: str, extra_prompt: str, datasets: str) -> str:
+    target_line = target if target_ref is None else f"{target} ({target_ref})"
+    return textwrap.dedent(
+        f"""
+        You are doing a strict code review of the supplied change bundle.
+
+        Return exactly one JSON object and nothing else. Do not wrap it in Markdown.
+        The JSON object must match this schema exactly:
+        {json.dumps(SCHEMA, indent=2)}
+
+        Rules:
+        - Do not modify files.
+        - Do not invoke nested reviewers or review tools.
+        - You may use read-only inspection and web search for dependency contracts and current behavior.
+        - Do not run tests, formatters, package installs, generators, mutation commands, or git mutation commands.
+        - Report only actionable defects introduced or exposed by this change.
+        - Prefer high-signal bugs, regressions, concrete security issues, and real test gaps over style feedback.
+        - For each finding, use the smallest file/line location that demonstrates the issue.
+        - If there are no actionable findings, return an empty findings array and mark the patch correct.
+
+        Review target: {target_line}
+        Repository: {repo}
+
+        {extra_prompt}
+
+        {datasets}
+
+        # Change Bundle
+        {bundle}
+        """
+    ).strip()
+
+
+def toml_quote(value: str) -> str:
+    return json.dumps(value)
+
+
+def run_with_heartbeat(cmd: list[str], repo: Path, *, input_text: str, stream: bool) -> subprocess.CompletedProcess[str]:
+    if stream:
+        proc = subprocess.Popen(cmd, cwd=repo, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True)
+        assert proc.stdin is not None
+        assert proc.stdout is not None
+        proc.stdin.write(input_text)
+        proc.stdin.close()
+        output = []
+        for line in proc.stdout:
+            output.append(line)
+            print(line, end="")
+        return subprocess.CompletedProcess(cmd, proc.wait(), "".join(output), "")
+
+    started = time.monotonic()
+    next_heartbeat = 60
+    proc = subprocess.Popen(cmd, cwd=repo, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+    while True:
+        if proc.stdin is not None:
+            proc.stdin.write(input_text)
+            proc.stdin.close()
+            proc.stdin = None
+        returncode = proc.poll()
+        if returncode is not None:
+            stdout, stderr = proc.communicate()
+            return subprocess.CompletedProcess(cmd, returncode, stdout, stderr)
+        elapsed = int(time.monotonic() - started)
+        if elapsed >= next_heartbeat:
+            print(f"review still running: codex elapsed={elapsed}s pid={proc.pid}", file=sys.stderr, flush=True)
+            next_heartbeat += 60
+        time.sleep(1)
+
+
+def extract_json(text: str) -> dict[str, Any]:
+    stripped = text.strip()
+    try:
+        parsed = json.loads(stripped)
+    except json.JSONDecodeError:
+        start = stripped.find("{")
+        end = stripped.rfind("}")
+        if start < 0 or end < start:
+            raise SystemExit(f"Codex did not return JSON:\n{stripped}")
+        parsed = json.loads(stripped[start : end + 1])
+    if not isinstance(parsed, dict):
+        raise SystemExit("Codex returned JSON, but not an object")
+    return parsed
+
+
+def validate_report(report: dict[str, Any], changed_paths: set[str]) -> None:
+    for key in SCHEMA["required"]:
+        if key not in report:
+            raise SystemExit(f"review JSON missing required key: {key}")
+    findings = report["findings"]
+    if not isinstance(findings, list):
+        raise SystemExit("review JSON findings must be an array")
+    for finding in findings:
+        location = finding.get("code_location", {})
+        file_path = location.get("file_path")
+        line = location.get("line")
+        if not isinstance(file_path, str) or not isinstance(line, int):
+            raise SystemExit(f"invalid finding location: {finding}")
+        if changed_paths and file_path not in changed_paths:
+            print(f"warning: finding points outside changed paths: {file_path}", file=sys.stderr)
+
+
+def print_report(report: dict[str, Any]) -> None:
+    findings = report.get("findings", [])
+    if not findings:
+        print("autoreview clean: no accepted/actionable findings reported")
+        print(report.get("overall_explanation", ""))
+        return
+    print(json.dumps(report, indent=2))
+
+
+def run_tests(command: str, repo: Path, shell: str | None) -> subprocess.CompletedProcess[str]:
+    executable = shell or os.environ.get("SHELL") or "/bin/sh"
+    return subprocess.run(command, cwd=repo, shell=True, executable=executable, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description="Run a Codex-only structured code review.")
+    parser.add_argument("--mode", choices=["auto", "local", "uncommitted", "branch", "commit"], default="auto")
+    parser.add_argument("--base")
+    parser.add_argument("--commit", default="HEAD")
+    parser.add_argument("--model", default=os.environ.get("AUTOREVIEW_MODEL", "gpt-5.5"))
+    parser.add_argument("--thinking", default=os.environ.get("AUTOREVIEW_THINKING", "high"))
+    parser.add_argument("--codex-bin", default=os.environ.get("CODEX_BIN", "codex"))
+    parser.add_argument("--no-web-search", dest="web_search", action="store_false", default=True)
+    parser.add_argument("--stream-engine-output", action="store_true")
+    parser.add_argument("--prompt", action="append")
+    parser.add_argument("--prompt-file", action="append")
+    parser.add_argument("--dataset", action="append")
+    parser.add_argument("--output")
+    parser.add_argument("--json-output")
+    parser.add_argument("--parallel-tests")
+    parser.add_argument("--parallel-tests-shell")
+    parser.add_argument("--dry-run", action="store_true")
+    args = parser.parse_args()
+
+    repo = repo_root()
+    target, target_ref = choose_target(repo, args.mode, args.base)
+    if target == "local":
+        bundle, changed_paths = local_bundle(repo)
+    elif target == "branch":
+        assert target_ref is not None
+        bundle, changed_paths = branch_bundle(repo, target_ref)
+    else:
+        bundle, changed_paths = commit_bundle(repo, args.commit)
+
+    extra_prompt = "\n\n".join(args.prompt or [])
+    if args.prompt_file:
+        extra_prompt = "\n\n".join(part for part in [extra_prompt, read_extra_files(args.prompt_file, repo)] if part)
+    datasets = read_extra_files(args.dataset, repo)
+    prompt = build_prompt(repo, target, target_ref or args.commit if target == "commit" else target_ref, bundle, extra_prompt, datasets)
+
+    cmd = [args.codex_bin, "--ask-for-approval", "never"]
+    if args.web_search:
+        cmd.append("--search")
+    if args.model:
+        cmd.extend(["--model", args.model])
+    if args.thinking:
+        cmd.extend(["-c", f'model_reasoning_effort="{args.thinking}"'])
+    cmd.extend(["-c", "project_doc_max_bytes=0"])
+    cmd.extend(["-c", f"projects.{toml_quote(str(repo))}.trust_level=\"untrusted\""])
+    cmd.extend(["exec", "--ignore-user-config", "--ignore-rules", "--ephemeral", "--sandbox", "read-only", "-"])
+
+    if args.dry_run:
+        print(" ".join(cmd))
+        print(prompt)
+        return 0
+
+    test_result = None
+    if args.parallel_tests:
+        import concurrent.futures
+
+        with concurrent.futures.ThreadPoolExecutor(max_workers=2) as pool:
+            review_future = pool.submit(run_with_heartbeat, cmd, repo, input_text=prompt, stream=args.stream_engine_output)
+            test_future = pool.submit(run_tests, args.parallel_tests, repo, args.parallel_tests_shell)
+            review_result = review_future.result()
+            test_result = test_future.result()
+    else:
+        review_result = run_with_heartbeat(cmd, repo, input_text=prompt, stream=args.stream_engine_output)
+
+    if test_result is not None and test_result.returncode != 0:
+        print(test_result.stdout)
+        print(test_result.stderr, file=sys.stderr)
+        raise SystemExit(f"parallel test command failed ({test_result.returncode}): {args.parallel_tests}")
+
+    if review_result.returncode != 0:
+        raise SystemExit(f"codex review failed ({review_result.returncode})\n{review_result.stderr or review_result.stdout}")
+
+    report = extract_json(review_result.stdout)
+    validate_report(report, changed_paths)
+    if args.json_output:
+        Path(args.json_output).write_text(json.dumps(report, indent=2) + "\n")
+    if args.output:
+        Path(args.output).write_text(json.dumps(report, indent=2) + "\n")
+    print_report(report)
+    return 1 if report.get("findings") else 0
+
+
+if __name__ == "__main__":
+    try:
+        raise SystemExit(main())
+    except KeyboardInterrupt:
+        raise SystemExit(130)
