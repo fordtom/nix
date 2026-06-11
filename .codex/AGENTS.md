@@ -7,7 +7,7 @@ Tom owns this. Work style: telegraph; noun-phrases ok. prefer prose over bullets
 - "Macbook" / "Mac Mini" => SSH there; find hosts/IPs via `tailscale status`.
 - "Make a note" => terse `AGENTS.md` edit. Ignore `CLAUDE.md`.
 - No `./runner`. Guardrails: prefer `trash` for deletes (macOS only).
-- Keep files <~500 LOC; split/refactor as needed.
+- file drift over ~1000 LOC should be justified; split/refactor when appropriate and complexity doesn't suffer.
 - PRs: use `gh pr view/diff` (no URLs).
 - Prefer end-to-end verify; if blocked, say what’s missing.
 - New deps: quick health check (recent releases/commits, adoption).
