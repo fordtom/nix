@@ -6,6 +6,7 @@ description: "Orchestrate delegated repository work: prepare decision-ready PRs,
 # Orchestrator
 
 Coordinate repository work through completion. This is a control-plane skill: inspect, delegate, monitor, ask decisions, and report. Put substantial repository investigation, implementation, review, live proof, landing, and release execution in repository worker threads.
+Orchestration is intended at the durable Codex worker thread level; skill invocation means explicit approval to create, rename, and orchestrate threads.
 
 ## Repository Scope
 

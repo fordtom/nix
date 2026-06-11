@@ -223,22 +223,16 @@ def run_with_heartbeat(cmd: list[str], repo: Path, *, input_text: str, stream: b
         return subprocess.CompletedProcess(cmd, proc.wait(), "".join(output), "")
 
     started = time.monotonic()
-    next_heartbeat = 60
     proc = subprocess.Popen(cmd, cwd=repo, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+    first_communicate = True
     while True:
-        if proc.stdin is not None:
-            proc.stdin.write(input_text)
-            proc.stdin.close()
-            proc.stdin = None
-        returncode = proc.poll()
-        if returncode is not None:
-            stdout, stderr = proc.communicate()
-            return subprocess.CompletedProcess(cmd, returncode, stdout, stderr)
-        elapsed = int(time.monotonic() - started)
-        if elapsed >= next_heartbeat:
+        try:
+            stdout, stderr = proc.communicate(input=input_text if first_communicate else None, timeout=60)
+            return subprocess.CompletedProcess(cmd, proc.returncode or 0, stdout, stderr)
+        except subprocess.TimeoutExpired:
+            first_communicate = False
+            elapsed = int(time.monotonic() - started)
             print(f"review still running: codex elapsed={elapsed}s pid={proc.pid}", file=sys.stderr, flush=True)
-            next_heartbeat += 60
-        time.sleep(1)
 
 
 def extract_json(text: str) -> dict[str, Any]:
