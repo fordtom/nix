@@ -45,6 +45,7 @@ in {
       grepoPkg
       pkgs.gopls
       pkgs.nodejs_24
+      pkgs.pnpm
       pkgs.neovim
       pkgs.ripgrep
       pkgs.stow
