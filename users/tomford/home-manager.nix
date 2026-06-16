@@ -68,6 +68,7 @@ in {
     [
       "$HOME/.bun/bin"
       "$HOME/.local/bin"
+      "$HOME/.local/share/pnpm/bin"
     ]
     ++ (lib.optionals isDarwin [
       "/opt/homebrew/bin"
@@ -166,9 +167,6 @@ in {
         blockExoticSubdeps = true;
         exact = true;
         minimumReleaseAge = 604800;
-        minimumReleaseAgeExcludes = [
-          "@openai/codex"
-        ];
       };
     };
   };

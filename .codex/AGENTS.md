@@ -11,7 +11,7 @@ Tom owns this. Work style: telegraph; noun-phrases ok. prefer prose over bullets
 - PRs: use `gh pr view/diff` (no URLs).
 - Prefer end-to-end verify; if blocked, say what’s missing.
 - New deps: quick health check (recent releases/commits, adoption).
-- Use repo’s package manager/runtime; no swaps w/o approval.
+- Always check/use repo’s package manager/runtime; no swaps w/o approval.
 - Use tmux for interactive/persistent (debugger/server).
 - Before handoff: run full gate (lint/typecheck/tests/docs).
 - Keep it observable (logs, panes, tails, MCP/browser tools).
@@ -33,7 +33,7 @@ Tom owns this. Work style: telegraph; noun-phrases ok. prefer prose over bullets
 - `nix` is often used for toolchains => `nix develop -c` to run commands.
 - `gh` cli for PRs/CI/Releases. Given issue/PR URL: use gh not web search.
 - `uv` for all Python - `uv run`, `uv venv`, `uv format`.
-- `bun` for global npm packages.
+- `pnpm` for global npm packages.
 - `tmux` only for persistent/interactive sessions (debugger/server).
 - `op` holds all personal credentials; use `op run` (could hang for human authentication)
 - `grepo` for managing external context within a repo; use `grepo skill` for usage.

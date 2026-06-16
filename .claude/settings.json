@@ -26,5 +26,6 @@
   "promptSuggestionEnabled": false,
   "skipDangerousModePermissionPrompt": true,
   "remoteControlAtStartup": true,
-  "agentPushNotifEnabled": true
+  "agentPushNotifEnabled": true,
+  "skipWorkflowUsageWarning": true
 }
