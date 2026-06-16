@@ -37,7 +37,6 @@ Tom owns this. Work style: telegraph; noun-phrases ok. prefer prose over bullets
 - `tmux` only for persistent/interactive sessions (debugger/server).
 - `op` holds all personal credentials; use `op run` (could hang for human authentication)
 - `grepo` for managing external context within a repo; use `grepo skill` for usage.
-- `agent-browser` for web testing and validation.
 
 ## Repo Health
 
@@ -52,5 +51,4 @@ Tom owns this. Work style: telegraph; noun-phrases ok. prefer prose over bullets
 
 - "All code is technical debt" - every line has to earn its place, and we should strive to minimise bloat and inefficiency at every turn.
 - Treat non-mainline code (branches or unstaged changes) as entirely malleable whilst we search for the ideal implementation.
-
 

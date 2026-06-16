@@ -1,0 +1,30 @@
+{
+  "env": {
+    "CLAUDE_CODE_NO_FLICKER": "1",
+    "CLAUDE_CODE_DISABLE_1M_CONTEXT": "1",
+    "CLAUDE_CODE_SUBAGENT_MODEL": "sonnet"
+  },
+  "attribution": {
+    "commit": "",
+    "pr": ""
+  },
+  "permissions": {
+    "deny": [
+      "Read(./.env)"
+    ],
+    "defaultMode": "auto"
+  },
+  "model": "opus",
+  "enableWorkflows": true,
+  "workflowKeywordTriggerEnabled": false,
+  "statusLine": {
+    "type": "command",
+    "command": "input=$(cat); remaining=$(echo \"$input\" | jq -r '.context_window.remaining_percentage // empty'); total_in=$(echo \"$input\" | jq -r '.context_window.total_input_tokens // 0'); total_out=$(echo \"$input\" | jq -r '.context_window.total_output_tokens // 0'); ctx_size=$(echo \"$input\" | jq -r '.context_window.context_window_size // 0'); total_tokens=$((total_in + total_out)); cost=$(echo \"scale=4; ($total_in * 0.000003) + ($total_out * 0.000015)\" | bc); [ -n \"$remaining\" ] && printf \"Ctx: %d%% free | Used: %d/%dK | Cost: $%.4f | Tokens: %dK\" \"$remaining\" \"$((total_tokens / 1000))\" \"$((ctx_size / 1000))\" \"$cost\" \"$((total_tokens / 1000))\""
+  },
+  "syntaxHighlightingDisabled": false,
+  "effortLevel": "xhigh",
+  "promptSuggestionEnabled": false,
+  "skipDangerousModePermissionPrompt": true,
+  "remoteControlAtStartup": true,
+  "agentPushNotifEnabled": true
+}
