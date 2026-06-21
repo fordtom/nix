@@ -7,6 +7,7 @@
     enable = true;
 
     brews = [
+      "herdr"
       "mole"
     ];
 

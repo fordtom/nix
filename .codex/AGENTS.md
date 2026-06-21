@@ -15,6 +15,7 @@ Tom owns this. Work style: telegraph; noun-phrases ok. prefer prose over bullets
 - Use tmux for interactive/persistent (debugger/server).
 - Before handoff: run full gate (lint/typecheck/tests/docs).
 - Keep it observable (logs, panes, tails, MCP/browser tools).
+- Always respect minimum release age rules on package managers.
 
 ## Git
 
