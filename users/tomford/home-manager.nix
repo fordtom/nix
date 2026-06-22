@@ -100,7 +100,7 @@ in {
     lfs.enable = true;
     signing = {
       signByDefault = true;
-      key = "~/.ssh/id_ed25519.pub";
+      key = "~/.ssh/id_ed25519_github_signing.pub";
     };
     settings = {
       alias = {
