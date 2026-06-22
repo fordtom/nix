@@ -28,7 +28,7 @@ Tom owns this. Work style: telegraph; noun-phrases ok. prefer prose over bullets
 - If user types a command (“pull and push”), that’s consent for that command.
 - No amend unless asked.
 - Merges/PR close: prefer squash.
-- Prefer clone via ssh.
+- Prefer repo clone via ssh.
 
 ## Tools
 
