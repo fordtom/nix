@@ -1,42 +1,42 @@
 {
-  "agentPushNotifEnabled": true,
+  "env": {
+    "CLAUDE_CODE_NO_FLICKER": "1"
+  },
   "attribution": {
     "commit": "",
     "pr": ""
   },
-  "effortLevel": "xhigh",
-  "enableWorkflows": true,
-  "enabledPlugins": {
-    "cloudflare@claude-plugins-official": true
-  },
-  "env": {
-    "CLAUDE_CODE_NO_FLICKER": "1"
-  },
-  "hooks": {
-    "SessionStart": [
-      {
-        "hooks": [
-          {
-            "command": "bash '/Users/tomford/.claude/hooks/herdr-agent-state.sh' session",
-            "timeout": 10,
-            "type": "command"
-          }
-        ],
-        "matcher": "*"
-      }
-    ]
-  },
-  "model": "opus",
   "permissions": {
     "defaultMode": "auto"
   },
+  "model": "opus",
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash '/Users/tomford/.claude/hooks/herdr-agent-state.sh' session",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  },
+  "enableWorkflows": true,
+  "workflowKeywordTriggerEnabled": false,
+  "statusLine": {
+    "type": "command",
+    "command": "bash /Users/tomford/.claude/statusline-command.sh"
+  },
+  "enabledPlugins": {
+    "cloudflare@claude-plugins-official": true
+  },
+  "syntaxHighlightingDisabled": false,
+  "effortLevel": "xhigh",
   "promptSuggestionEnabled": false,
   "skipDangerousModePermissionPrompt": true,
   "skipWorkflowUsageWarning": true,
-  "statusLine": {
-    "command": "bash /Users/tomford/.claude/statusline-command.sh",
-    "type": "command"
-  },
-  "syntaxHighlightingDisabled": false,
-  "workflowKeywordTriggerEnabled": false
+  "agentPushNotifEnabled": true
 }

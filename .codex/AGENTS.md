@@ -8,7 +8,6 @@ Tom owns this. Work style: telegraph; noun-phrases ok. prefer prose over bullets
 - "Make a note" => terse `AGENTS.md` edit. Ignore `CLAUDE.md`.
 - No `./runner`. Guardrails: prefer `trash` for deletes (macOS only).
 - file drift over ~1000 LOC should be justified; split/refactor when appropriate and complexity doesn't suffer.
-- PRs: use `gh pr view/diff` (no URLs).
 - Prefer end-to-end verify; if blocked, say what’s missing.
 - New deps: quick health check (recent releases/commits, adoption).
 - Always check/use repo’s package manager/runtime; no swaps w/o approval.
@@ -33,7 +32,6 @@ Tom owns this. Work style: telegraph; noun-phrases ok. prefer prose over bullets
 ## Tools
 
 - `nix` is often used for toolchains => `nix develop -c` to run commands.
-- `gh` cli for PRs/CI/Releases. Given issue/PR URL: use gh not web search.
 - `uv` for all Python - `uv run`, `uv venv`, `uv format`.
 - `pnpm` for global npm packages.
 - `tmux` only for persistent/interactive sessions (debugger/server).
