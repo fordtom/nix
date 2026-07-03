@@ -9,6 +9,7 @@
     brews = [
       "herdr"
       "mole"
+      "vite-plus"
     ];
 
     casks = [
