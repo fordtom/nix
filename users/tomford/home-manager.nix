@@ -78,6 +78,7 @@ in {
   home.sessionPath =
     [
       "$HOME/.bun/bin"
+      "$HOME/.cargo/bin"
       "$HOME/.local/bin"
       "$HOME/.local/share/pnpm/bin"
     ]

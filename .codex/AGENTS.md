@@ -18,13 +18,12 @@ Tom owns this. Work style: telegraph; noun-phrases ok. prefer prose over bullets
 
 ## Git
 
-- Safe by default: `git status/diff/log`. Push only when user asks.
+- Safe by default: `git status/diff/log`.
 - `git checkout` ok for PR review / explicit request.
 - Destructive ops forbidden unless explicit (`reset --hard`, `clean`, `restore`, `rm`, ...).
 - Commit messages: Conventional (feat|fix|refactor|build|ci|chore|docs|style|perf|test).
 - No repo-wide S/R scripts; keep edits small/reviewable.
 - Avoid manual `git stash`; if Git auto-stashes during pull/rebase, that’s fine (hint, not hard guardrail).
-- If user types a command (“pull and push”), that’s consent for that command.
 - No amend unless asked.
 - Merges/PR close: prefer squash.
 - Prefer repo clone via ssh.
