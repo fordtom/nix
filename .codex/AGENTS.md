@@ -40,6 +40,27 @@ Tom owns this. Work style: telegraph; noun-phrases ok. prefer prose over bullets
 - `op` holds all personal credentials; use `op run` (could hang for human authentication)
 - `grepo` for managing external context within a repo; use `grepo skill` for usage (deprecated in `ds` managed repos, use `ds context` for same functionality).
 
+## Orchestration
+
+Consider the following table:
+
+| model    | cost | intelligence | taste |
+|----------|------|--------------|-------|
+| gpt-5.5  | 9    | 8            | 5     |
+| sonnet-5 | 5    | 5            | 7     |
+| opus-4.8 | 4    | 7            | 8     |
+| fable-5  | 2    | 9            | 9     |
+
+- Rankings, higher = better. Cost reflects how much I actually pay for subscriptions.
+- Intelligence covers how hard a problem the model can solve unsupervised; taste covers UI/UX, code quality, API design and copy.
+- These are defaults/suggestions, not hard limits - that being said I would only ever use one of these 4 models.
+- Judge the output not the price tag; rerun with smarter models if the quality bar isn't met.
+- Cost is a tie-breaker only; pick from intelligence/taste depending on the task.
+- Bulk/mechanical work -> gpt-5.5.
+- User-facing (UI, copy) needs taste >= 7.
+- Mechanics: `codex exec` and `codex review` via CLI if you are Claude. `claude -p` via CLI if you 'are' Codex.
+- Prefer your built in harness subagent tools for models from your own family (e.g. Fable calling Opus).
+
 ## Repo Health
 
 - Delete dead files; do not leave stub modules.
