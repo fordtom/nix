@@ -20,7 +20,7 @@ Tom owns this. Work style: telegraph; noun-phrases ok. prefer prose over bullets
 
 - Three surfaces in the wild: git (most repos), jj (`.jj/`, jj CLI works), devspace (`.jj/` but ran through `ds`).
 - jj/ds checkouts behave like jj but through different CLIs; same commit-message conventions. remember to name changes.
-- ds checkouts throw errors with the jj CLI. If you find one: always read the devspace skill, and work in the change/workspace you've been given.
+- ds checkouts throw errors with the jj CLI. If you find one: run `ds skill` to get started, and work in the change/workspace you've been given.
 - Safe by default: `status/diff/log`.
 - `checkout` ok for PR review / explicit request.
 - Destructive ops forbidden unless explicit (`reset --hard`, `clean`, `restore`, `rm`, ...).
