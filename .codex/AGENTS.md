@@ -16,14 +16,17 @@ Tom owns this. Work style: telegraph; noun-phrases ok. prefer prose over bullets
 - Keep it observable (logs, panes, tails, MCP/browser tools).
 - Always respect minimum release age rules on package managers.
 
-## Git
+## VCS
 
-- Safe by default: `git status/diff/log`.
-- `git checkout` ok for PR review / explicit request.
+- Three surfaces in the wild: git (most repos), jj (`.jj/`, jj CLI works), devspace (`.jj/` but ran through `ds`).
+- jj/ds checkouts behave like jj but through different CLIs; same commit-message conventions. remember to name changes.
+- ds checkouts throw errors with the jj CLI. If you find one: always read the devspace skill, and work in the change/workspace you've been given.
+- Safe by default: `status/diff/log`.
+- `checkout` ok for PR review / explicit request.
 - Destructive ops forbidden unless explicit (`reset --hard`, `clean`, `restore`, `rm`, ...).
 - Commit messages: Conventional (feat|fix|refactor|build|ci|chore|docs|style|perf|test).
 - No repo-wide S/R scripts; keep edits small/reviewable.
-- Avoid manual `git stash`; if Git auto-stashes during pull/rebase, that’s fine (hint, not hard guardrail).
+- Avoid manual `stash`; if Git auto-stashes during pull/rebase, that’s fine (hint, not hard guardrail).
 - No amend unless asked.
 - Merges/PR close: prefer squash.
 - Prefer repo clone via ssh.
@@ -35,7 +38,7 @@ Tom owns this. Work style: telegraph; noun-phrases ok. prefer prose over bullets
 - `pnpm` for global npm packages.
 - `tmux` only for persistent/interactive sessions (debugger/server).
 - `op` holds all personal credentials; use `op run` (could hang for human authentication)
-- `grepo` for managing external context within a repo; use `grepo skill` for usage.
+- `grepo` for managing external context within a repo; use `grepo skill` for usage (deprecated in `ds` managed repos, use `ds context` for same functionality).
 
 ## Repo Health
 
