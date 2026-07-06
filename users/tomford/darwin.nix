@@ -32,13 +32,8 @@
 
     onActivation = {
       autoUpdate = true;
-      upgrade = true;
-      cleanup = "none";
-      extraFlags = [
-        # TODO: Check if nix-darwin stable handles Homebrew cleanup without deprecated flags.
-        "--force-cleanup"
-        "--zap"
-      ];
+      upgrade = false;
+      cleanup = "zap";
     };
   };
 

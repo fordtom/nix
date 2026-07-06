@@ -5,28 +5,25 @@ Tom owns this. Work style: telegraph; noun-phrases ok. prefer prose over bullets
 ## Agent Protocol
 
 - "Macbook" / "Mac Mini" => SSH there; find hosts/IPs via `tailscale status`.
-- "Make a note" => terse `AGENTS.md` edit. Ignore `CLAUDE.md`.
+- "Make a note" => terse `AGENTS.md`/`CLAUDE.md` edit (typically symlinked or @ referenced; prefer AGENTS as canonical).
 - No `./runner`. Guardrails: prefer `trash` for deletes (macOS only).
 - file drift over ~1000 LOC should be justified; split/refactor when appropriate and complexity doesn't suffer.
-- Prefer end-to-end verify; if blocked, say what’s missing.
 - New deps: quick health check (recent releases/commits, adoption).
 - Always check/use repo’s package manager/runtime; no swaps w/o approval.
 - Use tmux for interactive/persistent (debugger/server).
 - Before handoff: run full gate (lint/typecheck/tests/docs).
-- Keep it observable (logs, panes, tails, MCP/browser tools).
 - Always respect minimum release age rules on package managers.
 
 ## VCS
 
 - Three surfaces in the wild: git (most repos), jj (`.jj/`, jj CLI works), devspace (`.jj/` but ran through `ds`).
 - jj/ds checkouts behave like jj but through different CLIs; same commit-message conventions. remember to name changes.
-- ds checkouts throw errors with the jj CLI. If you find one: run `ds skill` to get started, and work in the change/workspace you've been given.
+- ds checkouts throw errors with the jj CLI. If you find one: run `ds skill` to get started.
 - Safe by default: `status/diff/log`.
 - `checkout` ok for PR review / explicit request.
 - Destructive ops forbidden unless explicit (`reset --hard`, `clean`, `restore`, `rm`, ...).
 - Commit messages: Conventional (feat|fix|refactor|build|ci|chore|docs|style|perf|test).
 - No repo-wide S/R scripts; keep edits small/reviewable.
-- Avoid manual `stash`; if Git auto-stashes during pull/rebase, that’s fine (hint, not hard guardrail).
 - No amend unless asked.
 - Merges/PR close: prefer squash.
 - Prefer repo clone via ssh.
@@ -34,7 +31,8 @@ Tom owns this. Work style: telegraph; noun-phrases ok. prefer prose over bullets
 ## Tools
 
 - `nix` is often used for toolchains => `nix develop -c` to run commands.
-- `uv` for all Python - `uv run`, `uv venv`, `uv format`.
+- `gh` cli for PRs/CI/Releases. Given issue/PR URL: use gh not web search.
+- `uv` for all Python => `uv run`, `uv venv`, `uv format`.
 - `pnpm` for global npm packages.
 - `tmux` only for persistent/interactive sessions (debugger/server).
 - `op` holds all personal credentials; use `op run` (could hang for human authentication)
@@ -60,6 +58,7 @@ Consider the following table:
 - User-facing (UI, copy) needs taste >= 7.
 - Mechanics: `codex exec` and `codex review` via CLI if you are Claude. `claude -p` via CLI if you 'are' Codex.
 - Prefer your built in harness subagent tools for models from your own family (e.g. Fable calling Opus).
+- Don't touch sandbox/permissions defaults unless you explicitly want read-only.
 
 ## Repo Health
 
