@@ -34,6 +34,7 @@ Tom owns this. Work style: telegraph; noun-phrases ok. prefer prose over bullets
 - `gh` cli for PRs/CI/Releases. Given issue/PR URL: use gh not web search.
 - `uv` for all Python => `uv run`, `uv venv`, `uv format`.
 - `pnpm` for global npm packages.
+- `fish` is my default login shell on most machines.
 - `tmux` only for persistent/interactive sessions (debugger/server).
 - `op` holds all personal credentials; use `op run` (could hang for human authentication)
 - `grepo` for managing external context within a repo; use `grepo skill` for usage (deprecated in `ds` managed repos, use `ds context` for same functionality).

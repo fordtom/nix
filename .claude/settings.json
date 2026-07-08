@@ -35,7 +35,7 @@
     "cloudflare@claude-plugins-official": true
   },
   "syntaxHighlightingDisabled": false,
-  "effortLevel": "xhigh",
+  "effortLevel": "high",
   "promptSuggestionEnabled": false,
   "skipDangerousModePermissionPrompt": true,
   "skipWorkflowUsageWarning": true,
