@@ -12,7 +12,7 @@ Keep durable documentation focused on present truth. Keep task lists focused on 
 
 ## Classify The File First
 
-- Treat `todo.md`, `dev/todos.md`, checklists, and backlog markdown as open-work trackers. Keep only still-open items.
+- Treat `todo.md`, checklists, and backlog markdown as open-work trackers. Keep only still-open items.
 - Treat `README.md`, `AGENTS.md`, `docs/*.md`, onboarding notes, and similar docs as current-state references. Document only how the repo works now.
 - Treat code comments the same way as durable docs. Explain current behavior, current constraints, or still-open follow-up work.
 - Treat scratch notes, implementation-only specs, migration notes, or one-off hardening docs as temporary unless the repo still actively needs them. Delete them once durable docs absorb the surviving guidance.
@@ -28,33 +28,8 @@ Keep durable documentation focused on present truth. Keep task lists focused on 
 - Keep examples synced to the canonical artifact that actually drives behavior: code, schema, config, or real command output. Do not hand-maintain example shapes when an authoritative source exists.
 - When behavior changes, update all durable surfaces in the same pass: user-facing docs, AGENTS guidance, comments, examples, and trackers that still mention future work.
 
-## Rewrite Toward Present State
-
-- Replace transition phrasing with final-state phrasing.
-- Replace migration narratives with steady-state instructions.
-- Replace "old and new" comparisons with the single surviving contract.
-- Replace completed checklist entries by deleting them.
-- Replace temporary implementation notes with durable doc updates, then remove the temporary file.
-
 ## Use Canonical Sources
 
 - Read the code/config/example file that actually defines the contract before editing prose.
 - If a README example is derived from a canonical config or command, regenerate it from the canonical source instead of paraphrasing from memory.
 - Refresh authoritative docs first when a later task depends on them, such as parity review or gap analysis. Do not analyze against stale docs.
-
-## Review Checklist
-
-- Ask: is this file supposed to track unfinished work, or describe current behavior?
-- Remove finished, stale, duplicated, or superseded text.
-- Scan for historical phrasing and rewrite it into present-state language.
-- Scan examples, commands, field names, and filenames against the real source of truth.
-- If multiple docs describe the same contract, collapse to one authoritative location where feasible.
-- If a temporary note is still needed, make its scope explicit and keep it out of durable docs.
-
-## Boundaries
-
-- Keep TODO comments only for still-open work. If the work is done, delete the comment.
-- Do not preserve obsolete detail "for context." If future readers need that history, they can inspect git.
-- Do not add status prose like "this PR changes..." to durable docs. Put that in the PR description, commit message, or thread instead.
-- If the user explicitly wants a historical note or migration record, follow that request; otherwise default to current-state-only docs.
-

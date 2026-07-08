@@ -1,6 +1,6 @@
 ---
 name: personal-config
-description: Context for editing Tom's personal global config repo. Use when the user mentions changing or modifying personal/global config, dotfiles, Codex config, agent skills, Neovim config, Home Manager, nix-darwin, GNU Stow setup, or files that live under ~/.codex, ~/.config, or ~/config outside a project-specific repo.
+description: Context for editing Tom's personal global config repo. Use when the user mentions changing or modifying personal/global config, dotfiles, Codex/Claude config, agent skills, Neovim config, Home Manager, nix-darwin, GNU Stow setup, or files that live under ~/.codex, ~/.claude, ~/.config, or ~/config outside a project-specific repo.
 ---
 
 # Personal Config

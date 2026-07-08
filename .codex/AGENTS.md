@@ -1,16 +1,12 @@
-# AGENTS.MD
-
-Tom owns this. Work style: telegraph; noun-phrases ok. prefer prose over bullets.
+# Tom's AGENTS.md
 
 ## Agent Protocol
 
 - "Macbook" / "Mac Mini" => SSH there; find hosts/IPs via `tailscale status`.
 - "Make a note" => terse `AGENTS.md`/`CLAUDE.md` edit (typically symlinked or @ referenced; prefer AGENTS as canonical).
-- No `./runner`. Guardrails: prefer `trash` for deletes (macOS only).
 - file drift over ~1000 LOC should be justified; split/refactor when appropriate and complexity doesn't suffer.
 - New deps: quick health check (recent releases/commits, adoption).
 - Always check/use repo’s package manager/runtime; no swaps w/o approval.
-- Use tmux for interactive/persistent (debugger/server).
 - Before handoff: run full gate (lint/typecheck/tests/docs).
 - Always respect minimum release age rules on package managers.
 
@@ -23,7 +19,6 @@ Tom owns this. Work style: telegraph; noun-phrases ok. prefer prose over bullets
 - `checkout` ok for PR review / explicit request.
 - Destructive ops forbidden unless explicit (`reset --hard`, `clean`, `restore`, `rm`, ...).
 - Commit messages: Conventional (feat|fix|refactor|build|ci|chore|docs|style|perf|test).
-- No repo-wide S/R scripts; keep edits small/reviewable.
 - No amend unless asked.
 - Merges/PR close: prefer squash.
 - Prefer repo clone via ssh.
@@ -31,11 +26,11 @@ Tom owns this. Work style: telegraph; noun-phrases ok. prefer prose over bullets
 ## Tools
 
 - `nix` is often used for toolchains => `nix develop -c` to run commands.
-- `gh` cli for PRs/CI/Releases. Given issue/PR URL: use gh not web search.
 - `uv` for all Python => `uv run`, `uv venv`, `uv format`.
 - `pnpm` for global npm packages.
 - `fish` is my default login shell on most machines.
-- `tmux` only for persistent/interactive sessions (debugger/server).
+- `tmux` for persistent/interactive sessions (debugger/server).
+- `trash` for deletes (macOS only).
 - `op` holds all personal credentials; use `op run` (could hang for human authentication)
 - `grepo` for managing external context within a repo; use `grepo skill` for usage (deprecated in `ds` managed repos, use `ds context` for same functionality).
 
@@ -57,7 +52,7 @@ Consider the following table:
 - Cost is a tie-breaker only; pick from intelligence/taste depending on the task.
 - Bulk/mechanical work -> gpt-5.5.
 - User-facing (UI, copy) needs taste >= 7.
-- Mechanics: `codex exec` and `codex review` via CLI if you are Claude. `claude -p` via CLI if you 'are' Codex.
+- Mechanics: `codex exec` and `codex review` via CLI if you are Claude. `claude -p` via CLI if you are Codex.
 - Prefer your built in harness subagent tools for models from your own family (e.g. Fable calling Opus).
 - Don't touch sandbox/permissions defaults unless you explicitly want read-only.
 
