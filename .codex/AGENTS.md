@@ -26,6 +26,7 @@
 ## Tools
 
 - `nix` is often used for toolchains => `nix develop -c` to run commands.
+- `gh` cli for GitHub interaction, reading issues, opening/closing PRs etc. `@GitHub` plugin (Codex) if gh auth is missing.
 - `uv` for all Python => `uv run`, `uv venv`, `uv format`.
 - `pnpm` for global npm packages.
 - `fish` is my default login shell on most machines.
