@@ -1,4 +1,0 @@
-interface:
-  display_name: "Auto Review"
-  short_description: "Fresh read-only Codex subagent closeout review"
-  default_prompt: "Use $autoreview as a final fresh-context Codex subagent review. The caller chooses the target, spawns one read-only reviewer, verifies every finding against the real code before changing anything, reruns focused tests after fixes, and reruns autoreview until GO or until a remaining NOGO finding is explicitly rejected with rationale."
