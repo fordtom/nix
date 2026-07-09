@@ -7,7 +7,6 @@
     enable = true;
 
     brews = [
-      "herdr"
       "mole"
       "vite-plus"
     ];
@@ -18,7 +17,6 @@
       "betterdisplay"
       "chatgpt"
       "codex-app"
-      "cursor"
       "ghostty"
       "helium-browser"
       "kitlangton-hex"
