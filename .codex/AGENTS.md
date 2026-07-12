@@ -2,7 +2,7 @@
 
 ## Agent Protocol
 
-- "Macbook" / "Mac Mini" => SSH there; find hosts/IPs via `tailscale status`.
+- "Macbook" / "Mac Mini" / "Pi" => SSH there; find hosts/IPs via `tailscale status`.
 - "Make a note" => terse `AGENTS.md`/`CLAUDE.md` edit (typically symlinked or @ referenced; prefer AGENTS as canonical).
 - file drift over ~1000 LOC should be justified; split/refactor when appropriate and complexity doesn't suffer.
 - New deps: quick health check (recent releases/commits, adoption).
@@ -39,23 +39,25 @@
 
 Consider the following table:
 
-| model        | cost | intelligence | taste |
-|--------------|------|--------------|-------|
-| gpt-5.6-sol  | 9    | 9            | 6     |
-| opus-4.8     | 4    | 7            | 8     |
-| fable-5      | 2    | 9            | 9     |
-| grok-4.5     | 8    | 6            | 7     |
+| model         | cost | intelligence | taste |
+|---------------|------|--------------|-------|
+| gpt-5.6-sol   | 8    | 9            | 7     |
+| gpt-5.6-terra | 9    | 7            | 6     |
+| gpt-5.6-luna  | 10   | 6            | 5     |
+| opus-4.8      | 6    | 7            | 8     |
+| fable-5       | 4    | 9            | 9     |
+| grok-4.5      | 7    | 6            | 7     |
 
 - Rankings, higher = better. Cost reflects how much I actually pay for subscriptions.
 - Intelligence covers how hard a problem the model can solve unsupervised; taste covers UI/UX, code quality, API design and copy.
-- These are defaults/suggestions, not hard limits. For Sol - usage of Terra or Luna when confident is also acceptable.
+- These are defaults/suggestions, not hard limits.
 - Judge the output not the price tag; rerun with smarter models if the quality bar isn't met.
 - Cost is a tie-breaker only; pick from intelligence/taste depending on the task.
-- Bulk/mechanical work -> gpt-5.5.
+- Bulk/mechanical work -> gpt-5.6 sol|terra.
 - User-facing (UI, copy) needs taste >= 7.
-- Mechanics: `codex exec` and `codex review` via CLI if you are Claude. `claude -p` via CLI if you are Codex. `grok -p` calls a wrapper around the cursor cli to get grok 4.5 fast.
-- Prefer your built in harness subagent tools for models from your own family (e.g. Fable calling Opus).
-- Don't touch sandbox/permissions defaults unless you explicitly want read-only.
+- Mechanics: `codex exec` and `codex review` via CLI if you are Claude. `claude -p` via CLI if you are Codex. `grok -p` wraps the cursor cli.
+- Prefer your built in harness subagent tools for models from your own family (e.g. Fable calling Opus, or Sol calling Terra).
+- Don't override sandbox/permissions defaults unless you explicitly want read-only.
 
 ## Repo Health
 
@@ -70,4 +72,3 @@ Consider the following table:
 
 - "All code is technical debt" - every line has to earn its place, and we should strive to minimise bloat and inefficiency at every turn.
 - Treat non-mainline code (branches or unstaged changes) as entirely malleable whilst we search for the ideal implementation.
-
