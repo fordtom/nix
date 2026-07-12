@@ -55,8 +55,7 @@ Consider the following table:
 - Cost is a tie-breaker only; pick from intelligence/taste depending on the task.
 - Bulk/mechanical work -> gpt-5.6 sol|terra.
 - User-facing (UI, copy) needs taste >= 7.
-- Mechanics: `codex exec` and `codex review` via CLI if you are Claude. `claude -p` via CLI if you are Codex. `grok -p` wraps the cursor cli.
-- Prefer your built in harness subagent tools for models from your own family (e.g. Fable calling Opus, or Sol calling Terra).
+- Mechanics: `codex exec`/`codex review`, `claude -p`, `grok -p` wraps Cursor.
 - Don't override sandbox/permissions defaults unless you explicitly want read-only.
 
 ## Repo Health
