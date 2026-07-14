@@ -55,8 +55,7 @@ in {
       pkgs.gh
       grepoPkg
       pkgs.gopls
-      pkgs.nodejs_24
-      pkgs.pnpm
+      pkgs.nodejs_latest
       pkgs.neovim
       pkgs.ripgrep
       pkgs.stow
@@ -80,7 +79,6 @@ in {
       "$HOME/.bun/bin"
       "$HOME/.cargo/bin"
       "$HOME/.local/bin"
-      "$HOME/.local/share/pnpm/bin"
     ]
     ++ (lib.optionals isDarwin [
       "/opt/homebrew/bin"

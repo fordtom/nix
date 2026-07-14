@@ -9,6 +9,10 @@
     brews = [
       "mole"
       "vite-plus"
+      {
+        name = "node";
+        link = false;
+      }
     ];
 
     casks = [
