@@ -1,3 +1,0 @@
-display_name: ChatGPT Share Extractor
-short_description: Convert public ChatGPT share links into markdown transcripts.
-default_prompt: Extract this ChatGPT share URL into a markdown transcript.

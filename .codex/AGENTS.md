@@ -42,8 +42,8 @@ Consider the following table:
 | model         | cost | intelligence | taste |
 |---------------|------|--------------|-------|
 | gpt-5.6-sol   | 8    | 9            | 7     |
-| gpt-5.6-terra | 9    | 7            | 6     |
-| gpt-5.6-luna  | 10   | 6            | 5     |
+| gpt-5.6-terra | 9    | 6            | 6     |
+| gpt-5.6-luna  | 10   | 5            | 5     |
 | opus-4.8      | 6    | 7            | 8     |
 | fable-5       | 4    | 9            | 9     |
 | grok-4.5      | 7    | 6            | 7     |
@@ -53,9 +53,10 @@ Consider the following table:
 - These are defaults/suggestions, not hard limits.
 - Judge the output not the price tag; rerun with smarter models if the quality bar isn't met.
 - Cost is a tie-breaker only; pick from intelligence/taste depending on the task.
-- Bulk/mechanical work -> gpt-5.6 sol|terra.
+- Bulk/mechanical work -> gpt-5.6 sol.
 - User-facing (UI, copy) needs taste >= 7.
-- Mechanics: `codex exec`/`codex review`, `claude -p`, `grok -p` wraps Cursor.
+- Mechanics: `codex exec`/`codex review`, `claude -p --output-format stream-json --verbose`, `grok -p` wraps Cursor with grok as the default model.
+- Pass prompts as if they were subagents - no piping massive git diffs into context; let the agent do it's own tool calls/actions.
 - Don't override sandbox/permissions defaults unless you explicitly want read-only.
 
 ## Repo Health
