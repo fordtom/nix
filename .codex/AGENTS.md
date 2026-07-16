@@ -34,6 +34,7 @@
 - `trash` for deletes (macOS only).
 - `op` holds all personal credentials; use `op run` (could hang for human authentication)
 - `grepo` for managing external context within a repo; use `grepo skill` for usage (deprecated in `ds` managed repos, use `ds context` for same functionality).
+- Computer use: try @browser for dev work; @chrome as a fallback or for anything that needs a login, then @computer for non-browser or last resort.
 
 ## Orchestration
 
