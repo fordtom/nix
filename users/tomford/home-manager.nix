@@ -34,6 +34,12 @@
       js = "jj st";
       je = "jj edit";
 
+      dsd = "ds desc";
+      dsn = "ds new";
+      dst = "ds st";
+      dse = "ds edit";
+      dsa = "ds add";
+
       v = "nvim";
       drs = "sudo darwin-rebuild switch --flake";
     }
