@@ -4,7 +4,7 @@ This file, stowed at `~/.agents/AGENTS.md`, is the canonical entry point for age
 
 Read these when relevant:
 
-- [`~/.agents/TOOLS.md`](TOOLS.md) for tools, package managers and executor usage.
+- [`~/.agents/TOOLS.md`](TOOLS.md) for tools, package managers, API access for platforms like Cloudflare or GitHub and executor usage.
 - [`~/.agents/SUBAGENTS.md`](SUBAGENTS.md) before delegating work to another harness or model.
 - [`~/.agents/WRITING.md`](WRITING.md) when writing or maintaining long-form prose, documentation, comments, or task trackers.
 
