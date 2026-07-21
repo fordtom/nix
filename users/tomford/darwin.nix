@@ -8,6 +8,7 @@
 
     brews = [
       "mole"
+      "herdr"
       "vite-plus"
       {
         name = "node";
