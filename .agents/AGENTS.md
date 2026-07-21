@@ -6,6 +6,12 @@ Read these when relevant:
 
 - [`~/.agents/TOOLS.md`](TOOLS.md) for tools, package managers and executor usage.
 - [`~/.agents/SUBAGENTS.md`](SUBAGENTS.md) before delegating work to another harness or model.
+- [`~/.agents/WRITING.md`](WRITING.md) when writing or maintaining long-form prose, documentation, comments, or task trackers.
+
+## Communication
+
+- Lead with the answer, decision, or required action. Follow with evidence and background.
+- Bias towards [ASD-STE100 Simplified Technical English](https://www.asd-ste100.org/) as a baseline for communication style/prose.
 
 ## Agent protocol
 
@@ -16,6 +22,7 @@ Read these when relevant:
 - Always check/use repo’s package manager/runtime; no swaps w/o approval.
 - Before handoff: run full gate (lint/typecheck/tests/docs).
 - Always respect minimum release age rules on package managers.
+- Split tasks by 2 categories; mechanical or opinionated. Opinionated tasks (APIs, product choices) warrant pre-implementation discussion, mechanical tasks (fix linter errors, known refactors) can be immediately greenlit.
 
 ## VCS
 
@@ -33,8 +40,6 @@ Read these when relevant:
 ## Repo health
 
 - Delete dead files; do not leave stub modules.
-- Prune todo lists rather than marking items as done.
-- Comments/docs must only reflect present state rather than historical delta. Git is for history, docs are not.
 - Keep test suite high signal and curated; a new test is not necessary with each change.
 - Do not add tests which simply restate the implementation. These provide zero confidence.
 - Do not preserve backwards compatibility unless explicitly requested.

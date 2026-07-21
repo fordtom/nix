@@ -161,7 +161,6 @@ in {
       aliases = {
         bump = ["bookmark" "move" "--from" "closest_bookmark(@)" "--to" "@"];
         drop = ["abandon" "--restore-descendants"];
-        init = ["git" "init"];
         rt = ["rebase" "-d" "trunk()"];
       };
       revset-aliases = {
