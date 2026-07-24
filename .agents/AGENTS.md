@@ -4,6 +4,7 @@ This file, stowed at `~/.agents/AGENTS.md`, is the canonical entry point for age
 
 Conditionally read the following:
 
+- [`~/.agents/MACHINES.md`](MACHINES.md) when working with my personal config or other machines on my tailnet (`macmini`/`macbook`/`pifive`).
 - [`~/.agents/SUBAGENTS.md`](SUBAGENTS.md) before delegating work to another harness or model.
 - [`~/.agents/WRITING.md`](WRITING.md) when writing or maintaining long-form prose, documentation, comments, or task trackers.
 
@@ -46,7 +47,6 @@ And more minor tooling - if you're looking for a tool/connection for something I
 
 ## Agent protocol
 
-- "Macbook" / "Mac Mini" / "Pi" => SSH there; find hosts/IPs via `tailscale status`.
 - "Make a note" => terse `AGENTS.md`/`CLAUDE.md` edit (typically symlinked or @ referenced; prefer AGENTS as canonical).
 - File drift over ~1000 LOC should be justified; split/refactor when appropriate and complexity doesn't suffer.
 - New deps: quick health check (recent releases/commits, adoption).
