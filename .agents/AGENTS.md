@@ -74,6 +74,7 @@ And more minor tooling - if you're looking for a tool/connection for something I
 - Keep test suite high signal and curated; a new test is not necessary with each change.
 - Do not add tests which simply restate the implementation. These provide zero confidence.
 - Do not preserve backwards compatibility unless explicitly requested.
+- Always trust the toolchain and the type system. Bias towards deep modules with fewer shims/abstractions and trust boundaries we control both sides of.
 
 ## Philosophy
 
