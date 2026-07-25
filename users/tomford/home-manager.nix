@@ -51,6 +51,11 @@ in {
 
   xdg.enable = true;
 
+  xdg.configFile."pnpm/config.yaml".text = ''
+    saveExact: true
+    minimumReleaseAge: 4320
+  '';
+
   home.packages =
     [
       pkgs._1password-cli
@@ -209,7 +214,7 @@ in {
       install = {
         blockExoticSubdeps = true;
         exact = true;
-        minimumReleaseAge = 604800;
+        minimumReleaseAge = 259200;
       };
     };
   };
@@ -222,7 +227,7 @@ in {
   programs.uv = {
     enable = true;
     settings = {
-      exclude-newer = "7 days";
+      exclude-newer = "3 days";
     };
   };
 
