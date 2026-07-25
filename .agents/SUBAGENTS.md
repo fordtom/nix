@@ -16,7 +16,7 @@ Consider the following table:
 |---------------|------|--------------|-------|
 | gpt-5.6-sol   | 7    | 8            | 7     |
 | gpt-5.6-terra | 9    | 6            | 6     |
-| gpt-5.6-luna  | 10   | 5            | 5     |
+| opus-5        | 6    | 8            | 8     |
 | fable-5       | 4    | 9            | 9     |
 
 - Rankings, higher = better. Cost reflects how much I actually pay for subscriptions.
