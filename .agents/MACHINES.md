@@ -14,3 +14,5 @@ access via ssh over Tailscale => use `tailscale status` for hosts/IPs.
 
 Both Macs use the nix-darwin outputs in this repo, with shared user configuration in `users/tomford/home-manager.nix`. The Pi has Nix for project environments and builds. It does not use NixOS or Home Manager.
 
+When editing machine nix configs leave the rebuild/application step to me (for review and sudo). Project flakes are fine to edit/run.
+
