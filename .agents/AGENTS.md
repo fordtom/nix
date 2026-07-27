@@ -10,13 +10,13 @@ Conditionally read the following:
 
 ## Agent protocol
 
-- "Make a note" => terse `AGENTS.md`/`CLAUDE.md` edit (typically symlinked or @ referenced; prefer AGENTS as canonical).
-- File drift over ~1000 LOC should be justified; split/refactor when appropriate and complexity doesn't suffer.
 - New deps: quick health check (recent releases/commits, adoption).
 - Always check/use repo’s package manager/runtime; no swaps w/o approval.
 - Before handoff: run full gate (lint/typecheck/tests/docs).
-- Always respect minimum release age rules on package managers.
+- Respect minimum release age rules on package managers.
 - Split tasks by 2 categories; mechanical or opinionated. Opinionated tasks (APIs, product choices) warrant pre-implementation discussion, mechanical tasks (fix linter errors, known refactors) can be immediately greenlit.
+- By default, keep me in the loop when working; if I want you to run truly long tasks autonomously I will explicitly ask as such.
+- Prefer to stop early when facing unprecedented or unexpected issues when completing tasks, and ask for clarification on intended direction.
 
 ## Tools
 
@@ -50,7 +50,7 @@ And more minor tooling - if you're looking for a tool/connection for something I
 - use @Chrome (to drive Helium) as a fallback for @Browser or whenever you need to be logged in to my accounts.
 - use @Computer for anything non-browser and/or a last resort for failures in the above 2 plugins.
 
-## VCS
+### VCS
 
 - Three surfaces in the wild: git (most repos), jj (`.jj/`, jj CLI works), devspace (`.jj/` but ran through `ds`).
 - jj/ds checkouts behave like jj but through different CLIs; same commit-message conventions. Remember to name changes.
@@ -72,6 +72,7 @@ The server exposes five tools:
 | Tool                            | Behaviour                                                                          |
 |---------------------------------|------------------------------------------------------------------------------------|
 | `list_domains()`                | List domain names with their memory and pending-compression counts.                |
+| `summary(domain)`               | Provides a recency-biased summary of the domain.                                   |
 | `note(domain, text)`            | Append one memory. This is the only operation that implicitly creates a domain.    |
 | `recall(domain, query, limit?)` | Search raw memories. All whitespace-separated terms must match.                    |
 | `zoom(domain, node?)`           | Omit `node` for the domain roots, or open one binary-tree block such as `16-31`.   |
@@ -80,15 +81,15 @@ The server exposes five tools:
 - Recalled memories only reflect what was true when written — reverify stated facts or useful information; delete memories that turn out to be wrong.
 - Don't save what the repo already records (code structure, past fixes, git history, AGENTS/CLAUDE.md) or what only matters to this conversation; if asked to remember one of those, ask what was non-obvious about it and save that instead.
 - Memory is grouped by domain - one `global` for my general or cross-project information, and typically `<reponame>` for a given project. These domains never overlap in search; they are effectively different trees. Read from and write to the one that seems more appropriate for the given task.
-- Call `zoom` without a node for the relevant domain, then recursively zoom useful node IDs (follow the rightmost branch for recent detail) and use `recall` for exact terms.
 
 Decision boundary: should you use memory for a new user query?
 
 - Skip memory ONLY when the request is clearly self-contained and does not need workspace history, conventions, or prior decisions.
 - Hard skip examples: current time/date, simple translation, simple sentence rewrite, one-line shell command, trivial formatting.
 - Use memory by default when ANY of these are true:
-  - the user asks for prior context / consistency / previous decisions,
-  - the task is ambiguous and could depend on earlier project choices,
+  - the user asks for prior context / consistency / previous decisions
+  - the task is ambiguous and could depend on earlier project choices
+  - work or decisions made outside of the repo could be relevant for future development
 - If unsure, do a quick memory pass.
 
 ## Repo health
@@ -98,6 +99,7 @@ Decision boundary: should you use memory for a new user query?
 - Do not add tests which simply restate the implementation. These provide zero confidence.
 - Do not preserve backwards compatibility unless explicitly requested.
 - Always trust the toolchain and the type system. Bias towards deep modules with fewer shims/abstractions and trust boundaries we control both sides of.
+- File drift over ~1000 LOC should be justified; split/refactor when appropriate and complexity doesn't suffer.
 
 ## Philosophy
 
