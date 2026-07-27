@@ -56,6 +56,10 @@ in {
     minimumReleaseAge: 4320
   '';
 
+  home.file.".zshenv" = lib.mkIf isDarwin {
+    source = ./ssh-agent.zsh;
+  };
+
   home.packages =
     [
       pkgs._1password-cli
@@ -100,6 +104,7 @@ in {
   programs.fish = {
     enable = true;
     shellAliases = shellAliases;
+    shellInit = lib.optionalString isDarwin (builtins.readFile ./ssh-agent.fish);
     interactiveShellInit = ''
       # Nix
       set -Ux fish_greeting ""
