@@ -8,6 +8,16 @@ Conditionally read the following:
 - [`~/.agents/SUBAGENTS.md`](SUBAGENTS.md) before delegating work to another harness or model.
 - [`~/.agents/WRITING.md`](WRITING.md) when writing or maintaining long-form prose, documentation, comments, or task trackers.
 
+## Agent protocol
+
+- "Make a note" => terse `AGENTS.md`/`CLAUDE.md` edit (typically symlinked or @ referenced; prefer AGENTS as canonical).
+- File drift over ~1000 LOC should be justified; split/refactor when appropriate and complexity doesn't suffer.
+- New deps: quick health check (recent releases/commits, adoption).
+- Always check/use repo’s package manager/runtime; no swaps w/o approval.
+- Before handoff: run full gate (lint/typecheck/tests/docs).
+- Always respect minimum release age rules on package managers.
+- Split tasks by 2 categories; mechanical or opinionated. Opinionated tasks (APIs, product choices) warrant pre-implementation discussion, mechanical tasks (fix linter errors, known refactors) can be immediately greenlit.
+
 ## Tools
 
 ### Executor
@@ -19,6 +29,7 @@ Currently driven through executor:
 - Parallel Web (search, fetch, crawling and web summaries)
 - Cloudflare (full API for interacting with my projects)
 - GitHub (most API routes for day-to-day development)
+- Shared Memory (more below)
 
 And more minor tooling - if you're looking for a tool/connection for something I mention then check here.
 
@@ -31,29 +42,13 @@ And more minor tooling - if you're looking for a tool/connection for something I
 - `tmux` for persistent/interactive sessions (debugger/server).
 - `trash` for deletes (macOS only).
 - `op` holds all personal credentials; use `op run` (could hang for human authentication).
-- `grepo` for managing external context within a repo; use `grepo skill` for usage (deprecated in `ds` managed repos, use `ds context` for the same functionality) (if you find a grepo/.lock repo, please move it to the new .repos/.lock approach that grepo supports so that migration to devspace is seamless).
-- `gh` CLI for GitHub interaction on some machines - though Executor usage is preferred and works universally.
+- `grepo` for managing external context within a repo; use `grepo skill` for usage (deprecated in `ds` managed repos, use `ds context` for the same functionality).
 
 ### Codex Specific Plugins
 
 - use @Browser as the default for dev servers and other development work.
 - use @Chrome (to drive Helium) as a fallback for @Browser or whenever you need to be logged in to my accounts.
 - use @Computer for anything non-browser and/or a last resort for failures in the above 2 plugins.
-
-## Communication
-
-- Lead with the answer, decision, or required action. Follow with evidence and background.
-- Bias towards [ASD-STE100 Simplified Technical English](https://www.asd-ste100.org/) as a baseline for communication style/prose.
-
-## Agent protocol
-
-- "Make a note" => terse `AGENTS.md`/`CLAUDE.md` edit (typically symlinked or @ referenced; prefer AGENTS as canonical).
-- File drift over ~1000 LOC should be justified; split/refactor when appropriate and complexity doesn't suffer.
-- New deps: quick health check (recent releases/commits, adoption).
-- Always check/use repo’s package manager/runtime; no swaps w/o approval.
-- Before handoff: run full gate (lint/typecheck/tests/docs).
-- Always respect minimum release age rules on package managers.
-- Split tasks by 2 categories; mechanical or opinionated. Opinionated tasks (APIs, product choices) warrant pre-implementation discussion, mechanical tasks (fix linter errors, known refactors) can be immediately greenlit.
 
 ## VCS
 
@@ -67,6 +62,34 @@ And more minor tooling - if you're looking for a tool/connection for something I
 - No amend unless asked.
 - Merges/PR close: prefer squash.
 - Prefer repo clone via ssh.
+
+## Memory
+
+Instead of using first-party memory solutions siloed per-machine and per-harness, durable memory is handled through the `memory` tool in executor.
+
+The server exposes five tools:
+
+| Tool                            | Behaviour                                                                          |
+|---------------------------------|------------------------------------------------------------------------------------|
+| `list_domains()`                | List domain names with their memory and pending-compression counts.                |
+| `note(domain, text)`            | Append one memory. This is the only operation that implicitly creates a domain.    |
+| `recall(domain, query, limit?)` | Search raw memories. All whitespace-separated terms must match.                    |
+| `zoom(domain, node?)`           | Omit `node` for the domain roots, or open one binary-tree block such as `16-31`.   |
+| `forget(domain, node)`          | Drop an incorrect summary and its dependent ancestors. Raw memories are unchanged. |
+
+- Recalled memories only reflect what was true when written — reverify stated facts or useful information; delete memories that turn out to be wrong.
+- Don't save what the repo already records (code structure, past fixes, git history, AGENTS/CLAUDE.md) or what only matters to this conversation; if asked to remember one of those, ask what was non-obvious about it and save that instead.
+- Memory is grouped by domain - one `global` for my general or cross-project information, and typically `<reponame>` for a given project. These domains never overlap in search; they are effectively different trees. Read from and write to the one that seems more appropriate for the given task.
+- Call `zoom` without a node for the relevant domain, then recursively zoom useful node IDs (follow the rightmost branch for recent detail) and use `recall` for exact terms.
+
+Decision boundary: should you use memory for a new user query?
+
+- Skip memory ONLY when the request is clearly self-contained and does not need workspace history, conventions, or prior decisions.
+- Hard skip examples: current time/date, simple translation, simple sentence rewrite, one-line shell command, trivial formatting.
+- Use memory by default when ANY of these are true:
+  - the user asks for prior context / consistency / previous decisions,
+  - the task is ambiguous and could depend on earlier project choices,
+- If unsure, do a quick memory pass.
 
 ## Repo health
 
