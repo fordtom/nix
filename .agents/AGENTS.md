@@ -79,18 +79,31 @@ The server exposes five tools:
 | `forget(domain, node)`          | Drop an incorrect summary and its dependent ancestors. Raw memories are unchanged. |
 
 - Recalled memories only reflect what was true when written — reverify stated facts or useful information; delete memories that turn out to be wrong.
-- Don't save what the repo already records (code structure, past fixes, git history, AGENTS/CLAUDE.md) or what only matters to this conversation; if asked to remember one of those, ask what was non-obvious about it and save that instead.
-- Memory is grouped by domain - one `global` for my general or cross-project information, and typically `<reponame>` for a given project. These domains never overlap in search; they are effectively different trees. Read from and write to the one that seems more appropriate for the given task.
+- Memory is grouped by domain - typically `<reponame>` for a given project. These domains never overlap in search; they are effectively different trees. Read from and write to the one that seems more appropriate for the given task.
 
 Decision boundary: should you use memory for a new user query?
 
 - Skip memory ONLY when the request is clearly self-contained and does not need workspace history, conventions, or prior decisions.
 - Hard skip examples: current time/date, simple translation, simple sentence rewrite, one-line shell command, trivial formatting.
 - Use memory by default when ANY of these are true:
-  - the user asks for prior context / consistency / previous decisions
-  - the task is ambiguous and could depend on earlier project choices
-  - work or decisions made outside of the repo could be relevant for future development
-- If unsure, do a quick memory pass.
+  - the user asks for prior context / consistency / previous decisions.
+  - the task is ambiguous and could depend on earlier project choices.
+- If unsure, read the summary for your current domain.
+
+What should be stored in memory?
+
+- We create/make work/decisions outside of the repo that could be relevant for future development.
+- Reasoning behind product decisions that helps to steer future decision making/opinionated choices.
+- Explicit requests for durable notes stored outside of the repo.
+- Opinionated decisions on many topics e.g. (code style and patterns, dependency choices, API boundaries) and their reasoning.
+
+What should not be stored in memory?
+
+- Information the repo already records (code structure, past fixes, git history, AGENTS/CLAUDE.md).
+- Information that only matters to this conversation; if asked to remember this, ask what was non-obvious about it and save that instead.
+- Information that will immediately go stale; e.g. "Tests are currently failing in ...".
+
+As a rule of thumb: the repo and the git history show _what_ was done; the memories encode _why_ it was done that way.
 
 ## Repo health
 
