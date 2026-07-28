@@ -17,6 +17,7 @@ Conditionally read the following:
 - Split tasks by 2 categories; mechanical or opinionated. Opinionated tasks (APIs, product choices) warrant pre-implementation discussion, mechanical tasks (fix linter errors, known refactors) can be immediately greenlit.
 - By default, keep me in the loop when working; if I want you to run truly long tasks autonomously I will explicitly ask as such.
 - Prefer to stop early when facing unprecedented or unexpected issues when completing tasks, and ask for clarification on intended direction.
+- Answers/responses should adhere to ASD-STE100 Simplified Technical English for readability.
 
 ## Tools
 
