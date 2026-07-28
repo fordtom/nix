@@ -27,19 +27,6 @@
       gp = "git push";
       gs = "git status";
 
-      jd = "jj desc";
-      jf = "jj git fetch";
-      jn = "jj new";
-      jp = "jj git push";
-      js = "jj st";
-      je = "jj edit";
-
-      dsd = "ds desc";
-      dsn = "ds new";
-      dst = "ds st";
-      dse = "ds edit";
-      dsa = "ds add";
-
       v = "nvim";
       drs = "sudo darwin-rebuild switch --flake";
     }
@@ -153,32 +140,6 @@ in {
     env = {
       GOPATH = "${config.home.homeDirectory}/code/go";
       GOPRIVATE = ["github.com/tomrford"];
-    };
-  };
-
-  programs.jujutsu = {
-    enable = true;
-    settings = {
-      user = {
-        name = "Tom Ford";
-        email = "t@tomrford.com";
-      };
-      signing = {
-        behavior = "own";
-        backend = "ssh";
-        key = "~/.ssh/id_ed25519_github_signing.pub";
-      };
-      aliases = {
-        bump = ["bookmark" "move" "--from" "closest_bookmark(@)" "--to" "@"];
-        drop = ["abandon" "--restore-descendants"];
-        rt = ["rebase" "-d" "trunk()"];
-      };
-      revset-aliases = {
-        "closest_bookmark(to)" = "heads(::to & bookmarks())";
-      };
-      ui = {
-        default-command = "log";
-      };
     };
   };
 

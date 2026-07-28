@@ -42,7 +42,7 @@ And more minor tooling - if you're looking for a tool/connection for something I
 - `tmux` for persistent/interactive sessions (debugger/server).
 - `trash` for deletes (macOS only).
 - `op` holds all personal credentials; use `op run` (could hang for human authentication).
-- `grepo` for managing external context within a repo; use `grepo skill` for usage (deprecated in `ds` managed repos, use `ds context` for the same functionality).
+- `grepo` for managing external context within a repo; use `grepo skill` for usage.
 
 ### Codex Specific Plugins
 
@@ -52,9 +52,6 @@ And more minor tooling - if you're looking for a tool/connection for something I
 
 ### VCS
 
-- Three surfaces in the wild: git (most repos), jj (`.jj/`, jj CLI works), devspace (`.jj/` but ran through `ds`).
-- jj/ds checkouts behave like jj but through different CLIs; same commit-message conventions. Remember to name changes.
-- ds checkouts throw errors with the jj CLI. If you find one: run `ds skill` to get started.
 - Safe by default: `status/diff/log`.
 - `checkout` ok for PR review / explicit request.
 - Destructive ops forbidden unless explicit (`reset --hard`, `clean`, `restore`, `rm`, ...).
