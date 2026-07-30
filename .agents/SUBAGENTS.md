@@ -4,7 +4,6 @@
 
 - Codex CLI (`codex exec` / `codex review`)
 - Claude Code (`claude -p`)
-- Pi: interactive harness using OpenAI Codex models only
 
 Builtin subagent tools are also in each harness for their own respective model families
 
@@ -39,4 +38,3 @@ Generally speaking, effort is proportional to the open-endedness of the task. Fo
 - 'Research and design the API for X': Big model/high reasoning -> very open ended, requires opinionated decision making and reasoning.
 
 I would basically use either 'high' or 'low' effort for all model families (xhigh is diminishing returns and medium is an awkward middle ground).
-

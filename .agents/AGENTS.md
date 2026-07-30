@@ -116,3 +116,4 @@ As a rule of thumb: the repo and the git history show _what_ was done; the memor
 
 - "All code is technical debt" - every line has to earn its place, and we should strive to minimise bloat and inefficiency at every turn.
 - Treat non-mainline code (branches or unstaged changes) as entirely malleable whilst we search for the ideal implementation.
+- "Defer complexity; earn it through measurement".
