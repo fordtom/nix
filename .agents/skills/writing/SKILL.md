@@ -1,3 +1,8 @@
+---
+name: writing
+description: Use when writing or editing reports, guidance, documentation, comments, summaries, task trackers, or other long-form and durable prose.
+---
+
 # Long-form and durable writing
 
 Read this guidance when writing or editing reports, guidance, documentation, comments, summaries, or task trackers.

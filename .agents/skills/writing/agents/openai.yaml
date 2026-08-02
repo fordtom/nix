@@ -1,0 +1,4 @@
+interface:
+  display_name: "Writing"
+  short_description: "Guidance for clear, durable long-form writing"
+  default_prompt: "Use $writing to write or edit clear, durable documentation."
