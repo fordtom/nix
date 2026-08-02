@@ -126,7 +126,6 @@ in {
       branch.autoSetupRebase = "always";
       color.ui = true;
       github.user = "tomrford";
-      push.default = "upstream";
       push.autoSetupRemote = true;
       init.defaultBranch = "main";
       gpg.format = "ssh";
