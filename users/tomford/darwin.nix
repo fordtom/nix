@@ -8,12 +8,6 @@
 
     brews = [
       "mole"
-      "herdr"
-      "vite-plus"
-      {
-        name = "node";
-        link = false;
-      }
     ];
 
     casks = [
@@ -31,8 +25,6 @@
     ];
 
     onActivation = {
-      autoUpdate = true;
-      upgrade = false;
       cleanup = "zap";
     };
   };

@@ -111,7 +111,6 @@ in {
 
   programs.git = {
     enable = true;
-    lfs.enable = true;
     signing = {
       signByDefault = true;
       key = "~/.ssh/id_ed25519_github_signing.pub";
@@ -127,7 +126,7 @@ in {
       branch.autoSetupRebase = "always";
       color.ui = true;
       github.user = "tomrford";
-      push.default = "tracking";
+      push.default = "upstream";
       push.autoSetupRemote = true;
       init.defaultBranch = "main";
       gpg.format = "ssh";
@@ -178,7 +177,6 @@ in {
     enable = true;
     settings = {
       install = {
-        blockExoticSubdeps = true;
         exact = true;
         minimumReleaseAge = 259200;
       };
@@ -187,7 +185,6 @@ in {
 
   programs.tmux = {
     enable = true;
-    mouse = true;
   };
 
   programs.uv = {

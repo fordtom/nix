@@ -5,7 +5,6 @@ This file, stowed at `~/.agents/AGENTS.md`, is the canonical entry point for age
 Conditionally read the following:
 
 - [`~/.agents/MACHINES.md`](MACHINES.md) when working with my personal config or other machines on my tailnet (`macmini`/`macbook`/`pifive`).
-- [`~/.agents/SUBAGENTS.md`](SUBAGENTS.md) before delegating work to another harness or model.
 - [`~/.agents/WRITING.md`](WRITING.md) when writing or maintaining long-form prose, documentation, comments, or task trackers.
 
 ## Agent protocol
@@ -18,6 +17,8 @@ Conditionally read the following:
 - By default, keep me in the loop when working; if I want you to run truly long tasks autonomously I will explicitly ask as such.
 - Prefer to stop early when facing unprecedented or unexpected issues when completing tasks, and ask for clarification on intended direction.
 - Answers/responses should adhere to ASD-STE100 Simplified Technical English for readability.
+- "independent reviewer" => A fresh context subagent tasked with an adversarial review; recommended at least once for large diffs.
+- Subagents: `high` effort for open ended tasks, `light`/`low` effort for straightforward ones. Model size (Luna -> Terra -> Sol) scales with task complexity.
 
 ## Tools
 
@@ -27,7 +28,6 @@ Executor is the default integration layer for tools and MCP servers. Start by lo
 
 Currently driven through executor:
 
-- Parallel Web (search, fetch, crawling and web summaries)
 - Cloudflare (full API for interacting with my projects)
 - GitHub (most API routes for day-to-day development)
 - Shared Memory (more below)
