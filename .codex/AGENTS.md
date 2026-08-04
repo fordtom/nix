@@ -8,18 +8,16 @@
 - Prefer to stop early when facing unprecedented or unexpected issues when completing tasks, and ask for clarification on intended direction.
 - "independent reviewer" => A fresh context subagent tasked with an adversarial review; recommended at least once for large diffs.
 - Subagents: `high` effort for open ended tasks, `light`/`low` effort for straightforward ones. Model size (Luna -> Terra -> Sol) scales with task complexity.
-- New deps: quick health check (recent releases/commits, adoption).
-- Always check/use repo’s package manager/runtime; no swaps w/o approval.
 - Before handoff: run full gate (lint/typecheck/tests/docs).
-- Respect minimum release age rules on package managers.
 
 ## Tools
 
 - `nix` is often used for toolchains => `nix develop -c` to run commands.
 - `gh` for PRs/Issues and other GitHub interaction.
 - `uv` for all Python => `uv run`, `uv venv`, `uv format`.
-- `bun` for global npm packages.
+- `pnpm` for global npm packages.
 - `fish` is default login shell on most machines.
+- `nu` for adhoc scripts where bash is ugly and python is too heavy.
 - `tmux` for persistent/interactive sessions (debugger/server).
 - `trash` for deletes when available.
 - `op` holds all personal credentials; use `op run` (could hang for human authentication).
@@ -30,6 +28,13 @@
 - use @Browser as the default for dev servers and other development work.
 - use @Chrome (to drive Helium) as a fallback for @Browser or whenever you need to be logged in to my accounts.
 - use @Computer for anything non-browser and/or a last resort for failures in the above 2 plugins.
+
+## Security
+
+- `sfw` socket firewall to be prefixed to ALL PACKAGE MANAGER CALLS - PNPM, CARGO, UV; if missing run `pnpm add -g sfw`.
+- New deps: quick health check (recent releases/commits, adoption).
+- Always check/use repo’s package manager/runtime; no swaps w/o approval.
+- Respect minimum release age rules on package managers.
 
 ## VCS
 

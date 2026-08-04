@@ -49,16 +49,17 @@ in {
 
   home.packages =
     [
+      grepoPkg
       pkgs._1password-cli
       pkgs.alejandra
       pkgs.bat
       pkgs.fd
       pkgs.fzf
       pkgs.gh
-      grepoPkg
       pkgs.gopls
-      pkgs.nodejs_latest
+      pkgs.nodejs
       pkgs.neovim
+      pkgs.pnpm
       pkgs.ripgrep
       pkgs.stow
     ]
@@ -81,6 +82,7 @@ in {
       "$HOME/.bun/bin"
       "$HOME/.cargo/bin"
       "$HOME/.local/bin"
+      "$HOME/.local/share/pnpm/bin"
     ]
     ++ (lib.optionals isDarwin [
       "/opt/homebrew/bin"
@@ -165,6 +167,15 @@ in {
         truncation_length = 20;
         truncation_symbol = "…";
       };
+    };
+  };
+
+  programs.nushell = {
+    enable = true;
+    shellAliases = shellAliases;
+    plugins = with pkgs.nushellPlugins; [ polars formats gstat query ];
+    settings = {
+      show_banner = false;
     };
   };
 
