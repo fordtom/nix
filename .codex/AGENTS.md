@@ -9,6 +9,7 @@
 - "independent reviewer" => A fresh context subagent tasked with an adversarial review; recommended at least once for large diffs.
 - Subagents: `high` effort for open ended tasks, `light`/`low` effort for straightforward ones. Model size (Luna -> Terra -> Sol) scales with task complexity.
 - Before handoff: run full gate (lint/typecheck/tests/docs).
+- Came across friction (flaky command, missed tool call, confusing or undocumented step)? => `papercut "message"` logs this locally for later. One or two sentences explaining what you were doing and what got in the way. Do this proactively in the moment.
 
 ## Tools
 
