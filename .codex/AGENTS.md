@@ -66,6 +66,7 @@
 
 ## Philosophy
 
-- "All code is technical debt" - every line has to earn its place, and we should strive to minimise bloat and inefficiency at every turn.
+- "All code is technical debt" - every line has to earn its place; strive to minimise bloat and inefficiency at every turn.
 - Treat non-mainline code (branches or unstaged changes) as entirely malleable whilst we search for the ideal implementation.
 - "Defer complexity; earn it through measurement".
+- "As much as needed, as little as possible".
