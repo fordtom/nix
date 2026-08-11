@@ -1,6 +1,6 @@
 ---
 name: writing
-description: Use when writing or editing reports, guidance, documentation, comments, summaries, task trackers, or other long-form and durable prose.
+description: Use when writing or editing reports, guidance, documentation, comments, summaries, task trackers, or other long-form and durable prose, or writing content/emails/messages on the user's behalf.
 ---
 
 # Long-form and durable writing
@@ -23,4 +23,10 @@ Read this guidance when writing or editing reports, guidance, documentation, com
 - Keep task trackers limited to unfinished, actionable work. Delete completed or stale items.
 - Keep one authoritative document for each subject. Consolidate surviving guidance and delete superseded notes or temporary specifications.
 - Finish when every affected durable surface agrees with its authoritative source and no stale contradiction remains.
+- Avoid specifying what a project isn't/doesn't do; focus on 'positives' (dedicated section on technical limitations etc. is ok where appropriate).
 
+## Tom's voice (when writing on my behalf)
+
+- Keep sentences clear and succinct. No bloat, only relevant information.
+- British English.
+- Minimise/drop formalities in instant messaging (i.e. "Hello, Good Morning, hope you are doing well, etc.").
