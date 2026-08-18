@@ -1,4 +1,4 @@
-{...}: {
+{pkgs, ...}: {
   system.stateVersion = 6;
 
   ids.gids.nixbld = 350;
@@ -7,4 +7,10 @@
     enable = true;
     settings.experimental-features = ["nix-command" "flakes"];
   };
+
+  programs.zsh.enable = true;
+  programs.fish.enable = true;
+
+  environment.systemPackages = [pkgs.stow];
+  environment.shells = with pkgs; [bashInteractive zsh fish];
 }

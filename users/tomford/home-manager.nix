@@ -49,7 +49,6 @@ in {
     pkgs.neovim
     pkgs.pnpm
     pkgs.ripgrep
-    pkgs.stow
     pkgs.tmux
   ];
 

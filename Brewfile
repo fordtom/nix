@@ -1,4 +1,3 @@
-brew "fish"
 brew "mole"
 
 cask "1password"

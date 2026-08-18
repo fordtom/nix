@@ -14,14 +14,17 @@ in
 
       machineConfig
       inputs.home-manager.darwinModules.home-manager
-      {
-        users.users.${user}.home = "/Users/${user}";
+      ({pkgs, ...}: {
+        users.users.${user} = {
+          home = "/Users/${user}";
+          shell = pkgs.fish;
+        };
 
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
         home-manager.users.${user} = import userHMConfig {
           inputs = inputs;
         };
-      }
+      })
     ];
   }
