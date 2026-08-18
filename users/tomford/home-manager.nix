@@ -210,4 +210,8 @@ in {
       promptToReturnFromSubprocess = false;
     };
   };
+
+  programs.mise = {
+    enable = true;
+  };
 }
