@@ -1,0 +1,5 @@
+[bootstrap.hooks.pre-user]
+run = 'HOMEBREW_NO_AUTO_UPDATE=1 brew bundle --file="$HOME/config/Brewfile" --no-upgrade'
+
+[bootstrap.user]
+login_shell = "/opt/homebrew/bin/fish"

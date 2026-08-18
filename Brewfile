@@ -1,0 +1,13 @@
+brew "fish"
+brew "mole"
+
+cask "1password"
+cask "aldente"
+cask "betterdisplay"
+cask "ghostty"
+cask "kitlangton-hex"
+cask "middleclick"
+cask "raycast"
+cask "spotify"
+cask "tailscale-app"
+cask "visual-studio-code"
