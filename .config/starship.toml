@@ -1,0 +1,13 @@
+[character]
+error_symbol = ">"
+success_symbol = ">"
+
+[git_branch]
+truncation_length = 20
+truncation_symbol = "…"
+
+[nix_shell]
+format = "via $symbol"
+
+[package]
+disabled = true

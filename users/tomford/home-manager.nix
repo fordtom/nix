@@ -32,11 +32,6 @@ in {
 
   xdg.enable = true;
 
-  xdg.configFile."pnpm/config.yaml".text = ''
-    saveExact: true
-    minimumReleaseAge: 4320
-  '';
-
   home.file.".zshenv" = {
     source = ./ssh-agent.zsh;
   };
@@ -55,6 +50,7 @@ in {
     pkgs.pnpm
     pkgs.ripgrep
     pkgs.stow
+    pkgs.tmux
   ];
 
   home.sessionVariables = {
@@ -133,62 +129,15 @@ in {
     enable = true;
   };
 
-  programs.starship = {
-    enable = true;
-    settings = {
-      character = {
-        success_symbol = ">";
-        error_symbol = ">";
-      };
-
-      nix_shell = {
-        format = "via $symbol";
-      };
-
-      package = {
-        disabled = true;
-      };
-
-      git_branch = {
-        truncation_length = 20;
-        truncation_symbol = "…";
-      };
-    };
-  };
+  programs.starship.enable = true;
 
   programs.zoxide = {
     enable = true;
   };
 
-  programs.bun = {
-    enable = true;
-    settings = {
-      install = {
-        exact = true;
-        minimumReleaseAge = 259200;
-      };
-    };
-  };
+  programs.bun.enable = true;
 
-  programs.tmux = {
-    enable = true;
-  };
+  programs.uv.enable = true;
 
-  programs.uv = {
-    enable = true;
-    settings = {
-      exclude-newer = "3 days";
-    };
-  };
-
-  programs.lazygit = {
-    enable = true;
-    settings = {
-      promptToReturnFromSubprocess = false;
-    };
-  };
-
-  programs.mise = {
-    enable = true;
-  };
+  programs.lazygit.enable = true;
 }

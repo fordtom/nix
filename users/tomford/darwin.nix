@@ -18,7 +18,6 @@
       "kitlangton-hex"
       "middleclick"
       "raycast"
-      "signal"
       "spotify"
       "tailscale-app"
       "visual-studio-code"
