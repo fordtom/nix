@@ -55,6 +55,7 @@
 - Do not preserve backwards compatibility unless explicitly requested.
 - Always trust the toolchain and the type system. Bias towards deep modules with fewer shims/abstractions and trust boundaries we control both sides of.
 - File drift over ~1000 LOC should be justified; split/refactor when appropriate and complexity doesn't suffer.
+- Delete task tracker docs/comments/TODOs rather than updating content/marking as complete.
 
 ## Machines and personal configuration
 
@@ -63,6 +64,16 @@
 - 3 machines: `macbook`/`macmini`/`pifive`; access via ssh over Tailscale => use `tailscale status` for hosts/IPs.
 - Macs use nix-darwin with shared user configuration in `users/tomford/home-manager.nix`. Pi has Nix only for project environments and builds.
 - When editing machine nix configs leave rebuild/application step to me. Project flakes are fine to edit/run.
+
+## Writing guidance
+
+- Organise content around the task. Give each section/paragraph one topic. Create emphasis through order and structure.
+- Define unavoidable jargon on first use. Use exact names, numbers and dates.
+- Use sentence case headings and descriptive link text. Use numbered lists only for ordered items.
+- Lead with affirmative scope; minimize negative framing.
+- Code should be self-documenting; implementation docs live in code rather than markdown sidecars.
+- Docs should only reflect current behaviour/contracts; git diff is the place for historical context.
+- When writing on my behalf => British English; minimise/drop filler sentences; clear, succinct and to the point.
 
 ## Philosophy
 
