@@ -9,7 +9,7 @@
 - "independent reviewer" => A fresh context subagent tasked with an adversarial review; recommended at least once for large diffs.
 - Subagents: `high` effort for open ended tasks, `light`/`low` effort for straightforward ones. Model size (Luna -> Terra -> Sol) scales with task complexity.
 - Before handoff: run full gate (lint/typecheck/tests/docs).
-- Encountered friction (flaky command, missed tool call, confusing or undocumented step)? => `papercut "message"` logs this locally for later. One or two sentences explaining what you were doing and what got in the way. Do this proactively in the moment.
+- Encountered friction (flaky command, missed tool call, confusing or undocumented step)? => `papercut 'message'` logs this locally for later. One or two sentences explaining what you were doing and what got in the way. Do this proactively in the moment.
 
 ## Tools
 
@@ -18,7 +18,6 @@
 - `uv` for all Python => `uv run`, `uv venv`, `uv format`.
 - `pnpm` for global npm packages.
 - `fish` is default login shell on most machines.
-- `nu` for adhoc scripts where bash is ugly and python is too heavy.
 - `tmux` for persistent/interactive sessions (debugger/server).
 - `trash` for deletes when available.
 - `op` holds all personal credentials; use `op run` (could hang for human authentication).

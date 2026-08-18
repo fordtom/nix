@@ -1,22 +1,17 @@
-#!/usr/bin/env nu
+#!/bin/sh
+set -eu
 
-def main [...words: string] {
-  let message = ($words | str join " " | str trim)
-
-  if ($message | is-empty) {
-    error make { msg: "usage: papercut <message>" }
-  }
-
-  let log = ($env.HOME | path join ".agents" "PAPERCUTS.md")
-  let timestamp = (date now | format date "%Y-%m-%d %H:%M:%S")
-  let machine = (sys host | get hostname)
-  let location = $"($machine):($env.PWD)"
-
-  mkdir ($log | path dirname)
-
-  if not ($log | path exists) {
-    "# Papercuts\n\n" | save $log
-  }
-
-  $"## ($timestamp) — ($location)\n\n($message)\n\n" | save --append $log
+[ "$#" -gt 0 ] || {
+  printf 'usage: papercut <message>\n' >&2
+  exit 1
 }
+
+log="$HOME/.agents/PAPERCUTS.md"
+mkdir -p "${log%/*}"
+[ -f "$log" ] || printf '# Papercuts\n\n' >"$log"
+
+printf '## %s — %s:%s\n\n%s\n\n' \
+  "$(date '+%Y-%m-%d %H:%M:%S')" \
+  "$(hostname)" \
+  "$PWD" \
+  "$*" >>"$log"

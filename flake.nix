@@ -4,8 +4,6 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
 
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-
     home-manager = {
       url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -22,44 +20,16 @@
     };
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    home-manager,
-    darwin,
-    ...
-  } @ inputs: let
-    overlays = [
-      (final: prev: {
-        unstable = import inputs.nixpkgs-unstable {
-          inherit (final.stdenv.hostPlatform) system;
-          config.allowUnfree = true;
-        };
-      })
-    ];
-
-    mkSystem = import ./lib/mksystem.nix {
-      inherit inputs nixpkgs overlays;
-    };
-
-    mkHome = import ./lib/mkhome.nix {
-      inherit inputs nixpkgs overlays;
-    };
+  outputs = inputs: let
+    mkSystem = import ./lib/mksystem.nix {inherit inputs;};
   in {
     darwinConfigurations.macbook = mkSystem "macbook" {
       system = "aarch64-darwin";
       user = "tomford";
-      darwin = true;
     };
 
     darwinConfigurations.macmini = mkSystem "macmini" {
       system = "aarch64-darwin";
-      user = "tomford";
-      darwin = true;
-    };
-
-    homeConfigurations."pifive" = mkHome {
-      system = "aarch64-linux";
       user = "tomford";
     };
   };

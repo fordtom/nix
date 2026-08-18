@@ -1,45 +1,21 @@
 # Defines the wiring for building a given system config.
-{
-  inputs,
-  nixpkgs,
-  overlays,
-}: name: {
+{inputs}: name: {
   system,
   user,
-  darwin ? false,
 }: let
-  isLinux = !darwin;
-
   machineConfig = ../machines/${name}.nix;
-  userOSConfig =
-    ../users/${user}/${
-      if darwin
-      then "darwin"
-      else "nixos"
-    }.nix;
+  userOSConfig = ../users/${user}/darwin.nix;
   userHMConfig = ../users/${user}/home-manager.nix;
-
-  systemFunc =
-    if darwin
-    then inputs.darwin.lib.darwinSystem
-    else nixpkgs.lib.nixosSystem;
-
-  home-manager =
-    if darwin
-    then inputs.home-manager.darwinModules
-    else inputs.home-manager.nixosModules;
 in
-  systemFunc rec {
+  inputs.darwin.lib.darwinSystem {
     inherit system;
 
     modules = [
-      {nixpkgs.overlays = overlays;}
-
       {nixpkgs.config.allowUnfree = true;}
 
       machineConfig
       userOSConfig
-      home-manager.home-manager
+      inputs.home-manager.darwinModules.home-manager
       {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;

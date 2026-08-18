@@ -1,38 +1,32 @@
 {inputs, ...}: {
   config,
-  lib,
   pkgs,
   ...
 }: let
-  isDarwin = pkgs.stdenv.isDarwin;
-  isLinux = pkgs.stdenv.isLinux;
   grepoPkg = inputs.grepo.packages.${pkgs.stdenv.hostPlatform.system}.default;
 
-  shellAliases =
-    {
-      cd = "z";
-      cat = "bat";
-      find = "fd";
-      grep = "rg";
-      la = "ls -a";
-      ll = "ls -l";
+  shellAliases = {
+    cd = "z";
+    cat = "bat";
+    find = "fd";
+    grep = "rg";
+    la = "ls -a";
+    ll = "ls -l";
 
-      ga = "git add";
-      gc = "git commit";
-      gco = "git checkout";
-      gcu = "git cleanup";
-      gcp = "git cherry-pick";
-      gdiff = "git diff";
-      gl = "git prettylog";
-      gp = "git push";
-      gs = "git status";
+    ga = "git add";
+    gc = "git commit";
+    gco = "git checkout";
+    gcu = "git cleanup";
+    gcp = "git cherry-pick";
+    gdiff = "git diff";
+    gl = "git prettylog";
+    gp = "git push";
+    gs = "git status";
 
-      v = "nvim";
-      drs = "sudo darwin-rebuild switch --flake";
-    }
-    // lib.optionalAttrs isDarwin {
-      tailscale = "/Applications/Tailscale.app/Contents/MacOS/Tailscale";
-    };
+    v = "nvim";
+    drs = "sudo darwin-rebuild switch --flake";
+    tailscale = "/Applications/Tailscale.app/Contents/MacOS/Tailscale";
+  };
 in {
   home.stateVersion = "24.11";
 
@@ -43,57 +37,49 @@ in {
     minimumReleaseAge: 4320
   '';
 
-  home.file.".zshenv" = lib.mkIf isDarwin {
+  home.file.".zshenv" = {
     source = ./ssh-agent.zsh;
   };
 
-  home.packages =
-    [
-      grepoPkg
-      pkgs._1password-cli
-      pkgs.alejandra
-      pkgs.bat
-      pkgs.fd
-      pkgs.fzf
-      pkgs.gh
-      pkgs.gopls
-      pkgs.nodejs
-      pkgs.neovim
-      pkgs.pnpm
-      pkgs.ripgrep
-      pkgs.stow
-    ]
-    ++ (lib.optionals isLinux [
-      pkgs.tailscale
-    ]);
+  home.packages = [
+    grepoPkg
+    pkgs._1password-cli
+    pkgs.alejandra
+    pkgs.bat
+    pkgs.fd
+    pkgs.fzf
+    pkgs.gh
+    pkgs.gopls
+    pkgs.nodejs
+    pkgs.neovim
+    pkgs.pnpm
+    pkgs.ripgrep
+    pkgs.stow
+  ];
 
   home.sessionVariables = {
     EDITOR = "nvim";
     PAGER = "less -FirSwX";
     BUN_INSTALL = "$HOME/.bun";
 
-    CARGO_REGISTRY_TOKEN = "op://Personal/CARGO_REGISTRY_TOKEN/credential";
     OPENAI_API_KEY = "op://Personal/OPENAI_API_KEY/credential";
     OPENROUTER_API_KEY = "op://Personal/OPENROUTER_API_KEY/credential";
   };
 
-  home.sessionPath =
-    [
-      "$HOME/.bun/bin"
-      "$HOME/.cargo/bin"
-      "$HOME/.local/bin"
-      "$HOME/.local/share/pnpm/bin"
-    ]
-    ++ (lib.optionals isDarwin [
-      "/opt/homebrew/bin"
-    ]);
+  home.sessionPath = [
+    "$HOME/.bun/bin"
+    "$HOME/.cargo/bin"
+    "$HOME/.local/bin"
+    "$HOME/.local/share/pnpm/bin"
+    "/opt/homebrew/bin"
+  ];
 
   programs.home-manager.enable = true;
 
   programs.fish = {
     enable = true;
     shellAliases = shellAliases;
-    shellInit = lib.optionalString isDarwin (builtins.readFile ./ssh-agent.fish);
+    shellInit = builtins.readFile ./ssh-agent.fish;
     interactiveShellInit = ''
       # Nix
       set -Ux fish_greeting ""
@@ -167,15 +153,6 @@ in {
         truncation_length = 20;
         truncation_symbol = "…";
       };
-    };
-  };
-
-  programs.nushell = {
-    enable = true;
-    shellAliases = shellAliases;
-    plugins = with pkgs.nushellPlugins; [ polars formats gstat query ];
-    settings = {
-      show_banner = false;
     };
   };
 
