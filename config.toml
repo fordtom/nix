@@ -51,7 +51,7 @@ _.path = [
 ]
 
 [settings]
-dotfiles.root = "~/config"
+dotfiles.root = "~/.config/mise"
 dotfiles.default_mode = "symlink"
 
 [dotfiles]
@@ -62,7 +62,6 @@ dotfiles.default_mode = "symlink"
 "~/.config/fish/config.fish" = {}
 "~/.config/git/config" = {}
 "~/.config/ghostty" = {}
-"~/.config/mise" = {}
 "~/.config/nvim" = {}
 "~/.config/pnpm" = {}
 "~/.config/starship.toml" = {}

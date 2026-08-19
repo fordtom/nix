@@ -58,7 +58,7 @@
 
 ## Machines and personal configuration
 
-- `~/config` is the source for Mise bootstrap and dotfiles.
+- `~/.config/mise` is the source repo for mise boostrap configuration and managed dotfiles.
 - Home paths can be Mise-managed symlinks into this checkout. Edit the source, then run `mise bootstrap` or the targeted bootstrap command.
 - 3 machines: `macbook`/`macmini`/`pifive`; access via ssh over Tailscale => use `tailscale status` for hosts/IPs.
 - Macs use Mise and Homebrew. All three machines retain Nix only for project environments and builds.
