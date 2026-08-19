@@ -7,12 +7,13 @@
 - By default, keep me in the loop when working; if I want you to run truly long tasks autonomously I will explicitly ask as such.
 - Prefer to stop early when facing unprecedented or unexpected issues when completing tasks, and ask for clarification on intended direction.
 - "independent reviewer" => A fresh context subagent tasked with an adversarial review; recommended at least once for large diffs.
-- Subagents: `high` effort for open ended tasks, `light`/`low` effort for straightforward ones. Model size (Luna -> Terra -> Sol) scales with task complexity.
+- Subagents: `high` effort for open ended tasks, `light`/`low` effort for straightforward ones. Model size (Luna -> Terra -> Sol) scales with task complexity. Luna is basically free; abuse it for parallelism or straightforward testing/automation.
 - Before handoff: run full gate (lint/typecheck/tests/docs).
 - Encountered friction (flaky command, missed tool call, confusing or undocumented step)? => `papercut 'message'` logs this locally for later. One or two sentences explaining what you were doing and what got in the way. Do this proactively in the moment.
 
 ## Tools
 
+- `mise` is used for most tools and global toolchains as well as dotfile and config management.
 - `nix` is often used for toolchains => `nix develop -c` to run commands.
 - `gh` for PRs/Issues and other GitHub interaction.
 - `uv` for all Python => `uv run`, `uv venv`, `uv format`.
@@ -58,10 +59,8 @@
 
 ## Machines and personal configuration
 
-- `~/.config/mise` is the source repo for mise boostrap configuration and managed dotfiles.
-- Home paths can be Mise-managed symlinks into this checkout. Edit the source, then run `mise bootstrap` or the targeted bootstrap command.
+- `~/.config/mise` is the source repo for mise boostrap configuration and managed dotfiles. Home paths can be Mise-managed symlinks into this checkout.
 - 3 machines: `macbook`/`macmini`/`pifive`; access via ssh over Tailscale => use `tailscale status` for hosts/IPs.
-- Macs use Mise and Homebrew. All three machines retain Nix only for project environments and builds.
 
 ## Writing guidance
 

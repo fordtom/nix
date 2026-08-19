@@ -17,6 +17,7 @@ starship = "latest"
 tmux = "latest"
 uv = "latest"
 zoxide = "latest"
+rust = "latest"
 
 [bootstrap.packages]
 "brew:fish" = "latest"
