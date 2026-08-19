@@ -18,6 +18,22 @@ tmux = "latest"
 uv = "latest"
 zoxide = "latest"
 
+[bootstrap.packages]
+"brew:fish" = "latest"
+"brew:git" = "latest"
+"brew:mole" = "latest"
+"brew-cask:1password" = "latest"
+"brew-cask:1password-cli" = "latest"
+"brew-cask:aldente" = "latest"
+"brew-cask:betterdisplay" = "latest"
+"brew-cask:ghostty" = "latest"
+"brew-cask:kitlangton-hex" = "latest"
+"brew-cask:middleclick" = "latest"
+"brew-cask:raycast" = "latest"
+"brew-cask:spotify" = "latest"
+"brew-cask:tailscale-app" = "latest"
+"brew-cask:visual-studio-code" = "latest"
+
 [env]
 EDITOR = "nvim"
 PAGER = "less -FirSwX"
@@ -59,6 +75,3 @@ dotfiles.default_mode = "symlink"
 
 [bootstrap.user]
 login_shell = "/opt/homebrew/bin/fish"
-
-[bootstrap.hooks.pre-user]
-run = 'HOMEBREW_NO_AUTO_UPDATE=1 brew bundle --file="$HOME/config/Brewfile" --no-upgrade'
