@@ -1,6 +1,9 @@
+brew "fish"
+brew "git"
 brew "mole"
 
 cask "1password"
+cask "1password-cli"
 cask "aldente"
 cask "betterdisplay"
 cask "ghostty"

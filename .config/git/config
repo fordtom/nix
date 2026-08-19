@@ -1,0 +1,33 @@
+[alias]
+	cleanup = "!git for-each-ref --format '%(refname:short) %(upstream:short) %(upstream:track)' refs/heads | awk '$2 == \"\" || $3 ~ /\\[gone\\]/ {print $1}' | while read -r br; do git branch -D \"$br\"; done"
+	prettylog = "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
+	update = "!git checkout main && git fetch --prune && git pull && git cleanup"
+
+[branch]
+	autoSetupRebase = always
+
+[color]
+	ui = true
+
+[commit]
+	gpgSign = true
+
+[github]
+	user = tomrford
+
+[gpg]
+	format = ssh
+
+[init]
+	defaultBranch = main
+
+[push]
+	autoSetupRemote = true
+
+[tag]
+	gpgSign = true
+
+[user]
+	email = t@tomrford.com
+	name = Tom Ford
+	signingKey = ~/.ssh/id_ed25519_github_signing.pub

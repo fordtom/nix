@@ -33,7 +33,7 @@ in {
   xdg.enable = true;
 
   home.file.".zshenv" = {
-    source = ./ssh-agent.zsh;
+    source = ../../.zshenv;
   };
 
   home.packages = [
@@ -74,7 +74,7 @@ in {
   programs.fish = {
     enable = true;
     shellAliases = shellAliases;
-    shellInit = builtins.readFile ./ssh-agent.fish;
+    shellInit = builtins.readFile ../../.config/fish/conf.d/ssh-agent.fish;
     interactiveShellInit = ''
       # Nix
       set -Ux fish_greeting ""

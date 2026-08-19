@@ -1,2 +1,57 @@
+[tools]
+"aqua:neovim/neovim" = "latest"
+"github:tomrford/grepo" = "latest"
+"go:golang.org/x/tools/gopls" = "latest"
+atuin = "latest"
+bat = "latest"
+bun = "latest"
+fd = "latest"
+fzf = "latest"
+gh = "latest"
+go = "latest"
+lazygit = "latest"
+node = "24"
+pnpm = "latest"
+ripgrep = "latest"
+starship = "latest"
+tmux = "latest"
+uv = "latest"
+zoxide = "latest"
+
+[env]
+EDITOR = "nvim"
+PAGER = "less -FirSwX"
+BUN_INSTALL = "{{env.HOME}}/.bun"
+GOPATH = "{{env.HOME}}/code/go"
+GOPRIVATE = "github.com/tomrford"
+OPENAI_API_KEY = "op://Personal/OPENAI_API_KEY/credential"
+OPENROUTER_API_KEY = "op://Personal/OPENROUTER_API_KEY/credential"
+_.path = [
+  "~/.bun/bin",
+  "~/.cargo/bin",
+  "~/.local/bin",
+  "~/.local/share/pnpm/bin",
+  "/opt/homebrew/bin",
+]
+
+[settings]
+dotfiles.root = "~/config"
+dotfiles.default_mode = "symlink"
+
+[dotfiles]
+"~/.agents/skills" = {}
+"~/.codex/AGENTS.md" = {}
+"~/.config/.bunfig.toml" = {}
+"~/.config/ghostty" = {}
+"~/.config/lazygit" = {}
+"~/.config/mise" = {}
+"~/.config/nvim" = {}
+"~/.config/pnpm" = {}
+"~/.config/starship.toml" = {}
+"~/.config/tmux" = {}
+"~/.config/uv" = {}
+"~/.hushlogin" = {}
+"~/.local/bin/papercut" = {}
+
 [bootstrap.hooks.pre-user]
 run = 'HOMEBREW_NO_AUTO_UPDATE=1 brew bundle --file="$HOME/config/Brewfile" --no-upgrade'
