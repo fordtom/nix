@@ -1,5 +1,1 @@
-My nix config, dotfiles and agent configuration.
-
-Agent configs are primarily stored in .agents/ and symlinked across .codex.
-
-Heavily inspired by https://github.com/mitchellh/nixos-config.
+My config files and agent configuration. Used to use nix darwin/home manager but fell out of love with it for 2 identical machines; we're now on mise bootstrap to see how that feels. Using Codex/Cursor for agents currently.
