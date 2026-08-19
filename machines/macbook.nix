@@ -11,6 +11,5 @@
   programs.zsh.enable = true;
   programs.fish.enable = true;
 
-  environment.systemPackages = [pkgs.alejandra];
   environment.shells = with pkgs; [bashInteractive zsh fish];
 }

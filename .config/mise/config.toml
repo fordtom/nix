@@ -42,6 +42,9 @@ dotfiles.default_mode = "symlink"
 "~/.agents/skills" = {}
 "~/.codex/AGENTS.md" = {}
 "~/.config/.bunfig.toml" = {}
+"~/.config/fish/conf.d/ssh-agent.fish" = {}
+"~/.config/fish/config.fish" = {}
+"~/.config/git/config" = {}
 "~/.config/ghostty" = {}
 "~/.config/lazygit" = {}
 "~/.config/mise" = {}
@@ -52,6 +55,8 @@ dotfiles.default_mode = "symlink"
 "~/.config/uv" = {}
 "~/.hushlogin" = {}
 "~/.local/bin/papercut" = {}
+"~/.zshenv" = {}
+"~/.zshrc" = {}
 
 [bootstrap.hooks.pre-user]
 run = 'HOMEBREW_NO_AUTO_UPDATE=1 brew bundle --file="$HOME/config/Brewfile" --no-upgrade'
