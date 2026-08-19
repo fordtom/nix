@@ -1,3 +1,7 @@
+if [[ -e /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh ]]; then
+  source /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
+fi
+
 # Make the macOS launchd ssh-agent visible to zsh and restore Keychain-backed identities.
 if command -v launchctl >/dev/null 2>&1; then
   _ssh_auth_sock="$(launchctl print "gui/$(id -u)/com.openssh.ssh-agent" 2>/dev/null | awk -F'=> ' '/SSH_AUTH_SOCK =>/ { print $2; exit }')"
