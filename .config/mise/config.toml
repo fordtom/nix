@@ -46,7 +46,6 @@ dotfiles.default_mode = "symlink"
 "~/.config/fish/config.fish" = {}
 "~/.config/git/config" = {}
 "~/.config/ghostty" = {}
-"~/.config/lazygit" = {}
 "~/.config/mise" = {}
 "~/.config/nvim" = {}
 "~/.config/pnpm" = {}
@@ -57,6 +56,9 @@ dotfiles.default_mode = "symlink"
 "~/.local/bin/papercut" = {}
 "~/.zshenv" = {}
 "~/.zshrc" = {}
+
+[bootstrap.user]
+login_shell = "/opt/homebrew/bin/fish"
 
 [bootstrap.hooks.pre-user]
 run = 'HOMEBREW_NO_AUTO_UPDATE=1 brew bundle --file="$HOME/config/Brewfile" --no-upgrade'

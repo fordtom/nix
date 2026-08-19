@@ -58,11 +58,10 @@
 
 ## Machines and personal configuration
 
-- `~/config` is the source for nix-darwin and Home Manager configuration plus dotfiles.
-- Home paths can be symlinks into this checkout. Edit the source then run `stow .` inside `~/config`.
+- `~/config` is the source for Mise bootstrap and dotfiles.
+- Home paths can be Mise-managed symlinks into this checkout. Edit the source, then run `mise bootstrap` or the targeted bootstrap command.
 - 3 machines: `macbook`/`macmini`/`pifive`; access via ssh over Tailscale => use `tailscale status` for hosts/IPs.
-- Macs use nix-darwin with shared user configuration in `users/tomford/home-manager.nix`. Pi has Nix only for project environments and builds.
-- When editing machine nix configs leave rebuild/application step to me. Project flakes are fine to edit/run.
+- Macs use Mise and Homebrew. All three machines retain Nix only for project environments and builds.
 
 ## Writing guidance
 

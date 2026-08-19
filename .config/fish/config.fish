@@ -7,7 +7,6 @@ set -g fish_greeting
 if status is-interactive
     alias cat bat
     alias cd z
-    alias drs 'sudo darwin-rebuild switch --flake'
     alias find fd
     alias ga 'git add'
     alias gc 'git commit'
