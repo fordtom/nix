@@ -18,6 +18,7 @@ tmux = "latest"
 uv = "latest"
 zoxide = "latest"
 rust = "latest"
+zig = "0.16.0"
 
 [bootstrap.packages]
 "brew:fish" = "latest"
