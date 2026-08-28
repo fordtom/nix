@@ -52,6 +52,7 @@
 - Delete dead files; do not leave stub modules.
 - Keep test suite high signal and curated; a new test is not necessary with each change.
 - Do not add tests which simply restate the implementation. These provide zero confidence.
+- Tautological tests should be considered harmful.
 - Do not preserve backwards compatibility unless explicitly requested.
 - Always trust the toolchain and the type system. Bias towards deep modules with fewer shims/abstractions and trust boundaries we control both sides of.
 - File drift over ~1000 LOC should be justified; split/refactor when appropriate and complexity doesn't suffer.
