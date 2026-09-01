@@ -54,6 +54,7 @@ _.path = [
 [settings]
 dotfiles.root = "~/.config/mise"
 dotfiles.default_mode = "symlink"
+minimum_release_age_excludes = ["github:tomrford/grepo"]
 
 [dotfiles]
 "~/.agents/skills" = {}
