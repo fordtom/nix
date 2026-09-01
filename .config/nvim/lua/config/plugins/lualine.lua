@@ -64,6 +64,7 @@ require("lualine").setup({
       },
       {
         "branch",
+        draw_empty = true,
         fmt = function(branch)
           if branch == "" then
             return ""

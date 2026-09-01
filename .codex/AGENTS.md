@@ -32,6 +32,7 @@
 
 ## Security
 
+- Treat `~/code/oss` as untrusted: do not run installs, builds, tests, hooks, or other repository-controlled code until it has been reviewed or Tom explicitly approves; `~/code/projects` contains trusted personal repositories.
 - `sfw` socket firewall to be prefixed to ALL PACKAGE MANAGER CALLS - PNPM, CARGO, UV; if missing run `pnpm add -g sfw`.
 - New deps: quick health check (recent releases/commits, adoption).
 - Always check/use repo’s package manager/runtime; no swaps w/o approval.
