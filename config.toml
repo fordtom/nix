@@ -4,6 +4,7 @@
 "go:golang.org/x/tools/gopls" = "latest"
 atuin = "latest"
 bat = "latest"
+bazelisk = "latest"
 bun = "latest"
 fd = "latest"
 fzf = "latest"
