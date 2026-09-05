@@ -15,6 +15,6 @@ clipboard-paste-protection = false
 
 #updates
 auto-update = download
-auto-update-channel = stable
+auto-update-channel = tip
 
 shell-integration-features = ssh-terminfo,ssh-env
